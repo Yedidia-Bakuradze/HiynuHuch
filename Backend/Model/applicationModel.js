@@ -16,15 +16,22 @@ const applicationModel = new mongoose.Schema(
       type: String,
       require: true,
     },
-    applicationsStatus:{
-        userId:{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-        },
-        }
-    }
+    applicationsStatus: {
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+      status: {
+        type: String,
+        enum: ["pending", "approved", "rejected"], // Define your enum values here
+        default: "pending",
+      },
+    },
   },
   {
     timestamps: true,
   }
 );
+const Application = mongoose.model("Application", applicationModel);
+
+module.exports = Application;
