@@ -43,3 +43,6 @@ adminModel.pre("save", async function (next) {
   const hashedPassword = await bcrypt.genSalt(10);
   this.password = hashedPassword;
 });
+const Admin = mongoose.model("User", adminModel);
+
+module.exports = Admin;

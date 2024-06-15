@@ -48,3 +48,7 @@ userModel.pre("save", async function (next) {
   const hashedPassword = await bcrypt.genSalt(10);
   this.password = hashedPassword;
 });
+
+const User = mongoose.model("User", userModel);
+
+module.exports = User;
