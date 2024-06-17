@@ -58,7 +58,7 @@ const updateUser = asyncHandler(async (req, res) => {
         user.password = password;
         const updatedUser = await user.save();
         res.json(updatedUser);
-        res.status(200).send(updatedUser);
+        res.status(204).send(updatedUser);
       } else {
         res.status(404).send("User not found");
       }
