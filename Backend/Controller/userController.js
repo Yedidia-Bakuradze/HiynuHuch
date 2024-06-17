@@ -84,3 +84,8 @@ const deleteUser = asyncHandler(async (req, res) => {
     return res.status(500).send(err);
   }
 });
+
+module.exports = {
+  deleteUser, updateUser, createUser, getAllUsers, getUserById
+};
+
