@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const applicationModel = new mongoose.Schema(
+const applicationSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -15,22 +15,16 @@ const applicationModel = new mongoose.Schema(
       type: String,
       require: true,
     },
-    applicationsStatus: {
-      userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-      },
-      status: {
-        type: String,
-        enum: ["pending", "approved", "rejected"], // Define your enum values here
-        default: "pending",
-      },
+    creator: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Admin",
+      required: true,
     },
   },
   {
     timestamps: true,
   }
 );
-const Application = mongoose.model("Application", applicationModel);
+const Application = mongoose.model("Application", applicationSchema);
 
 module.exports = Application;
