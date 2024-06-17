@@ -28,14 +28,11 @@ const createUser = asyncHandler(async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).send("Please fill all the fields");
     } else {
-      const user = await userModel.create(req.body);
-      res.json(user);
-      res.status(201).send(user);
-
       //Checks if already exists
       if (await userModel.findOne({ email: email })) {
         return res.status(400).send("Email already exists");
       } else {
+        const user = await userModel.create(req.body);
         res.json(user);
         res.status(201).send(user);
       }

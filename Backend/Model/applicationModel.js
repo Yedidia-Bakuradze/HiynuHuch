@@ -9,6 +9,7 @@ const applicationSchema = new mongoose.Schema(
     tags: [
       {
         type: String,
+        default: [],
       },
     ],
     description: {
