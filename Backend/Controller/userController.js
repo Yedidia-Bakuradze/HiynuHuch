@@ -1,5 +1,6 @@
 const userModel = require("../Model/userModel");
 const asyncHandler = require("express-async-handler");
+const generateToken = require("../Config/generateToken");
 
 const getAllUsers = asyncHandler(async (req, res) => {
   try {
@@ -8,6 +9,24 @@ const getAllUsers = asyncHandler(async (req, res) => {
     res.status(200).send(users);
   } catch (err) {
     res.status(500).send(err);
+  }
+});
+
+const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const user = await userModel.findOne({ email });
+  console.log(user.email);
+  if (user && (await user.matchPassword(password))) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      cv: user.cv,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid Email Or Password!");
   }
 });
 
@@ -44,35 +63,34 @@ const createUser = asyncHandler(async (req, res) => {
 
 const updateUser = asyncHandler(async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const user = await userModel.findById(req.params.id);
-
-    //Check if user exists
-    if (userModel.findOne({ email })) {
-      return res.status(400).send("Email already exists");
-    } else {
-      //Check if the updated user exists
-      if (user) {
-        user.name = name;
-        user.email = email;
-        user.password = password;
-        const updatedUser = await user.save();
-        res.json(updatedUser);
-        res.status(204).send(updatedUser);
+    const { id } = req.params;
+    const { name, email, password, cv } = req.body;
+    if (!email && !name && !cv)
+      return res.status(400).send("Please fill all the fields");
+    else {
+      const updated = await userModel.findByIdAndUpdate(
+        id,
+        { name, email, password, cv },
+        { new: true }
+      );
+      if (!updated) {
+        res.status(400);
+        throw new Error("Can't Update!");
       } else {
-        res.status(404).send("User not found");
+        res.status(200).json(updated);
       }
     }
-  } catch (err) {
+  } 
+  catch (err) {
     return res.status(500).send(err);
   }
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
+  const id = req.params.id;
   try {
-    const user = await userModel.findById(req.params.id);
+    const user = await userModel.deleteOne({ _id: id });
     if (user) {
-      await user.remove();
       res.json({ message: "User removed" });
     } else {
       res.status(404).send("User not found");
@@ -82,7 +100,21 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = {
-  deleteUser, updateUser, createUser, getAllUsers, getUserById
-};
+const loginToken = asyncHandler(async (req, res) => {
+  try {
+    res.status(200).send(req.user);
+  } catch (error) {
+    res.status(400);
+    throw new Error("Failed to login with Token");
+  }
+});
 
+module.exports = {
+  deleteUser,
+  updateUser,
+  createUser,
+  getAllUsers,
+  getUserById,
+  login,
+  loginToken,
+};

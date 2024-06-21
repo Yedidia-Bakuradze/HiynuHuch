@@ -1,7 +1,6 @@
 const applicationModel = require("../Model/applicationModel");
 const adminModel = require("../Model/adminModel");
 const asyncHandler = require("express-async-handler");
-const { application } = require("express");
 
 const getAllApplications = asyncHandler(async (req, res) => {
   try {
@@ -26,7 +25,7 @@ const getApplicationById = asyncHandler(async (req, res) => {
 const getApplicationByCreator = asyncHandler(async (req, res) => {
   try {
     const applications = await applicationModel.find({
-      creator: req.params.id,
+      creator: req.params.owner,
     });
     res.json(applications);
     res.status(200).send(applications);
@@ -41,7 +40,7 @@ const createApplication = asyncHandler(async (req, res) => {
 
     // Check if all fields are filled
     // Check if the creator exists
-    if (!title || !description || !tags) {
+    if (!title || !description || !tags || !creator) {
       return res.status(400).json({ message: "Please fill all the fields" });
     } else if (!adminModel.findById(creator)) {
       return res.status(400).json({ message: "Creator hasn't found" });
@@ -108,12 +107,23 @@ const deleteApplication = asyncHandler(async (req, res) => {
 const deleteAllApplicationsByCreator = asyncHandler(async (req, res) => {
   try {
     //Delete all applications made by the creator
-    await applicationModel.deleteMany({ creator: req.params.id });
+    await applicationModel.deleteMany({ creator: req.params.owner });
     res.json({ message: "Applications removed" });
     res
       .status(204)
-      .send({ message: `All applications by ${req.params.id} removed` });
+      .send({ message: `All applications by ${req.params.owner} removed` });
   } catch (err) {
     return res.status(500).send(err.body);
   }
 });
+
+
+module.exports = {
+  createApplication,
+  updateApplication,
+  deleteApplication,
+  getAllApplications,
+  deleteAllApplicationsByCreator,
+  getApplicationByCreator,
+  getApplicationById
+};

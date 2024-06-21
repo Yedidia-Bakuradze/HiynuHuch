@@ -14,7 +14,7 @@ const empAppSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "Pandding",
+      default: "Pending",
       required: true,
     },
     report: {

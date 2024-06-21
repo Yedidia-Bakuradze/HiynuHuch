@@ -1,20 +1,28 @@
 const express = require("express");
 const {
-  deleteApplication,
-  updateApplication,
   createApplication,
-  getAllApplication,
+  updateApplication,
+  deleteApplication,
+  getAllApplications,
+  deleteAllApplicationsByCreator,
+  getApplicationByCreator,
   getApplicationById,
 } = require("../Controller/applicationController");
+const { protectAdmin } = require("../Middleware/adminMiddleware");
+const {protectApp} = require('../Middleware/appMiddleware');
+
 
 const router = express.Router();
 
-router.route("/").post(createApplication);
-router.route("/").get(getAllApplication);
+router.route("/").post(protectAdmin,createApplication).get(getAllApplications).delete(protectAdmin, deleteAllApplicationsByCreator);
 router
   .route("/:id")
-  .delete(deleteApplication)
-  .put(updateApplication)
+  .delete(protectAdmin,protectApp, deleteApplication)
+  .put(protectAdmin,protectApp, updateApplication)
   .get(getApplicationById);
+
+router
+  .route("/:owner")
+  .get(getApplicationByCreator)
 
 module.exports = router;
