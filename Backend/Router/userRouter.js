@@ -6,13 +6,13 @@ const {
   getAllUsers,
   login,
   getUserById,
-  loginToken
+  loginToken,
 } = require("../Controller/userController");
-const {protect} = require("../Middleware/autoMiddleware")
+const { protect } = require("../Middleware/autoMiddleware");
 
 const router = express.Router();
 
-router.route("/").post(createUser);
+router.route("/signup").post(createUser);
 router.route("/login").post(login);
 router.route("/").get(getAllUsers);
 router.route("/token").get(protect, loginToken);

@@ -17,18 +17,11 @@ const adminSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    createdApplications: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Application",
-      },
-    ],
   },
   {
     timestamps: true,
   }
 );
-
 
 adminSchema.methods.matchPassword = async function (enterdPassword) {
   return await bcrypt.compare(enterdPassword, this.password);

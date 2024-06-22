@@ -1,7 +1,12 @@
 const userModel = require("../Model/userModel");
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../Config/generateToken");
-
+/**
+ * Fetches the list of all users from the database.
+ *
+ * @function getUsers
+ * @returns {Promise} - A promise that resolves to the response of the API call.
+ */
 const getAllUsers = asyncHandler(async (req, res) => {
   try {
     const users = await userModel.find({});
@@ -14,6 +19,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  console.log(req.body);
   const user = await userModel.findOne({ email });
   console.log(user.email);
   if (user && (await user.matchPassword(password))) {
@@ -45,6 +51,7 @@ const createUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
+      console.log(`{name}`);
       return res.status(400).send("Please fill all the fields");
     } else {
       //Checks if already exists
@@ -80,8 +87,7 @@ const updateUser = asyncHandler(async (req, res) => {
         res.status(200).json(updated);
       }
     }
-  } 
-  catch (err) {
+  } catch (err) {
     return res.status(500).send(err);
   }
 });
