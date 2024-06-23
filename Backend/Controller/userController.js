@@ -1,12 +1,7 @@
 const userModel = require("../Model/userModel");
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../Config/generateToken");
-/**
- * Fetches the list of all users from the database.
- *
- * @function getUsers
- * @returns {Promise} - A promise that resolves to the response of the API call.
- */
+
 const getAllUsers = asyncHandler(async (req, res) => {
   try {
     const users = await userModel.find({});

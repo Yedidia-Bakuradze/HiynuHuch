@@ -2,22 +2,36 @@ const mongoose = require("mongoose");
 
 const empAppSchema = new mongoose.Schema(
   {
-    userId: {
+    UserId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    applicationId: {
+    AppId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Application",
       required: true,
     },
-    status: {
+    Status: {
       type: String,
       default: "Pending",
       required: true,
     },
-    report: {
+    AiScore: {
+      type: Number,
+    },
+    AiReview: {
+      type: String,
+    },
+    EmpName: {
+      type: String,
+      required: true,
+    },
+    AppTitle: {
+      type: String,
+      required: true,
+    },
+    Report: {
       type: String,
     },
   },
