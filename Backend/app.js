@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 
 const userRouter = require("./Router/userRouter");
 const adminRouter = require("./Router/adminRouter");
-// const applicationRouter = require("./Router/applicationRouter");
+const applicationRouter = require("./Router/applicationRouter");
 // const empAppRouter = require("./Router/empAppRouter");
 
 dotenv.config();
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/user", userRouter);
 app.use("/api/admin", adminRouter);
-// app.use("/api/application", applicationRouter);
+app.use("/api/app", applicationRouter);
 // app.use("/api/empapp", empAppRouter);
 
 const PORT = process.env.PORT || 5000;

@@ -54,6 +54,7 @@ const createUser = asyncHandler(async (req, res) => {
         return res.status(400).send("Email already exists");
       } else {
         const user = await userModel.create(req.body);
+        user.token = generateToken();
         res.json(user);
         res.status(201).send(user);
       }

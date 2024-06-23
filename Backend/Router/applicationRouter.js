@@ -9,7 +9,6 @@ const {
   getApplicationById,
 } = require("../Controller/applicationController");
 const { protectAdmin } = require("../Middleware/adminMiddleware");
-const {protectApp} = require('../Middleware/appMiddleware');
 
 
 const router = express.Router();
@@ -17,12 +16,12 @@ const router = express.Router();
 router.route("/").post(protectAdmin,createApplication).get(getAllApplications).delete(protectAdmin, deleteAllApplicationsByCreator);
 router
   .route("/:id")
-  .delete(protectAdmin,protectApp, deleteApplication)
-  .put(protectAdmin,protectApp, updateApplication)
+  .delete(protectAdmin, deleteApplication)
+  .put(protectAdmin, updateApplication)
   .get(getApplicationById);
 
 router
-  .route("/:owner")
+  .route("/creator/:owner")
   .get(getApplicationByCreator)
 
 module.exports = router;

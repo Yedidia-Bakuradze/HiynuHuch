@@ -36,13 +36,13 @@ const getApplicationByCreator = asyncHandler(async (req, res) => {
 
 const createApplication = asyncHandler(async (req, res) => {
   try {
-    const { title, description, tags, creator } = req.body;
-
+    const { title, description, tags } = req.body;
+    req.body.creator = req.admin._id;
     // Check if all fields are filled
     // Check if the creator exists
-    if (!title || !description || !tags || !creator) {
+    if (!title || !description || !tags) {
       return res.status(400).json({ message: "Please fill all the fields" });
-    } else if (!adminModel.findById(creator)) {
+    } else if (!adminModel.findById(req.admin._id)) {
       return res.status(400).json({ message: "Creator hasn't found" });
     } else {
       const createApplication = await applicationModel.create(req.body);
@@ -56,23 +56,28 @@ const createApplication = asyncHandler(async (req, res) => {
 
 const updateApplication = asyncHandler(async (req, res) => {
   try {
-    const { newTitle, newDescription, newTags, newCreator } = req.body;
-    const application = await applicationModel.findById(req.params._id);
-
+    const { title, description, tags} = req.body;
+    req.body._id = req.admin._id;
+    if (!title || !description || !tags) {
+      return res.status(400).json({ message: "Please fill all the fields" });
+    }
+    const application = await applicationModel.findById(req.params.id);
     // Check if the updated application exists
     if (!application) {
       return res.status(404).json({ message: "Application not found" });
     }
 
-    // Check if all fields are filled
-    if (!newTitle || !newDescription || newTags) {
-      return res.status(400).json({ message: "Please fill all the fields" });
+    else if (application._id != req.body._id) {
+      res.status(401);
+      throw new Error("Not authorization!");
     }
 
+    // Check if all fields are filled
     // Check if the creator exists
-    else if (!adminModel.findById(newCreator)) {
-      return res.status(400).json({ message: "Creator hasn't found" });
-    }
+    // else if (!adminModel.findById(newCreator)) {
+    //   return res.status(400).json({ message: "Creator hasn't found" });
+    // }
+    //  *****I delete it because we have the admin in the middleware
 
     // Update the application
     else {
@@ -95,9 +100,13 @@ const deleteApplication = asyncHandler(async (req, res) => {
     if (!application)
       return res.status(404).json({ message: "Application not found" });
     else {
-      await application.remove();
-      res.json({ message: "Application removed" });
-      res.status(204).send({ message: "Application removed" });
+      if (app.creator == req.admin._id) {
+        await application.remove();
+        res.status(204).send({ message: "Application removed" });
+      } else {
+        res.status(401);
+        throw new Error("Not authorization!");
+      }
     }
   } catch (err) {
     return res.status(500).send(err.body);
@@ -107,16 +116,15 @@ const deleteApplication = asyncHandler(async (req, res) => {
 const deleteAllApplicationsByCreator = asyncHandler(async (req, res) => {
   try {
     //Delete all applications made by the creator
-    await applicationModel.deleteMany({ creator: req.params.owner });
+    await applicationModel.deleteMany({ creator: req.admin._id });
     res.json({ message: "Applications removed" });
     res
       .status(204)
-      .send({ message: `All applications by ${req.params.owner} removed` });
+      .send({ message: `All applications by ${req.admin._id} removed` });
   } catch (err) {
     return res.status(500).send(err.body);
   }
 });
-
 
 module.exports = {
   createApplication,
@@ -125,5 +133,5 @@ module.exports = {
   getAllApplications,
   deleteAllApplicationsByCreator,
   getApplicationByCreator,
-  getApplicationById
+  getApplicationById,
 };
