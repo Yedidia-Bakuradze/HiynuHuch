@@ -379,7 +379,7 @@ i {
     justify-content: center;
     width: 100%;
 }
-input,
+
 .nav_container {
     text-decoration: none !important;
     width: 12rem;
@@ -393,6 +393,24 @@ input,
     line-height: 1.5;
     margin: 0;
     text-indent: 2.2rem;
+    font-size: 1.1rem;
+    background-repeat: no-repeat;
+    background-position: 0.2rem 0.35rem;
+    background-size: 2rem;
+    color: #3992ff;
+}
+.app_container{
+    text-decoration: none !important;
+    width: 12rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+    background-color: white;
+    line-height: 1.5;
+    margin: 0;
     font-size: 1.1rem;
     background-repeat: no-repeat;
     background-position: 0.2rem 0.35rem;

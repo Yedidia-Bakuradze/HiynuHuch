@@ -42,7 +42,7 @@ export default function Root() {
 
           <Form id="search-form " role="search"  >
             <input
-              className="nav_container"
+              className="app_container"
               id="q"
               aria-label="Search contacts"
               placeholder="Search"

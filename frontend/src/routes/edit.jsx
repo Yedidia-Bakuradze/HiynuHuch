@@ -15,6 +15,7 @@ export default function EditContact() {
       <p>
         <span>Name</span>
         <input
+        className="app_container"
           placeholder="First"
           aria-label="First name"
           type="text"
@@ -22,6 +23,7 @@ export default function EditContact() {
           defaultValue={contact?.first}
         />
         <input
+        className="app_container"
           placeholder="Last"
           aria-label="Last name"
           type="text"
@@ -32,6 +34,7 @@ export default function EditContact() {
       <label>
         <span>Twitter</span>
         <input
+        className="app_container"
           type="text"
           name="twitter"
           placeholder="@jack"
@@ -41,6 +44,7 @@ export default function EditContact() {
       <label>
         <span>Avatar URL</span>
         <input
+        className="app_container"
           placeholder="https://example.com/avatar.jpg"
           aria-label="Avatar URL"
           type="text"
@@ -53,10 +57,10 @@ export default function EditContact() {
         <textarea name="notes" defaultValue={contact?.notes} rows={6} />
       </label>
       <p>
-        <button type="submit" className="nav_container">Save</button>
+        <button type="submit" className="app_container">Save</button>
         <button
           type="button"
-          className="nav_container"
+          className="app_container"
           onClick={() => {
             navigate(-1);
           }}

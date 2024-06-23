@@ -20,15 +20,15 @@ export default function Contact() {
       </div>
 
       <div>
-        <h1>
+        <h1 >
           {contact.first || contact.last ? (
             <>
               {contact.first} {contact.last}
             </>
           ) : (
             <i>No Name</i>
-          )}{" "}
-          <Favorite contact={contact} />
+          )}
+          <Favorite contact={contact}  />
         </h1>
 
         {contact.twitter && (
@@ -43,11 +43,12 @@ export default function Contact() {
 
         <div>
           <Form action="edit">
-            <button type="submit">Edit</button>
+            <button type="submit" className="app_container">Edit</button>
           </Form>
           <Form
             method="post"
             action="destroy"
+            
             onSubmit={(event) => {
               if (
                 !window.confirm(
@@ -58,7 +59,7 @@ export default function Contact() {
               }
             }}
           >
-            <button type="submit">Delete</button>
+            <button type="submit" className="app_container">Delete</button>
           </Form>
         </div>
       </div>
