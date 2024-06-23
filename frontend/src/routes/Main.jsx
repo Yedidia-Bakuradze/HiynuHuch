@@ -1,7 +1,19 @@
+import { useState } from 'react';
+import Card from '../routes/Card';
+import './Main.css';
 export default function main() {
   return (
-    <p>
-      bla
-    </p>
+    <h1>
+      <>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />  
+      <Card />
+      </>
+      
+    </h1>
+  
   );
 }
