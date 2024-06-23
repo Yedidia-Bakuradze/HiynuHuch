@@ -13,48 +13,44 @@ export default function EditContact() {
   return (
     <Form method="post" id="contact-form">
       <p>
-        <span>Name</span>
+        <span>Job title</span>
         <input
         className="app_container"
-          placeholder="First"
-          aria-label="First name"
+          placeholder="Intern etc"
+          aria-label="Job title"
           type="text"
-          name="first"
           defaultValue={contact?.first}
-        />
-        <input
-        className="app_container"
-          placeholder="Last"
-          aria-label="Last name"
-          type="text"
-          name="last"
-          defaultValue={contact?.last}
         />
       </p>
       <label>
-        <span>Twitter</span>
+        <span>Job precent</span>
         <input
         className="app_container"
           type="text"
-          name="twitter"
-          placeholder="@jack"
+          name="precent"
+          placeholder="Full time/ Half time etc"
           defaultValue={contact?.twitter}
         />
       </label>
       <label>
-        <span>Avatar URL</span>
+        <span>Hybrid/Frontal</span>
         <input
         className="app_container"
-          placeholder="https://example.com/avatar.jpg"
-          aria-label="Avatar URL"
+          placeholder="3 days at work 2 at home etc"
+          aria-label="Job location+times"
           type="text"
           name="avatar"
           defaultValue={contact?.avatar}
         />
       </label>
       <label>
-        <span>Notes</span>
-        <textarea name="notes" defaultValue={contact?.notes} rows={6} />
+        <span>Job requirment</span>
+        <textarea 
+        className="app_container"
+        placeholder="at least 2 years of experience, a degree worked as an intern for a year in other tech companies etc"
+        name="notes"
+        defaultValue={contact?.notes}
+        rows={6}/>
       </label>
       <p>
         <button type="submit" className="app_container">Save</button>
