@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import 'bootstrap/dist/css/bootstrap.css'; 
 import Nav from 'react-bootstrap/Nav'; 
 import Nav_footer from './Nav_footer'; 
@@ -16,6 +17,19 @@ function App() {
       </Nav> 
       
     </div> 
+=======
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+import Main from "./Main";
+
+function App() {
+  
+  return (
+    <h1> bla</h1>
+>>>>>>> efb246126e93b96eda99f2be993fcf9c62c6451b
 
   );
 }
