@@ -1,0 +1,10 @@
+.Nav_footer{
+    background-color: rgb(33, 201, 63);
+    
+}
+.Nav_footer_box {
+   background-color: red;
+    height: 100px;
+    width: 60px;
+    border-radius: 15px;
+}
