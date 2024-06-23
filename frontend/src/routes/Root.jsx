@@ -30,8 +30,19 @@ export default function Root() {
     <>
       <div id="sidebar">
         <div>
-          <Form id="search-form" role="search">
+          <ul >
+          <Link to={`/Applications`} className="remove_text_dec">
+              <li className="nav_container" id="settings">
+                Applications
+              </li>
+          </Link>
+          <Form method="post" id="top_nav_buttons">
+            <button type="submit" className="nav_container" id="new_button">New</button>
+          </Form>
+
+          <Form id="search-form " role="search"  >
             <input
+              className="nav_container"
               id="q"
               aria-label="Search contacts"
               placeholder="Search"
@@ -42,9 +53,8 @@ export default function Root() {
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
           </Form>
-          <Form method="post">
-            <button type="submit">New</button>
-          </Form>
+          
+          </ul>
         </div>
         <nav>
           {contacts.length ? (
@@ -76,15 +86,15 @@ export default function Root() {
             </p>
           )}
         </nav>
-        <div id="bottom_nav">
+        <div>
           <ul>
             <Link to={`/settings`} className="remove_text_dec">
-              <li className="bottom_nav_container" id="settings">
-                settings
+              <li className="nav_container" id="settings">
+                Settings
               </li>
             </Link>
             <Link to={`/profile`} className="remove_text_dec">
-              <li className="bottom_nav_container" id="profile">
+              <li className="nav_container" id="profile">
                 Profile
               </li>
             </Link>
