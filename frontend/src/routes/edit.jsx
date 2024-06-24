@@ -1,6 +1,7 @@
-import { Form, useLoaderData, redirect, useNavigate } from "react-router-dom";
+import { useLoaderData, redirect, useNavigate } from "react-router-dom";
+import {Form, Button} from 'react-bootstrap';
 import { updateContact } from "../contacts";
-
+import "./edit.css"
 export async function action({ request, params }) {
   const formData = await request.formData();
   const updates = Object.fromEntries(formData);
@@ -11,49 +12,29 @@ export default function EditContact() {
   const { contact } = useLoaderData();
   const navigate = useNavigate();
   return (
-    <Form method="post" id="contact-form">
+    <Form onSubmit="post">
+      <Form.Label>Job title:</Form.Label> 
+          <Form.Control type="text" 
+                        placeholder="Intern etc" 
+                        size="lg"
+                        name="first"
+                        defaultValue={contact?.first}
+                        /> 
+        
+        <Form.Label>Job precent:</Form.Label> 
+        <Form.Control type="text" 
+                        placeholder="Full time/ Half time etc" name="last"
+                        defaultValue={contact?.last} /> 
+        
+        <Form.Label>Hybrid/Frontal:</Form.Label> 
+        <Form.Control type="text" placeholder="3 days at work 2 at home etc" name="twitter"
+                  defaultValue={contact?.twitter} /> 
+
+        <Form.Label>Job requirment:</Form.Label> 
+        <Form.Control type="text" name="notes"placeholder="at least 2 years of experience, a degree, worked as an intern for a year in other tech companies etc"
+                  defaultValue={contact?.notes} /> 
       <p>
-        <span>Job title</span>
-        <input
-        className="app_container"
-          placeholder="Intern etc"
-          aria-label="Job title"
-          type="text"
-          defaultValue={contact?.first}
-        />
-      </p>
-      <label>
-        <span>Job precent</span>
-        <input
-        className="app_container"
-          type="text"
-          name="precent"
-          placeholder="Full time/ Half time etc"
-          defaultValue={contact?.twitter}
-        />
-      </label>
-      <label>
-        <span>Hybrid/Frontal</span>
-        <input
-        className="app_container"
-          placeholder="3 days at work 2 at home etc"
-          aria-label="Job location+times"
-          type="text"
-          name="avatar"
-          defaultValue={contact?.avatar}
-        />
-      </label>
-      <label>
-        <span>Job requirment</span>
-        <textarea 
-        className="app_container"
-        placeholder="at least 2 years of experience, a degree worked as an intern for a year in other tech companies etc"
-        name="notes"
-        defaultValue={contact?.notes}
-        rows={6}/>
-      </label>
-      <p>
-        <button type="submit" className="app_container">Save</button>
+        <button type="submit" className="app_container">Update</button>
         <button
           type="button"
           className="app_container"
