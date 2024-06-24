@@ -3,11 +3,12 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 10px;
+    margin: 20px;
     text-align: center;
     width: 250px;
     height: 300px;
     display: inline-block;
+    justify-content: space-evenly;
 }
 .card :hover{
     box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
@@ -24,13 +25,13 @@
     box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
     background-color: white;
     line-height: 1.5;
-    margin: 0;
+    margin-top: 2rem;
     font-size: 1.1rem;
     background-repeat: no-repeat;
     background-position: 0.2rem 0.35rem;
     background-size: 2rem;
     color: #3992ff;
-    
+    bottom: 0.5rem;
 
 }
 .view_button:hover{
