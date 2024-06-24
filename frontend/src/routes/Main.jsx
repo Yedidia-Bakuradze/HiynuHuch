@@ -1,19 +1,12 @@
 import { useState } from 'react';
-import Card from '../routes/Card';
 import './Main.css';
+import ApplyForm from '../Page/appllyForm';
+import Dashboard from '../Page/Dashboard';
 export default function main() {
   return (
-    <h1>
       <>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />  
-      <Card />
-      </>
-      
-    </h1>
+     <Dashboard/>
+      </> 
   
   );
 }
