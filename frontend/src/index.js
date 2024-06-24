@@ -1,9 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
-import Contact, { loader as contactLoader } from "./routes/contact";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import EditContact, { action as editAction } from "./routes/edit";
+import Editposition, { action as editAction } from "./routes/edit";
 import Destroy, { action as destroyAction } from "./routes/Destroy";
 import Main from "./routes/Main";
 import "./routes/Root.css";
@@ -12,35 +11,31 @@ import Root, {
   loader as rootLoader,
   action as rootAction,
 } from "./routes/Root";
+import { positions } from "./data/positions.js";
+var url = window.location.herf;
+const position = url.substr(url.lastIndexOf("/") + 1);
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: rootLoader,
-    action: rootAction,
     children: [
-      { path:"/", element: <Main /> },
+      { path: "/", element: <Main /> },
       {
-        path: "contacts/:contactId",
-        element: <Contact />,
-        loader: contactLoader,
+        path: "positions/position",
+        element: <Editposition />,
       },
       {
-        path: "contacts/:contactId/edit",
-        element: <EditContact />,
-        loader: contactLoader,
-        action: editAction,
+        path: "positions/position/edit",
+        element: <Editposition />,
       },
       {
-        path: "contacts/:contactId/destroy",
-        action: destroyAction,
+        path: "positions/position/destroy",
         errorElement: <div>Oops! There was an error.</div>,
       },
       {
-        path: "contacts/delete",
+        path: "position/delete",
         element: <Destroy />,
-        loader: contactLoader,
       },
     ],
   },

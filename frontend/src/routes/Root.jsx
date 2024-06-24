@@ -9,31 +9,18 @@ import {
   useNavigation,
 } from "react-router-dom";
 import {Form, Button} from 'react-bootstrap'; 
-import { getContacts, createContact } from "../contacts";
-export async function loader({ request }) {
-  const url = new URL(request.url);
-  const q = url.searchParams.get("q");
-  const contacts = await getContacts(q);
-  return { contacts, q };
-}
-export async function action() {
-  const contact = await createContact();
-  return redirect(`/contacts/${contact.id}/edit`);
-}
+import {positions} from "../data/positions.js";
+
 export default function Root() {
-  const { contacts, q } = useLoaderData();
   const navigation = useNavigation();
-  useEffect(() => {
-    document.getElementById("q").value = q;
-  }, [q]);
   return (
     <>
       <div id="sidebar">
         <div>
           <ul >
-          <Link to={`/Applications`} className="remove_text_dec">
+          <Link to={`/positions`} className="remove_text_dec">
               <li className="nav_container" id="settings">
-                Applications
+                positions
               </li>
           </Link>
           <Form method="post" id="top_nav_buttons">
@@ -43,12 +30,10 @@ export default function Root() {
           <Form id="search-form " role="search"  >
             <input
               className="app_container"
-              id="q"
-              aria-label="Search contacts"
+              aria-label="Search positions"
               placeholder="Search"
               type="search"
-              name="q"
-              defaultValue={q}
+
             />
             <div id="search-spinner" aria-hidden hidden={true} />
             <div className="sr-only" aria-live="polite"></div>
@@ -57,32 +42,31 @@ export default function Root() {
           </ul>
         </div>
         <nav>
-          {contacts.length ? (
+          {positions.length ? (
             <ul>
-              {contacts.map((contact) => (
-                <li key={contact.id}>
+              {positions.map((position) => (
+                <li key={position._id && position._id.$oid ? position._id.$oid : position.name}>
                   <NavLink
                     id="navLink"
-                    to={`contacts/${contact.id}`}
+                    to={`positions/${position._id.$oid}`}
                     className={({ isActive, isPending }) =>
                       isActive ? "active" : isPending ? "pending" : ""
                     }
                   >
-                    {contact.first || contact.last ? (
+                    {position.title ? (
                       <>
-                        {contact.first} {contact.last}
+                        {position.title}
                       </>
                     ) : (
                       <i>No Name</i>
                     )}{" "}
-                    {contact.favorite && <span>★</span>}
                   </NavLink>
                 </li>
               ))}
             </ul>
           ) : (
             <p>
-              <i>No contacts</i>
+              <i>No positions</i>
             </p>
           )}
         </nav>
