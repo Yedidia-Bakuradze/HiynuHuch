@@ -92,7 +92,8 @@ const updateApplication = asyncHandler(async (req, res) => {
       newAiReview,
       newEmpName,
       newAppTitle,
-      newReport,
+      newManualReport,
+      newManualScore,
     } = req.body;
     const application = await empAppModel.findById(req.params.id);
 
@@ -108,8 +109,11 @@ const updateApplication = asyncHandler(async (req, res) => {
     application.AiReview = newAiReview;
     application.EmpName = newEmpName;
     application.AppTitle = newAppTitle;
-    application.Report = newReport;
+    application.ManualReport = newManualReport;
+    application.ManualScore = newManualScore;
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
+// TODO: Create new employee-application relationship
