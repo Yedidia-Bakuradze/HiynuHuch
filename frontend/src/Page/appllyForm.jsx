@@ -1,9 +1,30 @@
 import { Form, Button, } from "react-bootstrap";
+import {emps} from "../data/emps.js";
+import {positions} from "../data/positions.js";
+
 
 function ApplyForm() {
   return (
+    <ul>
+      {emps.map((user) => (
+        <li key={user._id && user._id.$oid ? user._id.$oid : user.name}>
+          {user.name}
+        </li>
+      ))}
+            {positions.map((user) => (
+        <li key={user._id && user._id.$oid ? user._id.$oid : user.name}>
+          {user.title}
+        </li>
+      ))}
+    </ul>
 
-      <Form method="post">
+    
+  );
+}
+export default ApplyForm;
+
+
+      {/* <Form method="post">
         <Form.Group>
           <Form.Label><h1>Apply form for a [job title]</h1></Form.Label>
         </Form.Group>
@@ -22,10 +43,4 @@ function ApplyForm() {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-    </Form>
-      
-
-  );
-}
-
-export default ApplyForm;
+    </Form> */}
