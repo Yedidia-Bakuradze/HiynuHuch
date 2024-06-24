@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
-      { index: true, element: <Main /> },
+      { path:"/", element: <Main /> },
       {
         path: "contacts/:contactId",
         element: <Contact />,
