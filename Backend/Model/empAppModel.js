@@ -17,9 +17,12 @@ const empAppSchema = new mongoose.Schema(
       default: "Pending",
       required: true,
     },
-    AiScore: {
-      type: Number,
-    },
+    //A score for each field
+    AiScore: [
+      {
+        type: Number,
+      },
+    ],
     AiReview: {
       type: String,
     },
@@ -31,8 +34,13 @@ const empAppSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    Report: {
+    ManualReport: {
       type: String,
+    },
+
+    //A general score of the applicant
+    ManualScore: {
+      type: Number,
     },
   },
   {
