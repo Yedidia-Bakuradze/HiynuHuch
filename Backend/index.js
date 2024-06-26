@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 const userRouter = require("./Router/userRouter");
 const adminRouter = require("./Router/adminRouter");
 const applicationRouter = require("./Router/applicationRouter");
-const s3ManagementRouter = require("./Router/s3MangmentRouter");
+const s3ManagementRouter = require("./Router/s3ManagementRouter");
 // const emAppRouter = require("./Router/empAppRouter");
 
 dotenv.config();
