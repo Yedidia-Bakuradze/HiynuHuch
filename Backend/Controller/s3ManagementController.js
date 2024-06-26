@@ -35,11 +35,11 @@ const configureAWS = () => {
 
 // Root path
 const rootRoute = asyncHandler((req, res) => {
-  res.send("API S3 Manager work Good!!");
+  res.send("Hey there! Welcome to the S3 Management API");
 });
 
 // Uploads the incoming file to the S3 bucket and returns the address to that file.
-const uploadFile = asyncHandler(upload.single("file"), (req, res) => {
+const uploadFile = asyncHandler((req, res) => {
   try {
     const s3 = configureAWS();
 
@@ -134,4 +134,5 @@ module.exports = {
   uploadFile,
   deleteFile,
   downloadFile,
+  uploadFile: [upload.single("file"), uploadFile], // Calls the uploadFile function after the file has been uploaded
 };

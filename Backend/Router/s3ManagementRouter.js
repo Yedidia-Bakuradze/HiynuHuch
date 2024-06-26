@@ -5,7 +5,7 @@ const {
   uploadFile,
   deleteFile,
   downloadFile,
-} = require("../Controller/s3ManagementRouter");
+} = require("../Controller/s3ManagementController");
 //Upload a new document
 router.route("/").get(rootRoute);
 
