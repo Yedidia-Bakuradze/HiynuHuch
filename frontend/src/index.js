@@ -13,7 +13,7 @@ import Root, {
 } from "./routes/Root";
 import { positions } from "./data/positions.js";
 var url = window.location.herf;
-const position = url.substr(url.lastIndexOf("/") + 1);
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Main /> },
       {
-        path: "positions/position",
+        path: "positions/:id",
         element: <Editposition />,
       },
       {
