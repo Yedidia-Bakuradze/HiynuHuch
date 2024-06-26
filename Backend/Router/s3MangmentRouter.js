@@ -5,7 +5,7 @@ const router = express.Router();
 router.route("/upload").post();
 
 //Delete a document
-router.route("/delete").get();
+router.route("/delete").post();
 
 //Download a document
 router.route("/download").get();

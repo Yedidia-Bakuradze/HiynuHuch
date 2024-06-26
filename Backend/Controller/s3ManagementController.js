@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
   res.send("API S3 Manager work Good!!");
 });
 
-// Upload a new document and returns the address to it
+// Uploads the incoming file to the S3 bucket and returns the address to that file.
 app.post("/upload", upload.single("file"), (req, res) => {
   try {
     const s3 = configureAWS();
@@ -71,6 +71,33 @@ app.post("/upload", upload.single("file"), (req, res) => {
             `File uploaded and deleted locally successfully at ${data.Location}`
           );
       });
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+// Accepts a file name in the filename field on the body and deletes the file from the S3 bucket
+app.post("/delete", (req, res) => {
+  try {
+    // Configure the AWS instance
+    const s3 = configureAWS();
+
+    // Configure the parameters
+    const params = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: req.body.fileName, // Get the file name from the query string
+    };
+
+    // Delete the file from the S3 bucket
+    s3.deleteObject(params, function (err, data) {
+      if (err) {
+        console.log(err, err.stack); // an error occurred
+        throw `Error deleting the file: ${err}`;
+      } else {
+        console.log(data); // successful response
+        res.send("File deleted successfully");
+      }
     });
   } catch (err) {
     res.status(500).send(err);
