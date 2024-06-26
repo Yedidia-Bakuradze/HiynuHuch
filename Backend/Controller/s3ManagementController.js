@@ -1,7 +1,5 @@
-const express = require("express");
-const app = express();
+const asyncHandler = require("express-async-handler");
 const multer = require("multer");
-const path = require("path"); // Import path module
 const AWS = require("aws-sdk");
 const fs = require("fs");
 require("dotenv").config();
@@ -36,12 +34,12 @@ const configureAWS = () => {
 };
 
 // Root path
-app.get("/", (req, res) => {
+const rootRoute = asyncHandler((req, res) => {
   res.send("API S3 Manager work Good!!");
 });
 
 // Uploads the incoming file to the S3 bucket and returns the address to that file.
-app.post("/upload", upload.single("file"), (req, res) => {
+const uploadFile = asyncHandler(upload.single("file"), (req, res) => {
   try {
     const s3 = configureAWS();
 
@@ -78,7 +76,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 // Accepts a file name in the filename field on the body and deletes the file from the S3 bucket
-app.post("/delete", (req, res) => {
+const deleteFile = asyncHandler((req, res) => {
   try {
     // Configure the AWS instance
     const s3 = configureAWS();
@@ -105,7 +103,7 @@ app.post("/delete", (req, res) => {
 });
 
 // Accepts the file name in the filename field on the request query and downloads the file from the S3 bucket
-app.get("/download", (req, res) => {
+const downloadFile = asyncHandler((req, res) => {
   try {
     // Configure the AWS instance
     const s3 = configureAWS();
@@ -130,3 +128,10 @@ app.get("/download", (req, res) => {
     res.status(500).send(err);
   }
 });
+
+module.exports = {
+  rootRoute,
+  uploadFile,
+  deleteFile,
+  downloadFile,
+};
