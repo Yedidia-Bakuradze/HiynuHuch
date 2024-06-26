@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 const userRouter = require("./Router/userRouter");
 const adminRouter = require("./Router/adminRouter");
 const applicationRouter = require("./Router/applicationRouter");
-// const empAppRouter = require("./Router/empAppRouter");
+// const emAppRouter = require("./Router/empAppRouter");
 
 dotenv.config();
 connectDB();

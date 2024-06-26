@@ -72,13 +72,6 @@ const updateApplication = asyncHandler(async (req, res) => {
       throw new Error("Not authorization!");
     }
 
-    // Check if all fields are filled
-    // Check if the creator exists
-    // else if (!adminModel.findById(newCreator)) {
-    //   return res.status(400).json({ message: "Creator hasn't found" });
-    // }
-    //  *****I delete it because we have the admin in the middleware
-
     // Update the application
     else {
       application.title = newTitle;

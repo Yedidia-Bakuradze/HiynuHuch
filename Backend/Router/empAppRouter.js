@@ -1,18 +1,25 @@
 const express = require("express");
 const {
-  deleteEmpApp,
-  updateEmApp,
-  createEmApp,
+  getAllApplications,
+  getAllApplicationsOfUser,
+  getApplicationById,
   deleteAllEmpApp,
-  deleteEmpApp,
-  getAllEmApp,
-} = require("../Controller/emAppController");
+  updateApplication,
+  getAllSubmittedApplications,
+  createEmApp,
+} = require("../Controller/empAppController");
 
 const router = express.Router();
 
 router.route("/").post(createEmApp);
 router.route("/").delete(deleteAllEmpApp);
-router.route("/").get(getAllEmApp);
-router.route("/:id").delete(deleteEmpApp).put(updateEmApp).get(getAdminById);
+router.route("/").get(getAllApplications);
+router.route("/:user").get(getAllApplicationsOfUser);
+router.route("/submit").get(getAllSubmittedApplications);
+router
+  .route("/:id")
+  .delete(deleteEmpApp)
+  .put(updateApplication)
+  .get(getApplicationById);
 
 module.exports = router;

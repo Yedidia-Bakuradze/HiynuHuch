@@ -1,12 +1,42 @@
-const applicationModel = require("../Model/applicationModel");
-const adminModel = require("../Model/adminModel");
+const empAppModel = require("../Model/empAppModel");
 const asyncHandler = require("express-async-handler");
-const { query } = require("express");
 
+const createEmApp = asyncHandler(async (req, res) => {
+  const {
+    AppId,
+    UserId,
+    Status,
+    AiScore,
+    AiReview,
+    EmpName,
+    AppTitle,
+    ManualReport,
+    ManualScore,
+  } = req.body;
+
+  if(!AppId||!UserId||!EmpName||!AppTitle)
+    {
+            return res.status(400).json({ message: "Please fill all the fields" });
+    }
+    try {
+      const empApp = await empAppModel.create(req.body);
+      if(!empApp){
+                    return res
+                      .status(500)
+                      .json({ message: "Failed to create" });
+
+      }
+      else{
+        res.json(empApp);
+        res.status(201).send(empApp);
+      }
+    } catch (err) {
+          res.status(500).json({ message: err.message });
+    }
+});
 const getAllApplications = asyncHandler(async (req, res) => {
   try {
-    const applications = await applicationModel.find({});
-
+    const applications = await empAppModel.find({});
     if (!applications) {
       res.status(404).send("No applications found");
     } else {
@@ -20,7 +50,7 @@ const getAllApplications = asyncHandler(async (req, res) => {
 
 const getApplicationById = asyncHandler(async (req, res) => {
   try {
-    const application = await applicationModel.findById(req.params.id);
+    const application = await empAppModel.findById(req.params.id);
 
     if (!application) {
       res.status(404).send("Application not found");
@@ -35,7 +65,7 @@ const getApplicationById = asyncHandler(async (req, res) => {
 
 const getAllApplicationsOfUser = asyncHandler(async (req, res) => {
   try {
-    const userId = req.User._id;
+    const userId = req.user._id;
     const applications = await empAppModel
       .find({ UserId: userId })
       .select("_id", "AppId", "Status", "AppTitle");
@@ -67,9 +97,9 @@ const getAllSubmittedApplications = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteApplication = asyncHandler(async (req, res) => {
+const deleteAllEmpApp = asyncHandler(async (req, res) => {
   try {
-    const application = await applicationModel.findByIdAndDelete(req.params.id);
+    const application = await empAppModel.findByIdAndDelete(req.params.id);
 
     if (!application) {
       res.status(404).send("Application not found");
@@ -100,7 +130,6 @@ const updateApplication = asyncHandler(async (req, res) => {
     if (!application) {
       throw new Error("Application not exists");
     }
-
     //TODO: Find a way to separate between the User and Admin when modified the EmpApp instance
     application.AppId = newAppId;
     application.UserId = newUserId;
@@ -111,9 +140,20 @@ const updateApplication = asyncHandler(async (req, res) => {
     application.AppTitle = newAppTitle;
     application.ManualReport = newManualReport;
     application.ManualScore = newManualScore;
+
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
+module.exports = {
+  getAllApplications,
+  getAllApplicationsOfUser,
+  getApplicationById,
+  deleteAllEmpApp,
+  updateApplication,
+  getAllSubmittedApplications,
+  createEmApp,
+};
 
 // TODO: Create new employee-application relationship

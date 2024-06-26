@@ -48,6 +48,6 @@ const empAppSchema = new mongoose.Schema(
   }
 );
 
-const EmpApp = mongoose.model("EmpApp", empAppSchema);
+const empAppModel = mongoose.model("EmpApp", empAppSchema);
 
-module.exports = EmpApp;
+module.exports = empAppModel;
