@@ -103,3 +103,30 @@ app.post("/delete", (req, res) => {
     res.status(500).send(err);
   }
 });
+
+// Accepts the file name in the filename field on the request query and downloads the file from the S3 bucket
+app.get("/download", (req, res) => {
+  try {
+    // Configure the AWS instance
+    const s3 = configureAWS();
+
+    // Configure the parameters
+    const params = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: req.query.fileName,
+    };
+
+    // Download the file from the S3 bucket
+    s3.getObject(params, async (err, data) => {
+      if (err) {
+        console.log(err, err.stack);
+        throw `Error downloading the file: ${err}`;
+      } else {
+        console.log(data);
+        await res.send(data.Body);
+      }
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
