@@ -21,10 +21,58 @@ const storage = multer.diskStorage({
     cb(null, filName);
   },
 });
-
 const upload = multer({ storage: storage }); // Use the custom storage configuration
+
+// Configure AWS Instance
+const configureAWS = () => {
+  const s3 = new AWS.S3({
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
+    region: process.env.AWS_REGION,
+  });
+  return s3;
+};
 
 // Root path
 app.get("/", (req, res) => {
   res.send("API S3 Manager work Good!!");
+});
+
+// Upload a new document and returns the address to it
+app.post("/upload", upload.single("file"), (req, res) => {
+  try {
+    const s3 = configureAWS();
+
+    const fileContent = fs.readFileSync;
+    var params = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: req.file.filename, // Add this line
+      Body: fileContent,
+    };
+
+    // Uploading files to the S3 bucket
+    s3.upload(params, function (err, data) {
+      if (err) {
+        res.status(500).send(`ERROR: ${err}`);
+      }
+
+      console.log(`File uploaded successfully. ${data.Location}`);
+
+      // Delete the file locally after successful upload
+      fs.unlink(req.file.path, (err) => {
+        if (err) {
+          return res.status(500).send("Error deleting the file");
+        }
+        res
+          .status(201)
+          .send(
+            `File uploaded and deleted locally successfully at ${data.Location}`
+          );
+      });
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
