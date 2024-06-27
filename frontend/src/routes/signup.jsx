@@ -12,6 +12,7 @@ export default function Signup() {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
+  // Function to handle form change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -39,26 +40,50 @@ export default function Signup() {
     }
   };
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // If no password has been inserted
     if (formData.password === "") {
       setErrors({
         ...errors,
         confirmpassword: "cannot be an empty string",
       });
-    } else if (formData.password !== formData.confirmpassword) {
+    }
+    // If passwords do not match
+    else if (formData.password !== formData.confirmpassword) {
       setErrors({
         ...errors,
         confirmpassword: "Passwords do not match",
       });
-    } else {
+    }
+    // When the details are valid
+    else {
       setErrors({});
+      alert("Signup Successful");
+      const newUser = {
+        id: Math.floor(Math.random() * 10000),
+        email: formData.email,
+        password: formData.password,
+      };
     }
   };
 
   return (
     <div className="login-div">
       <Form onSubmit={handleSubmit}>
+        <Form.Label className="fieldsnames">Name:</Form.Label>
+        <Form.Control
+          className="fields"
+          type="name"
+          placeholder="username"
+          size="lg"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+
         <Form.Label className="fieldsnames">Email:</Form.Label>
         <Form.Control
           className="fields"
