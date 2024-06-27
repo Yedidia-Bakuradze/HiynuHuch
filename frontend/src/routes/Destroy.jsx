@@ -1,12 +1,4 @@
 import { Form, redirect, useLoaderData } from "react-router-dom";
-import { getform, updateForm } from "../forum";
-export async function loader({ params, request }) {
-  const formData = await request.formData();
-  const form_m = await getform(params.notes);
-  const updates = Object.fromEntries(formData);
-  await updateForm(params.notes, updates);
-  return { form_m };
-}
 
 export async function action({ params }) {
   return redirect("/");

@@ -1,4 +1,4 @@
-import { Tab,Tabs } from "react-bootstrap";  
+import { Tab, Tabs } from "react-bootstrap";
 import ApplyForm from "./appllyForm";
 import Dashboard from "./Dashboard";
 
@@ -10,18 +10,13 @@ function tabInJobPage() {
       className="mb-3"
     >
       <Tab eventKey="Dashboard" title="Dashboard">
-        <Dashboard/>
+        <Dashboard />
       </Tab>
       <Tab eventKey="Form" title="Form">
-        <ApplyForm/>
+        <ApplyForm />
       </Tab>
-
-
     </Tabs>
   );
 }
-
-
-
 
 export default tabInJobPage;
