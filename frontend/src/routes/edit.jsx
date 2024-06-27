@@ -1,45 +1,77 @@
-import { useLoaderData, redirect, useNavigate } from "react-router-dom";
-import {Form, Button} from 'react-bootstrap';
-import { updateContact } from "../contacts";
-import "./edit.css"
-export async function action({ request, params }) {
-  const formData = await request.formData();
-  const updates = Object.fromEntries(formData);
-  await updateContact(params.contactId, updates);
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Form, Button } from "react-bootstrap";
+import "./edit.css";
+import { getCachedPosition } from "../components/cache";
+
+const cache = {};
+export async function action(redirect, params) {
+  console.log(params.target.title.value);
+  console.log("Hello, World!");
   return redirect(`/contacts/${params.contactId}`);
 }
-export default function EditContact() {
-  const { contact } = useLoaderData();
-  const navigate = useNavigate();
-  return (
-    <Form onSubmit="post">
-      <Form.Label>Job title:</Form.Label> 
-          <Form.Control type="text" 
-                        placeholder="Intern etc" 
-                        size="lg"
-                        name="first"
-                        defaultValue={contact?.first}
-                        /> 
-        
-        <Form.Label>Job precent:</Form.Label> 
-        <Form.Control type="text" 
-                        placeholder="Full time/ Half time etc" name="last"
-                        defaultValue={contact?.last} /> 
-        
-        <Form.Label>Hybrid/Frontal:</Form.Label> 
-        <Form.Control type="text" placeholder="3 days at work 2 at home etc" name="twitter"
-                  defaultValue={contact?.twitter} /> 
 
-        <Form.Label>Job requirment:</Form.Label> 
-        <Form.Control type="text" name="notes"placeholder="at least 2 years of experience, a degree, worked as an intern for a year in other tech companies etc"
-                  defaultValue={contact?.notes} /> 
+export default function Editposition() {
+  const { id } = useParams();
+  const [position, setPosition] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const cachedPosition = getCachedPosition(id);
+    setPosition(cachedPosition);
+  }, [id]);
+
+  useEffect(() => {
+    if (position) {
+      document.getElementsByName("title")[0].value = position.title || "";
+      document.getElementsByName("tags")[0].value =
+        position.tags.join(", ") || "";
+      document.getElementsByName("description")[0].value =
+        position.description || "";
+    }
+  }, [position]);
+
+  if (!position) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <Form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
+      <Form.Label>Job title:</Form.Label>
+      <Form.Control
+        type="text"
+        placeholder="Intern etc"
+        size="lg"
+        name="title"
+      />
+
+      <Form.Label>Tags:</Form.Label>
+      <Form.Control
+        type="text"
+        placeholder="Full time/ Half time etc"
+        name="tags"
+      />
+
+      <Form.Label>Description:</Form.Label>
+      <Form.Control
+        type="text"
+        placeholder="3 days at work 2 at home etc"
+        name="description"
+      />
+
       <p>
-        <button type="submit" className="app_container">Update</button>
+        <button type="submit" className="app_container">
+          Update
+        </button>
         <button
           type="button"
           className="app_container"
           onClick={() => {
-            navigate(-1);
+            navigate("/");
           }}
         >
           Cancel

@@ -1,88 +1,87 @@
 import "./Root.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Outlet,
   Link,
   NavLink,
   useLoaderData,
   redirect,
+  useParams,
   useNavigation,
 } from "react-router-dom";
-import {Form, Button} from 'react-bootstrap'; 
-import { getContacts, createContact } from "../contacts";
-export async function loader({ request }) {
-  const url = new URL(request.url);
-  const q = url.searchParams.get("q");
-  const contacts = await getContacts(q);
-  return { contacts, q };
-}
-export async function action() {
-  const contact = await createContact();
-  return redirect(`/contacts/${contact.id}/edit`);
-}
+import { Form, Button } from "react-bootstrap";
+import { positions } from "../data/positions.js";
+import { getCachedPosition } from "../components/cache";
 export default function Root() {
-  const { contacts, q } = useLoaderData();
+  const [position, setPositions] = useState([]);
+  const { id } = useParams();
   const navigation = useNavigation();
   useEffect(() => {
-    document.getElementById("q").value = q;
-  }, [q]);
+    const cachedPositions = getCachedPosition();
+    setPositions(cachedPositions);
+  }, []);
+
+  useEffect(() => {
+    // Trigger re-render when the ID changes
+    if (id) {
+      const cachedPositions = getCachedPosition();
+      setPositions(cachedPositions);
+    }
+  }, [id]);
   return (
     <>
       <div id="sidebar">
         <div>
-          <ul >
-          <Link to={`/Applications`} className="remove_text_dec">
+          <ul>
+            <Link to={`/positions`} className="remove_text_dec">
               <li className="nav_container" id="settings">
-                Applications
+                positions
               </li>
-          </Link>
-          <Form method="post" id="top_nav_buttons">
-            <button type="submit" className="nav_container" id="new_button">New</button>
-          </Form>
+            </Link>
+            <Form method="post" id="top_nav_buttons">
+              <button type="submit" className="nav_container" id="new_button">
+                New
+              </button>
+            </Form>
 
-          <Form id="search-form " role="search"  >
-            <input
-              className="app_container"
-              id="q"
-              aria-label="Search contacts"
-              placeholder="Search"
-              type="search"
-              name="q"
-              defaultValue={q}
-            />
-            <div id="search-spinner" aria-hidden hidden={true} />
-            <div className="sr-only" aria-live="polite"></div>
-          </Form>
-          
+            <Form id="search-form " role="search">
+              <input
+                className="app_container"
+                aria-label="Search positions"
+                placeholder="Search"
+                type="search"
+              />
+              <div id="search-spinner" aria-hidden hidden={true} />
+              <div className="sr-only" aria-live="polite"></div>
+            </Form>
           </ul>
         </div>
         <nav>
-          {contacts.length ? (
+          {positions.length ? (
             <ul>
-              {contacts.map((contact) => (
-                <li key={contact.id}>
+              {positions.map((position) => (
+                <li
+                  key={
+                    position._id && position._id.$oid
+                      ? position._id.$oid
+                      : position.name
+                  }
+                >
                   <NavLink
                     id="navLink"
-                    to={`contacts/${contact.id}`}
+                    to={`positions/${position._id.$oid}`}
                     className={({ isActive, isPending }) =>
                       isActive ? "active" : isPending ? "pending" : ""
                     }
                   >
-                    {contact.first || contact.last ? (
-                      <>
-                        {contact.first} {contact.last}
-                      </>
-                    ) : (
-                      <i>No Name</i>
-                    )}{" "}
-                    {contact.favorite && <span>★</span>}
+                    {position.title ? <>{position.title}</> : <i>No Name</i>}{" "}
                   </NavLink>
                 </li>
               ))}
             </ul>
           ) : (
             <p>
-              <i>No contacts</i>
+              <i>No positions</i>
             </p>
           )}
         </nav>

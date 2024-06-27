@@ -1,5 +1,4 @@
 import { Form, redirect, useLoaderData } from "react-router-dom";
-import { deleteContact } from "../contacts";
 import { getform, updateForm } from "../forum";
 export async function loader({ params, request }) {
   const formData = await request.formData();
@@ -10,7 +9,6 @@ export async function loader({ params, request }) {
 }
 
 export async function action({ params }) {
-  await deleteContact(params.contactId);
   return redirect("/");
 }
 export default function Destroy() {
