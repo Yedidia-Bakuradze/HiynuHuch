@@ -5,7 +5,7 @@ import { positions } from "../data/positions.js";
 
 function ApplyForm() {
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-100">
+    <div className="d-flex justify-content-center mb-250  align-items-center min-vh-100">
       <div className="apply-form-container border rounded p-4">
         <Form method="post">
           <Form.Group>
