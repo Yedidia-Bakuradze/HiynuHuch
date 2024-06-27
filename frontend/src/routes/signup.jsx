@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import { users } from "../data/users";
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -66,7 +67,10 @@ export default function Signup() {
         id: Math.floor(Math.random() * 10000),
         email: formData.email,
         password: formData.password,
+        name: formData.name,
       };
+      users.push(newUser);
+      navigate("/");
     }
   };
 
