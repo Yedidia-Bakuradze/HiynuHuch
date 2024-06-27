@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Editposition, { action as editAction } from "./routes/edit";
 import Destroy, { action as destroyAction } from "./routes/Destroy";
 import Main from "./routes/Main";
+import Login from "./routes/login";
+import Signup from "./routes/signup";
 import "./routes/Root.css";
 import { Form, Button } from "react-bootstrap";
 import Root, {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
         element: <Destroy />,
       },
     ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "signup",
+    element: <Signup />,
   },
 ]);
 

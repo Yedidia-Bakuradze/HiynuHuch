@@ -34,7 +34,6 @@ export default function Editposition() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // handle form submission
   };
 
   if (!position) {

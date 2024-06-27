@@ -8,14 +8,18 @@ import {
   redirect,
   useParams,
   useNavigation,
+  useNavigate,
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { positions } from "../data/positions.js";
 import { getCachedPosition } from "../components/cache";
+
 export default function Root() {
   const [position, setPositions] = useState([]);
   const { id } = useParams();
   const navigation = useNavigation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     const cachedPositions = getCachedPosition();
     setPositions(cachedPositions);
@@ -39,7 +43,13 @@ export default function Root() {
               </li>
             </Link>
             <Form method="post" id="top_nav_buttons">
-              <button type="submit" className="nav_container" id="new_button">
+              <button
+                onClick={() => {
+                  navigate("/login");
+                }}
+                className="nav_container"
+                id="new_button"
+              >
                 New
               </button>
             </Form>
