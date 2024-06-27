@@ -11,7 +11,6 @@ import Root, {
   loader as rootLoader,
   action as rootAction,
 } from "./routes/Root";
-import { positions } from "./data/positions.js";
 var url = window.location.herf;
 
 const router = createBrowserRouter([
@@ -24,6 +23,7 @@ const router = createBrowserRouter([
       {
         path: "positions/:id",
         element: <Editposition />,
+        action: editAction,
       },
       {
         path: "positions/position/edit",

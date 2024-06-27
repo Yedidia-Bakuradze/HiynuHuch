@@ -1,21 +1,52 @@
-import { redirect, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import "./edit.css";
-import { positions } from "../data/positions.js";
+import { getCachedPosition } from "../components/cache";
+
+const cache = {};
+export async function action(redirect, params) {
+  console.log(params.target.title.value);
+  console.log("Hello, World!");
+  return redirect(`/contacts/${params.contactId}`);
+}
 
 export default function Editposition() {
   const { id } = useParams();
-  const position = positions.find((position) => id === position._id.$oid);
+  const [position, setPosition] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const cachedPosition = getCachedPosition(id);
+    setPosition(cachedPosition);
+  }, [id]);
+
+  useEffect(() => {
+    if (position) {
+      document.getElementsByName("title")[0].value = position.title || "";
+      document.getElementsByName("tags")[0].value =
+        position.tags.join(", ") || "";
+      document.getElementsByName("description")[0].value =
+        position.description || "";
+    }
+  }, [position]);
+
+  if (!position) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <Form onSubmit="post">
+    <Form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <Form.Label>Job title:</Form.Label>
       <Form.Control
         type="text"
         placeholder="Intern etc"
         size="lg"
         name="title"
-        defaultValue={position?.first}
       />
 
       <Form.Label>Tags:</Form.Label>
@@ -23,7 +54,6 @@ export default function Editposition() {
         type="text"
         placeholder="Full time/ Half time etc"
         name="tags"
-        defaultValue={position?.last}
       />
 
       <Form.Label>Description:</Form.Label>
@@ -31,7 +61,6 @@ export default function Editposition() {
         type="text"
         placeholder="3 days at work 2 at home etc"
         name="description"
-        defaultValue={position?.twitter}
       />
 
       <p>
@@ -42,7 +71,7 @@ export default function Editposition() {
           type="button"
           className="app_container"
           onClick={() => {
-            navigate(-1);
+            navigate("/");
           }}
         >
           Cancel

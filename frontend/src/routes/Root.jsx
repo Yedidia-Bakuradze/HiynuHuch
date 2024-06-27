@@ -1,18 +1,33 @@
 import "./Root.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Outlet,
   Link,
   NavLink,
   useLoaderData,
   redirect,
+  useParams,
   useNavigation,
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { positions } from "../data/positions.js";
-
+import { getCachedPosition } from "../components/cache";
 export default function Root() {
+  const [position, setPositions] = useState([]);
+  const { id } = useParams();
   const navigation = useNavigation();
+  useEffect(() => {
+    const cachedPositions = getCachedPosition();
+    setPositions(cachedPositions);
+  }, []);
+
+  useEffect(() => {
+    // Trigger re-render when the ID changes
+    if (id) {
+      const cachedPositions = getCachedPosition();
+      setPositions(cachedPositions);
+    }
+  }, [id]);
   return (
     <>
       <div id="sidebar">
