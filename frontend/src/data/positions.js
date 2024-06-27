@@ -41,7 +41,7 @@ export const positions = [
     },
     title: "sdfdgdgd Stack",
     tags: [],
-    description: "Hello for everyone",
+    description: "everyone",
     creator: {
       $oid: "66758e335159b851c69d627c",
     },

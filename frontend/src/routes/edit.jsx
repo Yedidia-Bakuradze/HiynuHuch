@@ -14,6 +14,9 @@ export async function action(redirect, params) {
 export default function Editposition() {
   const { id } = useParams();
   const [position, setPosition] = useState(null);
+  const [title, setTitle] = useState("");
+  const [tags, setTags] = useState("");
+  const [description, setDescription] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,30 +26,31 @@ export default function Editposition() {
 
   useEffect(() => {
     if (position) {
-      document.getElementsByName("title")[0].value = position.title || "";
-      document.getElementsByName("tags")[0].value =
-        position.tags.join(", ") || "";
-      document.getElementsByName("description")[0].value =
-        position.description || "";
+      setTitle(position.title || "");
+      setTags(position.tags.join(", ") || "");
+      setDescription(position.description || "");
     }
   }, [position]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // handle form submission
+  };
 
   if (!position) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Form
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
+    <Form onSubmit={handleSubmit}>
       <Form.Label>Job title:</Form.Label>
       <Form.Control
         type="text"
         placeholder="Intern etc"
         size="lg"
         name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
 
       <Form.Label>Tags:</Form.Label>
@@ -54,6 +58,8 @@ export default function Editposition() {
         type="text"
         placeholder="Full time/ Half time etc"
         name="tags"
+        value={tags}
+        onChange={(e) => setTags(e.target.value)}
       />
 
       <Form.Label>Description:</Form.Label>
@@ -61,6 +67,8 @@ export default function Editposition() {
         type="text"
         placeholder="3 days at work 2 at home etc"
         name="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       />
 
       <p>
