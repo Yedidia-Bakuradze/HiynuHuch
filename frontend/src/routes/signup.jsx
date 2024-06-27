@@ -18,8 +18,12 @@ export default function Signup() {
       ...formData,
       [name]: value,
     });
-
-    if (
+    if (name === "password" && value === "") {
+      setErrors({
+        ...errors,
+        confirmpassword: "cannot be an empty string",
+      });
+    } else if (
       (name === "confirmpassword" && value !== formData.password) ||
       (name === "password" && value !== formData.confirmpassword)
     ) {
@@ -37,7 +41,12 @@ export default function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmpassword) {
+    if (formData.password === "") {
+      setErrors({
+        ...errors,
+        confirmpassword: "cannot be an empty string",
+      });
+    } else if (formData.password !== formData.confirmpassword) {
       setErrors({
         ...errors,
         confirmpassword: "Passwords do not match",
