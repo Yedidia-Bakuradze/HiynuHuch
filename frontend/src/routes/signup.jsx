@@ -62,7 +62,7 @@ export default function Signup() {
     // When the details are valid
     else {
       setErrors({});
-      alert("Signup Successful");
+      alert("Sign up SuccessfulLY");
       const newUser = {
         id: Math.floor(Math.random() * 10000),
         email: formData.email,
@@ -70,7 +70,7 @@ export default function Signup() {
         name: formData.name,
       };
       users.push(newUser);
-      navigate("/");
+      navigate(`/${newUser.id}`); // Navigating to a specific user page
     }
   };
 
