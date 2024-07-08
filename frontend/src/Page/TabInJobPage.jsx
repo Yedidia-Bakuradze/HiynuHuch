@@ -1,14 +1,16 @@
 import { Tab, Tabs } from "react-bootstrap";
-import ApplyForm from "./appllyForm";
-import Dashboard from "./Dashboard";
+import ApplyForm from "../components/appllyForm";
+import Dashboard from "../components/Dashboard";
 
 function tabInJobPage() {
+  
   return (
+    <>
     <Tabs
-      defaultActiveKey="profile"
       id="uncontrolled-tab-example"
       className="mb-3"
     >
+      <Dashboard/>
       <Tab eventKey="Dashboard" title="Dashboard">
         <Dashboard />
       </Tab>
@@ -16,6 +18,7 @@ function tabInJobPage() {
         <ApplyForm />
       </Tab>
     </Tabs>
+    </>
   );
 }
 

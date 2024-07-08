@@ -79,7 +79,7 @@ export default function Root() {
                 >
                   <NavLink
                     id="navLink"
-                    to={`positions/${position._id.$oid}`}
+                    to={``}
                     className={({ isActive, isPending }) =>
                       isActive ? "active" : isPending ? "pending" : ""
                     }
