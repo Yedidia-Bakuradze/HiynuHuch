@@ -2,6 +2,7 @@ import { Tab, Tabs } from "react-bootstrap";
 import ApplyForm from "../components/appllyForm";
 import Dashboard from "../components/Dashboard";
 
+
 function tabInJobPage() {
   
   return (

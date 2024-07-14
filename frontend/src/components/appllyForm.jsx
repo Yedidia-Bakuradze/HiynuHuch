@@ -1,18 +1,12 @@
 import { Form, Button } from "react-bootstrap";
-import { emps } from "../data/emps.js";
-import { positions } from "../data/positions.js";
-
 
 function ApplyForm() {
   return (
-    <div className="d-flex justify-content-center mb-250  align-items-center min-vh-100">
+    <div className="d-flex justify-content-center align-items-center ">
       <div className="apply-form-container border rounded p-4">
+        <h1>Apply form for a [job title]</h1>
+        <p>Description of the form goes here</p>
         <Form method="post">
-          <Form.Group>
-            <Form.Label>
-              <h1>Apply form for a [job title]</h1>
-            </Form.Label>
-          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label><h3>Your name:</h3></Form.Label>
             <Form.Control type="Name" placeholder="Enter your name" />

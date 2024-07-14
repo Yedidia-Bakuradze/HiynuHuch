@@ -4,7 +4,6 @@ import { emps } from "../data/emps.js";
 function Dashboard() {
   return (
     <>
-    
     <Row className="CardRow"> 
       {emps.map((emp) => (
         <Card className="Card" key={emp.id}>
