@@ -6,8 +6,8 @@ import { redirect, useNavigate } from "react-router-dom";
 export default function Login() {
   const navigate = useNavigate();
   return (
-    <div className="login-div">
-      <Form>
+    <div className="center-div">
+      <Form className="border-form ">
         <Form.Label className="fieldsnames">Email:</Form.Label>
         <Form.Control
           className="fields"

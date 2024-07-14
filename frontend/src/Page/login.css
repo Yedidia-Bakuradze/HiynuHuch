@@ -1,9 +1,19 @@
-.login-div {
+.center-div {
   display: flex;
   justify-content: center;
   margin-left: 40%;
   margin-top: 10%;
+  height: fit-content;
 }
+.border-form {
+  border-radius: 10px;
+  border: 2px solid;
+  border-style: dotted;
+  border-color: #3992ff;
+  color: #3992ff;
+  padding: 1rem;
+}
+
 .fieldsnames {
   margin-top: 1rem;
   font-size: 1.5rem;

@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Editposition, { action as editAction } from "./Page/edit";
+import Newposition from "./Page/edit";
 import Destroy, { action as destroyAction } from "./Page/Destroy";
 import Main from "./Page/Main";
 import Login from "./Page/login";
@@ -11,10 +11,8 @@ import Dashboard from "./components/Dashboard";
 import "./routes/Root.css";
 import { Form, Button } from "react-bootstrap";
 import Root, {
-  loader as rootLoader,
-  action as rootAction,
+  action as Action,
 } from "./routes/Root";
-var url = window.location.herf;
 
 const router = createBrowserRouter([
   {
@@ -33,13 +31,13 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "positions/:id",
-        element: <Editposition />,
-        action: editAction,
+        path: "Newposition",
+        element: <Newposition />,
+
       },
       {
         path: "positions/position/edit",
-        element: <Editposition />,
+        element: <Newposition />,
       },
       {
         path: "positions/position/destroy",

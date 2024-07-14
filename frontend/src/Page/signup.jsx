@@ -75,8 +75,8 @@ export default function Signup() {
   };
 
   return (
-    <div className="login-div">
-      <Form onSubmit={handleSubmit}>
+    <div className="center-div">
+      <Form onSubmit={handleSubmit} className="border-form ">
         <Form.Label className="fieldsnames">Name:</Form.Label>
         <Form.Control
           className="fields"
