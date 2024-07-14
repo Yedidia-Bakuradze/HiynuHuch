@@ -8,11 +8,8 @@ import Main from "./Page/Main";
 import Login from "./Page/login";
 import Signup from "./Page/signup";
 import Dashboard from "./components/Dashboard";
-import "./routes/Root.css";
-import { Form, Button } from "react-bootstrap";
-import Root, {
-  action as Action,
-} from "./routes/Root";
+import "./css/Root.css";
+import Root from "./routes/Root";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +30,6 @@ const router = createBrowserRouter([
       {
         path: "Newposition",
         element: <Newposition />,
-
       },
       {
         path: "positions/position/edit",

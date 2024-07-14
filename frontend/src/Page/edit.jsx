@@ -1,8 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
-import "./edit.css";
-import "./login.css";
+import "../css/edit.css";
+import "../css/login.css";
 import { getCachedPosition } from "../components/cache";
 
 

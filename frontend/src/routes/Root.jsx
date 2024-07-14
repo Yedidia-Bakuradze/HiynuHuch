@@ -1,4 +1,4 @@
-import "./Root.css";
+import "../css/Root.css";
 import { useEffect, useState } from "react";
 import {
   Outlet,
@@ -13,14 +13,9 @@ import {
 import { Form, Button } from "react-bootstrap";
 import { positions } from "../data/positions.js";
 import { getCachedPosition } from "../components/cache";
-export async function action(redirect) {
-  return redirect(`/newposition`);
-}
+
 export default function Root() {
-  const [position, setPositions] = useState([]);
-  const { id } = useParams();
   const navigation = useNavigation();
-  const navigate = useNavigate();
 
   return (
     <>

@@ -19,6 +19,7 @@
   font-size: 1.5rem;
 }
 .fields {
+  width: 21rem !important;
   border-radius: 10px;
   border: 2px solid;
   border-style: dotted;
@@ -32,13 +33,19 @@
   color: #3992ff;
 }
 #loginpagebuttons {
+  display: flex;
+  justify-content: space-between;
   margin-top: 0.8rem;
+}
+.loginpagebuttons {
+  width: 10rem !important;
+  box-shadow: 0 0px 1px #3992ff, 0 1px 2px #3992ff !important;
 }
 #notloginbuttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
 }
 .smallbuttons {
   text-decoration: none !important;
