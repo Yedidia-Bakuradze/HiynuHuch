@@ -1,13 +1,13 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import "./login.css";
-import { redirect, useNavigate } from "react-router-dom";
+import "../css/login.css";
+import { redirect, useNavigate, Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
   return (
-    <div className="login-div">
-      <Form>
+    <div className="center-div">
+      <Form className="border-form ">
         <Form.Label className="fieldsnames">Email:</Form.Label>
         <Form.Control
           className="fields"
@@ -26,24 +26,13 @@ export default function Login() {
           name="password"
         />
         <p id="notloginbuttons">
-          <button
-            type="submit"
-            onClick={() => {
-              navigate("/forgotpassword");
-            }}
-            className="smallbuttons"
-          >
+          <Link to={`/forgotpassword`} className="smallbuttons">
             Forgot password?
-          </button>
-          <button
-            type="submit"
-            onClick={() => {
-              navigate("/signup");
-            }}
-            className="smallbuttons"
-          >
-            sign up
-          </button>
+          </Link>
+
+          <Link to={`/signup`} className="smallbuttons">
+            signup
+          </Link>
         </p>
         <p id="loginpagebuttons">
           <button
@@ -51,13 +40,13 @@ export default function Login() {
             onClick={() => {
               navigate("/");
             }}
-            className="app_container"
+            className="app_container loginpagebuttons"
           >
             log in
           </button>
           <button
             type="button"
-            className="app_container"
+            className="app_container loginpagebuttons"
             onClick={() => {
               navigate("/");
             }}

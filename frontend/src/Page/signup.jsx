@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./login.css";
+import "../css/login.css";
 import { users } from "../data/users";
 
 export default function Signup() {
@@ -75,8 +75,8 @@ export default function Signup() {
   };
 
   return (
-    <div className="login-div">
-      <Form onSubmit={handleSubmit}>
+    <div className="center-div">
+      <Form onSubmit={handleSubmit} className="border-form ">
         <Form.Label className="fieldsnames">Name:</Form.Label>
         <Form.Control
           className="fields"

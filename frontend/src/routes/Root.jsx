@@ -1,4 +1,4 @@
-import "./Root.css";
+import "../css/Root.css";
 import { useEffect, useState } from "react";
 import {
   Outlet,
@@ -15,23 +15,8 @@ import { positions } from "../data/positions.js";
 import { getCachedPosition } from "../components/cache";
 
 export default function Root() {
-  const [position, setPositions] = useState([]);
-  const { id } = useParams();
   const navigation = useNavigation();
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    const cachedPositions = getCachedPosition();
-    setPositions(cachedPositions);
-  }, []);
-
-  useEffect(() => {
-    // Trigger re-render when the ID changes
-    if (id) {
-      const cachedPositions = getCachedPosition();
-      setPositions(cachedPositions);
-    }
-  }, [id]);
   return (
     <>
       <div id="sidebar">
@@ -42,17 +27,11 @@ export default function Root() {
                 positions
               </li>
             </Link>
-            <Form method="post" id="top_nav_buttons">
-              <button
-                onClick={() => {
-                  navigate("/login");
-                }}
-                className="nav_container"
-                id="new_button"
-              >
+            <Link to={`/Newposition`} className="remove_text_dec">
+              <li className="nav_container" id="new_button">
                 New
-              </button>
-            </Form>
+              </li>
+            </Link>
 
             <Form id="search-form " role="search">
               <input
@@ -102,7 +81,7 @@ export default function Root() {
                 Settings
               </li>
             </Link>
-            <Link to={`/profile`} className="remove_text_dec">
+            <Link to={`login`} className="remove_text_dec">
               <li className="nav_container" id="profile">
                 Profile
               </li>

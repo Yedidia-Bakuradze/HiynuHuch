@@ -4,21 +4,17 @@ import Dashboard from "../components/Dashboard";
 
 
 function tabInJobPage() {
-  
   return (
     <>
-    <Tabs
-      id="uncontrolled-tab-example"
-      className="mb-3"
-    >
-      <Dashboard/>
-      <Tab eventKey="Dashboard" title="Dashboard">
+      <Tabs id="uncontrolled-tab-example" className="mb-3">
         <Dashboard />
-      </Tab>
-      <Tab eventKey="Form" title="Form">
-        <ApplyForm />
-      </Tab>
-    </Tabs>
+        <Tab eventKey="Dashboard" title="Dashboard">
+          <Dashboard />
+        </Tab>
+        <Tab eventKey="Form" title="Form">
+          <ApplyForm />
+        </Tab>
+      </Tabs>
     </>
   );
 }
