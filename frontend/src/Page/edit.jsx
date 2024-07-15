@@ -5,46 +5,12 @@ import "../css/edit.css";
 import "../css/login.css";
 import { getCachedPosition } from "../components/cache";
 
-
-
-export default function Editposition() {
+export default function Newposition() {
   const [position, setPosition] = useState(null);
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Load the form data from localStorage on component mount
-    const savedPosition = localStorage.getItem("position");
-    const savedTitle = localStorage.getItem("title");
-    const savedTags = localStorage.getItem("tags");
-    const savedDescription = localStorage.getItem("description");
-
-    if (savedPosition) {
-      setPosition(JSON.parse(savedPosition));
-    }
-    if (savedTitle) {
-      setTitle(savedTitle);
-    }
-    if (savedTags) {
-      setTags(savedTags);
-    }
-    if (savedDescription) {
-      setDescription(savedDescription);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save the form data to localStorage whenever there are changes
-    localStorage.setItem("title", title);
-    localStorage.setItem("tags", tags);
-    localStorage.setItem("description", description);
-
-    if (position) {
-      localStorage.setItem("position", JSON.stringify(position));
-    }
-  }, [title, tags, description, position]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -7,6 +7,7 @@ import Destroy, { action as destroyAction } from "./Page/Destroy";
 import Main from "./Page/Main";
 import Login from "./Page/login";
 import Signup from "./Page/signup";
+import Moredetails from "./components/Moredetails";
 import Dashboard from "./components/Dashboard";
 import "./css/Root.css";
 import Root from "./routes/Root";
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "position/delete",
         element: <Destroy />,
+      },
+      {
+        path: "Moredetails/:id",
+        element: <Moredetails />,
       },
     ],
   },
