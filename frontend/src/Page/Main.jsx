@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Main.css';
+import '../css/Main.css';
 import ApplyForm from '../components/appllyForm';
 import Dashboard from '../components/Dashboard';
 import TabInJobPage from '../Page/TabInJobPage';
