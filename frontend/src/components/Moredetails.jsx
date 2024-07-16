@@ -6,6 +6,7 @@ import "../css/Moredetails.css";
 
 function Moredetails() {
   const { id } = useParams();
+  const emp = emps.find((emp) => id === emp._id.$oid);
   const [comments, setComments] = useState([{ description: "" }]);
   const navigate = useNavigate();
 
@@ -27,49 +28,99 @@ function Moredetails() {
   };
 
   return (
-    <div className="rating">
-      <Form onSubmit={handleSubmit} className="border-form">
-        {comments.map((comment, index) => (
-          <div key={index} className="comment-row">
-            <Form.Label className="fieldsnames rating">Comment:</Form.Label>
+    <>
+      <div className="rating">
+        <Form className="Personborder-form">
+          <div>
+            <Form.Label className="Personfieldsnames rating">Name:</Form.Label>
             <Form.Control
-              as="textarea"
-              rows={3}
-              className="fields rating"
-              placeholder="3 days at work 2 at home etc"
+              readOnly
+              as="input"
+              className="Personfields"
               name="description"
-              value={comment.description}
-              onChange={(e) => handleCommentChange(index, e.target.value)}
+              value={emp.name}
             />
           </div>
-        ))}
+        </Form>
+      </div>
+      <div className="rating">
+        <Form className="Personborder-form">
+          <div>
+            <Form.Label className="Personfieldsnames rating">
+              {emp.name}
+            </Form.Label>
+            <Form.Control
+              readOnly
+              as="input"
+              className="Personfields"
+              name="description"
+              value={emp.email}
+            />
+          </div>
+        </Form>
+      </div>
+      <div className="rating">
+        <Form className="Personborder-form">
+          <div>
+            <Form.Label className="Personfieldsnames rating">
+              {emp.name}
+            </Form.Label>
+            <Form.Control
+              readOnly
+              as="input"
+              className="Personfields"
+              name="description"
+              value={emp.createdAt.$date}
+            />
+          </div>
+        </Form>
+      </div>
+      <div className="rating">
+        <Form onSubmit={handleSubmit} className="Personborder-form">
+          {comments.map((comment, index) => (
+            <div key={index} className="comment-row">
+              <Form.Label className="Personfieldsnames rating">
+                Comment:
+              </Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                className="Personfields rating"
+                placeholder="good worker, need to keep an eye out on that one"
+                name="description"
+                value={comment.description}
+                onChange={(e) => handleCommentChange(index, e.target.value)}
+              />
+            </div>
+          ))}
 
-        <div id="ratingbuttons">
-          <button type="submit" className="app_container ratingbuttons">
-            Update
-          </button>
-          <button
-            type="button"
-            className={`app_container ratingbuttons ${
-              comments.length >= 5 ? "disabled-button" : ""
-            }`}
-            onClick={addCommentForm}
-            disabled={comments.length >= 5}
-          >
-            Add Comment
-          </button>
-          <button
-            type="button"
-            className="app_container ratingbuttons"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-      </Form>
-    </div>
+          <div id="ratingbuttons">
+            <button type="submit" className="app_container ratingbuttons">
+              Update
+            </button>
+            <button
+              type="button"
+              className={`app_container ratingbuttons ${
+                comments.length >= 5 ? "disabled-button" : ""
+              }`}
+              onClick={addCommentForm}
+              disabled={comments.length >= 5}
+            >
+              Add Comment
+            </button>
+            <button
+              type="button"
+              className="app_container ratingbuttons"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </Form>
+      </div>
+    </>
   );
 }
 
