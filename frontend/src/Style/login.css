@@ -1,0 +1,64 @@
+.center-div {
+  display: flex;
+  justify-content: center;
+  margin-left: 40%;
+  margin-top: 10%;
+  height: fit-content;
+}
+.border-form {
+  border-radius: 10px;
+  border: 2px solid;
+  border-style: dotted;
+  border-color: #3992ff;
+  color: #3992ff;
+  padding: 1rem;
+}
+
+.fieldsnames {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+#fields {
+  border-radius: 10px;
+  border: 2px solid;
+  border-style: dotted;
+  border-color: #3992ff;
+  color: #3992ff;
+}
+.fields::placeholder {
+  color: #3992ff;
+}
+.fields:focus {
+  color: #3992ff;
+}
+#loginpagebuttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+.loginpagebuttons {
+  width: 10rem !important;
+  box-shadow: 0 0px 1px #3992ff, 0 1px 2px #3992ff !important;
+}
+#notloginbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.smallbuttons {
+  text-decoration: none !important;
+  width: 9.4rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 0rem 0.75rem;
+  box-shadow: 0 0px 1px #3992ff, 0 1px 2px #3992ff;
+  background-color: white;
+  font-size: 1rem;
+  text-align: left;
+  color: #3992ff;
+}

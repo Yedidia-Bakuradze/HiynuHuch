@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import {
   DndContext,
@@ -16,6 +17,10 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import styled from 'styled-components';
+=======
+import React, { useState } from 'react';
+import '../Style/FilterPopUp.css';
+>>>>>>> 443e100eb810df0ae7ae44095f33269cd6c4cc97
 
 const FilterList = styled.ul`
   list-style-type: none;
