@@ -1,4 +1,4 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ListOfEmployees } from "../Data/ListOfEmployees.js";
@@ -30,53 +30,18 @@ function Moredetails() {
   return (
     <>
       <div className="rating">
-        <Form className="Personborder-form">
-          <div>
-            <Form.Label className="Personfieldsnames rating">Name:</Form.Label>
-            <Form.Control
-              readOnly
-              as="input"
-              className="Personfields"
-              name="description"
-              value={emp.name}
-            />
-          </div>
-        </Form>
+      <stack className="border rounded p-2" gap={3}>
+      <div className="p-2 small"> Name: {emp.name}
       </div>
-      <div className="rating">
-        <Form className="Personborder-form">
-          <div>
-            <Form.Label className="Personfieldsnames rating">
-              {emp.name}
-            </Form.Label>
-            <Form.Control
-              readOnly
-              as="input"
-              className="Personfields"
-              name="description"
-              value={emp.email}
-            />
-          </div>
-        </Form>
+      <div className="p-2 small"> Email: {emp.email}
       </div>
-      <div className="rating">
-        <Form className="Personborder-form">
-          <div>
-            <Form.Label className="Personfieldsnames rating">
-              {emp.name}
-            </Form.Label>
-            <Form.Control
-              readOnly
-              as="input"
-              className="Personfields"
-              name="description"
-              value={emp.createdAt.$date}
-            />
-          </div>
-        </Form>
+      <div className="p-2 small"> Skills: {emp.email}
       </div>
+      </stack>
+      </div>
+      
       <div className="rating">
-        <Form onSubmit={handleSubmit} className="Personborder-form">
+        <Form onSubmit={handleSubmit} className="border rounded p-2">
           {comments.map((comment, index) => (
             <div key={index} className="comment-row">
               <Form.Label className="Personfieldsnames rating">

@@ -13,16 +13,12 @@ export default function Root() {
 
   return (
     <>
+    <div id="navbar_container">
       <div id="sidebar">
         <div>
           <ul>
-            <Link to={`/positions`} className="remove_text_dec">
-              <li className="nav_container" id="settings">
-                positions
-              </li>
-            </Link>
             <Link to={`/Newposition`} className="remove_text_dec">
-              <li className="nav_container" id="new_button">
+              <li className="nav_container" >
                 New
               </li>
             </Link>
@@ -71,17 +67,18 @@ export default function Root() {
         <div>
           <ul>
             <Link to={`/settings`} className="remove_text_dec">
-              <li className="nav_container" id="settings">
+              <li className="nav_container">
                 Settings
               </li>
             </Link>
             <Link to={`/login`} className="remove_text_dec">
-              <li className="nav_container" id="profile">
+              <li className="nav_container" >
                 Profile
               </li>
             </Link>
           </ul>
         </div>
+      </div>
       </div>
       <div
         id="detail"

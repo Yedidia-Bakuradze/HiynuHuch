@@ -1,4 +1,4 @@
-import { Tab, Tabs } from "react-bootstrap";
+import { Button, Tab, Tabs } from "react-bootstrap";
 import ApplyForm from   "../components/ApplyForm";
 import Dashboard from "../components/Dashboard";
 import FilterTable from "../components/FilterPopUp";
@@ -19,18 +19,12 @@ function TabInJobPage() {
   };
   return (
     <>
-      <Tabs id="uncontrolled-tab-example" className="mb-3">
-        <Dashboard />
-        <Tab eventKey="Dashboard" title="Dashboard">
-          <Dashboard />
-        </Tab>
-        <Tab eventKey="Form" title="Form">
-          <ApplyForm />
-        </Tab>
-        <Tab eventKey="Filter" title="Filter">
-        <FilterTable filters={filters} onReorder={handleReorder} />
-        </Tab>
-      </Tabs>
+      <Button className="filter">
+        filter
+      </Button>
+      <Dashboard />
+
+      
     </>
   );
 }

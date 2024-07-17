@@ -7,7 +7,7 @@ export default function LoginScreen() {
   const navigate = useNavigate();
   return (
     <div className="center-div">
-      <Form className="border-form ">
+      <Form className="border rounded ">
         <Form.Label className="fieldsnames">Email:</Form.Label>
         <Form.Control
           className="fields"

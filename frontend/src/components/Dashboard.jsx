@@ -1,7 +1,7 @@
 import { Card, Button, Row, ProgressBar } from "react-bootstrap";
 import "../Style/Dashboard.css";
 import { ListOfEmployees } from  "../Data/ListOfEmployees";
-
+import { Link} from "react-router-dom";
 function Dashboard() {
   return (
     <>
@@ -23,9 +23,10 @@ function Dashboard() {
                 <h8>Status</h8>
               </Card.Text>
               <ProgressBar now={emp.status} label={`${emp.status}%`} />
-              <Button className="Submit-btn" variant="primary">
+              <br></br>
+              <Link to={`/Moredetails/${emp._id.$oid}`}  className="Submit-btn remove_text_dec" variant="primary">
                 More Details
-              </Button>
+              </Link>
             </Card.Body>
           </Card>
         ))}

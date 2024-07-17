@@ -31,7 +31,6 @@ body {
   line-height: 1.5;
   color: #121212;
 }
-
 form[action$="destroy"] button {
   color: #f44250;
 }
@@ -41,11 +40,22 @@ form[action$="destroy"] button {
   height: 100%;
   width: 100%;
 }
-
+.filter{
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+#navbar_container{
+  position: left;
+  display: flex;
+  width: 19rem;
+  height: 100%;
+}
 #sidebar {
   width: 15rem;
   background-color: #f7f7f7;
   border-right: solid 1px var(--border-color);
+  position: fixed;
+  height: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 0.5rem;
@@ -151,40 +161,31 @@ form[action$="destroy"] button {
 
 .nav_container {
   text-decoration: none !important;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 1.1rem;
   width: 12rem;
   font-size: 1rem;
-  font-family: inherit;
   border: none;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
   background-color: white;
-  line-height: 1.5;
-  margin: 0;
-  text-indent: 2.2rem;
-  font-size: 1.1rem;
-  background-repeat: no-repeat;
-  background-position: 0.2rem 0.35rem;
-  background-size: 2rem;
-  color: #3992ff;
+  color: blue;
+
 }
 .app_container {
   text-decoration: none !important;
-  width: 12rem;
+  line-height: 1.5;
+  font-size: 1.1rem;
   font-size: 1rem;
-  font-family: inherit;
+  width: 12rem;
   border: none;
   border-radius: 8px;
   padding: 0.5rem 0.75rem;
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
   background-color: white;
-  line-height: 1.5;
-  margin: 0;
-  font-size: 1.1rem;
-  background-repeat: no-repeat;
-  background-position: 0.2rem 0.35rem;
-  background-size: 2rem;
-  color: #3992ff;
+  color: blue;
 }
 .app_container:hover {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
@@ -206,18 +207,7 @@ form[action$="destroy"] button {
 #top_nav_buttons {
   padding-bottom: 0.25rem;
 }
-#new_button {
-  text-align: left;
-  background-image: url(../svg/icons8-settings.svg);
-}
 
-#settings {
-  background-image: url(../svg/icons8-settings.svg);
-}
-
-#profile {
-  background-image: url(../svg/icons8-settings.svg);
-}
 
 .remove_text_dec {
   text-decoration: none;
