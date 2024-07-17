@@ -1,18 +1,12 @@
 import "../css/Root.css";
-import { useEffect, useState } from "react";
 import {
   Outlet,
   Link,
   NavLink,
-  useLoaderData,
-  redirect,
-  useParams,
   useNavigation,
-  useNavigate,
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { positions } from "../data/positions.js";
-import { getCachedPosition } from "../components/cache";
 
 export default function Root() {
   const navigation = useNavigation();
@@ -81,7 +75,7 @@ export default function Root() {
                 Settings
               </li>
             </Link>
-            <Link to={`login`} className="remove_text_dec">
+            <Link to={`/login`} className="remove_text_dec">
               <li className="nav_container" id="profile">
                 Profile
               </li>

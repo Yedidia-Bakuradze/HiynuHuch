@@ -1,6 +1,6 @@
 import { FormControlLabel } from 'react-bootstrap';
 
-const MyLabel = () => {
+const LabelController = () => {
   return (
     <FormControlLabel
       label="My Custom Label"

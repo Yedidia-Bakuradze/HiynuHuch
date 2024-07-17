@@ -2,11 +2,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Newposition from "./Page/edit";
-import Destroy, { action as destroyAction } from "./Page/Destroy";
-import Main from "./Page/Main";
-import Login from "./Page/login";
-import Signup from "./Page/signup";
+import NewPosition from "./Screens/EditScreen";
+import Destroy, { action as destroyAction } from "./Screens/Destroy";
+import Main from "./Screens/Main";
+import Login from "./Screens/LoginScreen";
+import Signup from "./Screens/SignupScreen";
 import Dashboard from "./components/Dashboard";
 import "./css/Root.css";
 import Root from "./routes/Root";
@@ -29,11 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "Newposition",
-        element: <Newposition />,
+        element: <NewPosition />,
       },
       {
         path: "positions/position/edit",
-        element: <Newposition />,
+        element: <NewPosition />,
       },
       {
         path: "positions/position/destroy",

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/login.css";
 import { users } from "../data/users";
 
-export default function Signup() {
+export default function SignupScreen() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",

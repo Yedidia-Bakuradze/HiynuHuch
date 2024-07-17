@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import "../css/login.css";
 import { redirect, useNavigate, Link } from "react-router-dom";
 
-export default function Login() {
+export default function LoginScreen() {
   const navigate = useNavigate();
   return (
     <div className="center-div">
