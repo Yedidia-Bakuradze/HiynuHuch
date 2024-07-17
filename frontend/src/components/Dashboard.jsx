@@ -2,6 +2,7 @@ import { Card, Button, Row, ProgressBar } from "react-bootstrap";
 import "../Style/Dashboard.css";
 import { ListOfEmployees } from  "../Data/ListOfEmployees";
 import { Link} from "react-router-dom";
+
 function Dashboard() {
   return (
     <>

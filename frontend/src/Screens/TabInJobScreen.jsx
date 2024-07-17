@@ -1,7 +1,5 @@
 import { Button, Tab, Tabs } from "react-bootstrap";
-import ApplyForm from   "../components/ApplyForm";
-import Dashboard from "../components/Dashboard";
-import FilterTable from "../components/FilterPopUp";
+import Dashboard from "../Components/Dashboard.jsx";
 import { useState } from "react";
 
 

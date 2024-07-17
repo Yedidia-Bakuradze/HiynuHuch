@@ -4,8 +4,8 @@ import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider ,createRoutesFromElements, Router} from "react-router-dom";
 import EditScreen from "./Screens/EditScreen";
 import Destroy, { destroyAction } from "./Screens/Destroy";
-import Moredetails from "./components/Moredetails";
-import Dashboard from "./components/Dashboard";
+import Moredetails from "./Components/Moredetails";
+import Dashboard from "./Components/Dashboard";
 import "./Style/Root.css";
 import Root from "./routes/Root";
 

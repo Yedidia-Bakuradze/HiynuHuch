@@ -10,6 +10,40 @@ import { ListOfPositions } from "../Data/ListOfPositions.js";
 
 export default function Root() {
   const navigation = useNavigation();
+  let DisplayPositions;
+  
+  if(ListOfPositions.length > 0){
+    DisplayPositions = (
+      <ul>
+        {ListOfPositions.map((position) => (
+          <li
+            key={
+              position._id && position._id.$oid
+                ? position._id.$oid
+                : position.name
+            }
+          >
+            <NavLink
+              id="navLink"
+              to={``}
+              className={({ isActive, isPending }) =>
+                isActive ? "active" : isPending ? "pending" : ""
+              }
+            >
+              {position.title ? <>{position.title}</> : <i>No Name</i>}{" "}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    );
+  }else{
+    DisplayPositions = 
+    (
+      <p>
+        <i>No positions</i>
+      </p>
+    );
+  }
 
   return (
     <>
@@ -36,33 +70,7 @@ export default function Root() {
           </ul>
         </div>
         <nav>
-          {ListOfPositions.length ? (
-            <ul>
-              {ListOfPositions.map((position) => (
-                <li
-                  key={
-                    position._id && position._id.$oid
-                      ? position._id.$oid
-                      : position.name
-                  }
-                >
-                  <NavLink
-                    id="navLink"
-                    to={``}
-                    className={({ isActive, isPending }) =>
-                      isActive ? "active" : isPending ? "pending" : ""
-                    }
-                  >
-                    {position.title ? <>{position.title}</> : <i>No Name</i>}{" "}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>
-              <i>No positions</i>
-            </p>
-          )}
+          {DisplayPositions}
         </nav>
         <div>
           <ul>
