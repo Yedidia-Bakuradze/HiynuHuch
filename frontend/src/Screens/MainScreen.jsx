@@ -1,6 +1,6 @@
 import '../css/Main.css';
-import TabInJobPage from '../Screens/TabInJobScreen';
-export default function Main() {
+import TabInJobPage from './TabInJobScreen';
+export default function MainScreen() {
   return (
       <>
         <TabInJobPage/>   

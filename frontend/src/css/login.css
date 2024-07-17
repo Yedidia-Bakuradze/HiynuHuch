@@ -18,8 +18,8 @@
   margin-top: 1rem;
   font-size: 1.5rem;
 }
-.fields {
-  width: 21rem !important;
+
+#fields {
   border-radius: 10px;
   border: 2px solid;
   border-style: dotted;

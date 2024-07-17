@@ -2,14 +2,16 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import NewPosition from "./Screens/EditScreen";
+import EditScreen from "./Screens/EditScreen";
 import Destroy, { action as destroyAction } from "./Screens/Destroy";
-import Main from "./Screens/Main";
-import Login from "./Screens/LoginScreen";
-import Signup from "./Screens/SignupScreen";
+import Moredetails from "./components/MoreDetails";
 import Dashboard from "./components/Dashboard";
 import "./css/Root.css";
 import Root from "./routes/Root";
+
+import MainScreen from "./Screens/MainScreen";
+import LoginScreen from "./Screens/LoginScreen";
+import SignupScreen from "./Screens/LoginScreen";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <MainScreen />,
         children: [
           {
             path: "Dashboard/:id",
@@ -29,11 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "Newposition",
-        element: <NewPosition />,
+        element: <EditScreen />,
       },
       {
         path: "positions/position/edit",
-        element: <NewPosition />,
+        element: <EditScreen />,
       },
       {
         path: "positions/position/destroy",
@@ -43,15 +45,19 @@ const router = createBrowserRouter([
         path: "position/delete",
         element: <Destroy />,
       },
+      {
+        path: "Moredetails/:id",
+        element: <Moredetails />,
+      },
     ],
   },
   {
     path: "login",
-    element: <Login />,
+    element: <LoginScreen />,
   },
   {
     path: "signup",
-    element: <Signup />,
+    element: <SignupScreen />,
   },
 ]);
 

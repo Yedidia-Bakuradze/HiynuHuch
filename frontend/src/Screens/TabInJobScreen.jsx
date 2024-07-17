@@ -1,7 +1,7 @@
 import { Tab, Tabs } from "react-bootstrap";
 import ApplyForm from "../components/ApplyForm";
 import Dashboard from "../components/Dashboard";
-
+import FilterPopUp from "../components/FilterPopUp";
 
 function TabInJobScreen() {
   return (
@@ -13,6 +13,9 @@ function TabInJobScreen() {
         </Tab>
         <Tab eventKey="Form" title="Form">
           <ApplyForm />
+        </Tab>
+        <Tab eventKey="Filter" title="Filter">
+         <FilterPopUp/>
         </Tab>
       </Tabs>
     </>
