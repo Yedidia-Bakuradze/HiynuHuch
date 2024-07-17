@@ -1,12 +1,7 @@
 import { Card, Button, Row, ProgressBar } from "react-bootstrap";
-<<<<<<< HEAD
-import "../css/Dashboard.css";
-import { emps } from "../data/emps.js";
-
-=======
 import "../Style/Dashboard.css";
-import { ListOfEmployees } from "../Data/ListOfEmployees.js";
->>>>>>> 443e100eb810df0ae7ae44095f33269cd6c4cc97
+import { ListOfEmployees } from  "../Data/ListOfEmployees";
+
 function Dashboard() {
   return (
     <>
