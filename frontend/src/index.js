@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider ,createRoutesFromElements, Router} from "react-router-dom";
 import EditScreen from "./Screens/EditScreen";
-import Destroy, { action as destroyAction } from "./Screens/Destroy";
+import Destroy, { destroyAction } from "./Screens/Destroy";
 import Moredetails from "./Components/MoreDetails";
 import Dashboard from "./Components/Dashboard";
 import "./Style/Root.css";
