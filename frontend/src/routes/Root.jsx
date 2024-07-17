@@ -5,7 +5,7 @@ import {
   NavLink,
   useNavigation,
 } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
+import { Form} from "react-bootstrap";
 import { ListOfPositions } from "../Data/ListOfPositions.js";
 
 export default function Root() {
@@ -14,13 +14,20 @@ export default function Root() {
   return (
     <>
       <div id="sidebar">
+        
+        
+        
         <div>
+          
+          {/* Top two buttons */}
           <ul>
+            
             <Link to={`/positions`} className="remove_text_dec">
               <li className="nav_container" id="settings">
-                positions
+                Positions
               </li>
             </Link>
+            
             <Link to={`/Newposition`} className="remove_text_dec">
               <li className="nav_container" id="new_button">
                 New
@@ -38,6 +45,9 @@ export default function Root() {
               <div className="sr-only" aria-live="polite"></div>
             </Form>
           </ul>
+
+
+
         </div>
         <nav>
           {ListOfPositions.length ? (
