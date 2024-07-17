@@ -1,82 +1,116 @@
-import React, { useState } from 'react';
-import '../css/FilterPopUp.css';
+import React from 'react';
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable,
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import styled from 'styled-components';
 
-const FilterPopUp = () => {
-    const [filters, setFilters] = useState([]);
+const FilterList = styled.ul`
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+`;
 
-    const addFilter = () => {
-        setFilters([...filters, { parameter: '', sorting: '', amount: 0 }]);
-    };
+const FilterItem = styled.li`
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #f9f9f9;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+`;
 
+const DragHandle = styled.span`
+  cursor: grab;
+  margin-right: 16px;
+  font-size: 20px;
+`;
 
-    const handleSortingChange = (index, value) => {
-        const updatedFilters = [...filters];
-        updatedFilters[index].sorting = value;
-        setFilters(updatedFilters);
-    };
+const FilterInfo = styled.div`
+  flex-grow: 1;
+`;
 
-    const handleAmountChange = (index, value) => {
-        const updatedFilters = [...filters];
-        updatedFilters[index].amount = value;
-        setFilters(updatedFilters);
-    };
+const FilterName = styled.span`
+  font-weight: bold;
+  margin-right: 16px;
+`;
 
-    return (
-        <div className='PopUpWindow'>
-            <button onClick={addFilter}>Add Filter</button>
-            <div >
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Sorting</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody >
-                    {filters.map((filter, index) => (
-                        <tr className='SortCondition' key={index}>
-                            <td >
-                            <select className='Select'
-                                    value={filter.parameter}
-                                    onChange={(e) => handleSortingChange(index, e.target.value)}
-                                >
-                                    <option value="Status">Status</option>
-                                    <option value="Star">Star</option>
-                                    <option value="Name">Name</option>
-                                    <option value="Location">Location</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select className='Select'
-                                    value={filter.sorting}
-                                    onChange={(e) => handleSortingChange(index, e.target.value)}
-                                >
-                                    <option value="a-z">A to Z</option>
-                                    <option value="z-a">Z to A</option>
-                                    <option value="<">Less than</option>
-                                    <option value="=">Equal to</option>
-                                    <option value="!=">Not equal to</option>
-                                </select>
-                            </td>
-                            <td>
-                                <input 
-                                    type="number"
-                                    value={filter.amount}
-                                    onChange={(e) => handleAmountChange(index, e.target.value)}
-                                />
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            </div>
-        </div>
-    );
-}
+const FilterType = styled.span`
+  color: #666;
+`;
 
+const SortableItem = ({ filter }) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id: filter.id });
 
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
+  return (
+    <FilterItem ref={setNodeRef} style={style} {...attributes}>
+      <DragHandle {...listeners}>☰</DragHandle>
+      <FilterInfo>
+        <FilterName>{filter.name}</FilterName>
+        <FilterType>{filter.type}</FilterType>
+      </FilterInfo>
+    </FilterItem>
+  );
+};
 
+const FilterTable = ({ filters, onReorder }) => {
+  const sensors = useSensors(
+    useSensor(PointerSensor),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
-export default FilterPopUp;
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      const oldIndex = filters.findIndex((filter) => filter.id === active.id);
+      const newIndex = filters.findIndex((filter) => filter.id === over.id);
+      const newFilters = arrayMove(filters, oldIndex, newIndex);
+      onReorder(newFilters);
+    }
+  };
+
+  return (
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+    >
+      <SortableContext items={filters} strategy={verticalListSortingStrategy}>
+        <FilterList>
+          {filters.map((filter) => (
+            <SortableItem key={filter.id} filter={filter} />
+          ))}
+        </FilterList>
+      </SortableContext>
+    </DndContext>
+  );
+};
+
+export default FilterTable;

@@ -1,10 +1,22 @@
 import { Tab, Tabs } from "react-bootstrap";
 import ApplyForm from "../components/appllyForm";
 import Dashboard from "../components/Dashboard";
-import FilterPopUp from "../components/FilterPopUp";
+import FilterTable from "../components/FilterPopUp";
+import { useState } from "react";
 
 
-function tabInJobPage() {
+function TabInJobPage() {
+  const [filters, setFilters] = useState([
+    { id: 1, name: 'Date Range', type: 'Date' },
+    { id: 2, name: 'Category', type: 'Select' },
+    { id: 3, name: 'Search', type: 'Text' },
+  ]);
+
+  const handleReorder = (newOrder) => {
+    setFilters(newOrder);
+    // Here you can update your API request with the new filter order
+    console.log('New filter order:', newOrder);
+  };
   return (
     <>
       <Tabs id="uncontrolled-tab-example" className="mb-3">
@@ -16,11 +28,11 @@ function tabInJobPage() {
           <ApplyForm />
         </Tab>
         <Tab eventKey="Filter" title="Filter">
-         <FilterPopUp/>
+        <FilterTable filters={filters} onReorder={handleReorder} />
         </Tab>
       </Tabs>
     </>
   );
 }
 
-export default tabInJobPage;
+export default TabInJobPage;
