@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../css/FilterPopUp.css';
+import '../Style/FilterPopUp.css';
 
 const FilterPopUp = () => {
     const [filters, setFilters] = useState([]);

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "../css/login.css";
-import { users } from "../data/users";
+import "../Style/login.css";
+import { ListOfUsers } from "../Data/ListOfUsers";
 
 export default function SignupScreen() {
   const [formData, setFormData] = useState({
@@ -69,7 +69,7 @@ export default function SignupScreen() {
         password: formData.password,
         name: formData.name,
       };
-      users.push(newUser);
+      ListOfUsers.push(newUser);
       navigate(`/${newUser.id}`); // Navigating to a specific user page
     }
   };

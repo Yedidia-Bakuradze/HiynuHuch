@@ -1,7 +1,8 @@
 import { Tab, Tabs } from "react-bootstrap";
-import ApplyForm from "../components/ApplyForm";
-import Dashboard from "../components/Dashboard";
-import FilterPopUp from "../components/FilterPopUp";
+import ApplyForm from "../Components/ApplyForm";
+import Dashboard from "../Components/Dashboard";
+import FilterPopUp from "../Components/FilterPopUp";
+
 
 function TabInJobScreen() {
   return (

@@ -1,8 +1,8 @@
 import {useNavigate } from "react-router-dom";
 import { useState} from "react";
 import { Form } from "react-bootstrap";
-import "../css/edit.css";
-import "../css/login.css";
+import "../Style/edit.css";
+import "../Style/login.css";
 
 export default function Newposition() {
   const [position, setPosition] = useState(null);

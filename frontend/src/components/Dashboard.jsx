@@ -1,11 +1,11 @@
 import { Card, Button, Row, ProgressBar } from "react-bootstrap";
-import "../css/Dashboard.css";
-import { EmployeeList } from "../data/EmployeesList.js";
+import "../Style/Dashboard.css";
+import { ListOfEmployees } from "../Data/ListOfEmployees.js";
 function Dashboard() {
   return (
     <>
       <Row className="CardRow">
-        {EmployeeList.map((emp) => (
+        {ListOfEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
             <Card.Header>Header</Card.Header>
             <Card.Body>

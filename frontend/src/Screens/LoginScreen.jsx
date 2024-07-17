@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
-import "../css/login.css";
+import "../Style/login.css";
 import { redirect, useNavigate, Link } from "react-router-dom";
 
 export default function LoginScreen() {

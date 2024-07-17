@@ -4,10 +4,10 @@ import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import EditScreen from "./Screens/EditScreen";
 import Destroy, { action as destroyAction } from "./Screens/Destroy";
-import Moredetails from "./components/MoreDetails";
-import Dashboard from "./components/Dashboard";
-import "./css/Root.css";
-import Root from "./routes/Root";
+import Moredetails from "./Components/MoreDetails";
+import Dashboard from "./Components/Dashboard";
+import "./Style/Root.css";
+import Root from "./Routes/Root";
 
 import MainScreen from "./Screens/MainScreen";
 import LoginScreen from "./Screens/LoginScreen";

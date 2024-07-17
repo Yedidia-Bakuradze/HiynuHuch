@@ -1,12 +1,12 @@
 import { Form, Button } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { EmployeeList } from "../data/EmployeesList.js";
-import "../css/Moredetails.css";
+import { ListOfEmployees } from "../Data/ListOfEmployees.js";
+import "../Style/Moredetails.css";
 
 function Moredetails() {
   const { id } = useParams();
-  const emp = EmployeeList.find((emp) => id === emp._id.$oid);
+  const emp = ListOfEmployees.find((emp) => id === emp._id.$oid);
   const [comments, setComments] = useState([{ description: "" }]);
   const navigate = useNavigate();
 

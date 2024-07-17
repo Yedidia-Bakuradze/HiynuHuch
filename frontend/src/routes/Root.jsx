@@ -1,4 +1,4 @@
-import "../css/Root.css";
+import "../Style/Root.css";
 import {
   Outlet,
   Link,
@@ -6,7 +6,7 @@ import {
   useNavigation,
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
-import { positions } from "../data/positions.js";
+import { ListOfPositions } from "../Data/ListOfPositions.js";
 
 export default function Root() {
   const navigation = useNavigation();
@@ -40,9 +40,9 @@ export default function Root() {
           </ul>
         </div>
         <nav>
-          {positions.length ? (
+          {ListOfPositions.length ? (
             <ul>
-              {positions.map((position) => (
+              {ListOfPositions.map((position) => (
                 <li
                   key={
                     position._id && position._id.$oid

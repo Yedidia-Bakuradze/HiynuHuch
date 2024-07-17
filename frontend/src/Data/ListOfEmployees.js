@@ -1,4 +1,4 @@
-export const EmployeeList = [
+export const ListOfEmployees = [
     {
       _id: {
         $oid: "4562462",
