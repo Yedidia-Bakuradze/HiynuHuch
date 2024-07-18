@@ -21,7 +21,6 @@ function TabInJobPage() {
         filter
       </Button>
       <Dashboard />
-
       
     </>
   );
