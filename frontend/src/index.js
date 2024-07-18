@@ -9,7 +9,6 @@ import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
 // import PositionDetails from "./Components/PositionDetails";
-
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
 import EditScreen from "./Screens/EditScreen";
@@ -81,10 +80,13 @@ const router = createBrowserRouter([
             path: ":id",
             element: <ApplyForm />,
           },
+<<<<<<< HEAD
           {
             path: "bla/:id",
             
           },
+=======
+>>>>>>> 41256d804904e10f53889e1839dcd89f488bab2c
         ],
       },
     ],

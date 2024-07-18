@@ -8,27 +8,14 @@ function MoreDetails() {
   const { id } = useParams();
   const emp = ListOfAdmins.find((emp) => id === emp._id.$oid);
   const [comments, setComments] = useState([{ description: "" }]);
+  const {Personality, setPersonality} = useState();
+  const {Location, setLocation} = useState();
+  const {General, setGeneral} = useState();
+  const {Professionalism, setProfessionalism} = useState();
+
   const navigate = useNavigate();
   const job ={
-    id: 1,
-    title: "Full Stack Developer",
-    description:
-      "We are looking for a skilled Full Stack Developer to join our dynamic team.",
-    requirements: [
-      "Bachelor's degree in Computer Science or related field",
-      "3+ years of experience in software development",
-      "Proficient in JavaScript, HTML, CSS",
-      "Experience with React and Node.js",
-      "Strong problem-solving skills",
-    ],
     skills: ["JavaScript", "React", "Node.js", "HTML", "CSS", "Git"],
-    workType: "hybrid", // Possible values: 'remote', 'hybrid', 'onsite'
-    level: "Mid-level", // Possible values: 'Entry-level', 'Mid-level', 'Senior-level'
-    niceToHave: [
-      "Experience with Docker",
-      "Knowledge of CI/CD pipelines",
-      "Familiarity with cloud platforms (AWS, Azure, GCP)",
-    ],
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,6 +67,17 @@ function MoreDetails() {
               linkedin
               </h6>
           </Link>
+          <div id="Scale">
+          <Form.Label 
+          >Location: </Form.Label>
+          <Form.Range  value = {Location} onChange={(e)=>setLocation({Location})}/> 
+          <Form.Label>Personality: </Form.Label>
+          <Form.Range  value = {Personality} onChange={(e)=>setPersonality({Personality})}/>  
+          <Form.Label>General: </Form.Label>
+          <Form.Range  value = {General} onChange={(e)=>setGeneral({General})}/> 
+          <Form.Label>Professionalism: </Form.Label>
+          <Form.Range  value = {Professionalism} onChange={(e)=>setProfessionalism({Professionalism})}/>  
+          </div>
         </div>
         <div id="comments">
           <Form onSubmit={handleSubmit} className="border rounded p-2">
