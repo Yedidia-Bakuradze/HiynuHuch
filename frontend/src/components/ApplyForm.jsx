@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import { jobFormsData } from "../Data/jobFormsData.js";
 
 function ApplyForm() {
-  const { id } = useParams();
-  const job = {
+  const { Formid } = useParams();
+  const job ={
     id: 1,
     title: "Full Stack Developer",
-    description: "We are looking for a skilled Full Stack Developer to join our dynamic team.",
+    description:
+      "We are looking for a skilled Full Stack Developer to join our dynamic team.",
     requirements: [
       "Bachelor's degree in Computer Science or related field",
       "3+ years of experience in software development",
@@ -24,8 +25,7 @@ function ApplyForm() {
       "Knowledge of CI/CD pipelines",
       "Familiarity with cloud platforms (AWS, Azure, GCP)",
     ],
-  };
-
+  }
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [skills, setSkills] = useState([]);

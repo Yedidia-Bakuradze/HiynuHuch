@@ -1,26 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
-<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
 import "./Style/Root.css";
 import Root from "./routes/Root";
 import { Outlet } from "react-router-dom";
-import MainScreen from "./Screens/MainScreen";
-=======
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./Style/Root.css";
-import Root from "./routes/Root";
-import {Outlet} from "react-router-dom";
-import "./Style/Root.css";
->>>>>>> bbb352ef66c84d37bf5d2fd96ca3bf2ad36e7dc7
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
 import PositionDetails from "./Components/PositionDetails";
-
+import ApplyForm from "./Components/ApplyForm";
 
 const router = createBrowserRouter([
   {
@@ -51,32 +42,39 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "",
-                element: <TabInJobPage/>
+                element: <TabInJobPage />,
               },
               {
                 path: "new-position",
-                element: <>Create new position</>
+                element: <>Create new position</>,
               },
               {
                 path: "position/:positionId",
-                element: <PositionDetails/>,
-                children:[
+                element: <PositionDetails />,
+                children: [
                   {
                     path: "edit",
-                    element: <>Edit position</>
-                  }
-                
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    
-    ]
-  }
-])
-
+                    element: <>Edit position</>,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "form",
+        element: <Outlet />,
+        children: [
+          {
+            path: ":id",
+            element: <ApplyForm />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
