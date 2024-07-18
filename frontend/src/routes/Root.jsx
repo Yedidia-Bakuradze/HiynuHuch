@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { ListOfPositions } from "../Data/ListOfPositions.js";
-import NavPosition from "../components/NavPosition.jsx";
+import NavPosition from "../Components/NavPosition.jsx";
 export default function Root() {
   const navigation = useNavigation();
   let DisplayPositions;
