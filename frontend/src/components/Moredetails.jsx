@@ -5,6 +5,7 @@ import { ListOfAdmins } from "../Data/ListOfAdmins";
 import "../Style/MoreDetails.css";
 import { useEffect } from "react";
 import axios from "axios";
+import logo from  "../Data/CV.png";
 
 
 function MoreDetails() {
@@ -64,7 +65,7 @@ function MoreDetails() {
   return (
     <><Row>
       <div>
-        <div className="border rounded p-2 m-2" gap={3}>
+        <div className="border rounded p-2 m-2  borderss" gap={3}>
           <div className="p-2 ">Name: {emp.name}</div>
           <div className="p-2 ">Email: {emp.email}</div>
 
@@ -142,7 +143,7 @@ function MoreDetails() {
           </Form>
         </div>
       </div>
-    </Row><img src={".../public/logo512.png"}/></>
+    </Row><img src={logo} /></>
   );
 }
 export default MoreDetails;

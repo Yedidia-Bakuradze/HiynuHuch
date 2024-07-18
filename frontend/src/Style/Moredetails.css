@@ -66,3 +66,6 @@
 #Scale{
   max-width: 17rem !important;
 }
+.borderss{
+  width: fit-content !important;
+}
