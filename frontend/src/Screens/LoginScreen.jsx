@@ -1,20 +1,30 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "../Style/login.css";
 import { useState } from "react";
-import { redirect, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { ListOfUsers } from "../Data/ListOfUsers";
+
 
 export default function LoginScreen() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
 
   //Verifies if the user exists in the database
   const verifyUserLogin = (e)=>{
-    //Fetch data from backend and see if user exists
-    alert(username)
-    alert(password)
+    //Disable the JS functionality
 
+    e.preventDefault()
+    alert(emailAddress)
+    alert(password)
+    //Fetch data from backend and see if user exists
+    const user = ListOfUsers.find((user)=>user.email === emailAddress && user.password === password);
+    if(user){
+      alert("Found")
+    }else{
+      alert("Not Found")
+    }
     //If hes not - Error message
     
     //If he is - navigate to /:id with the id provided by the backend
@@ -33,7 +43,7 @@ export default function LoginScreen() {
           placeholder="exmaple@gmail.com"
           size="lg"
           name="email"
-          onChange={(e)=>setUsername(e.target.value)}
+          onChange={(e)=>setEmailAddress(e.target.value)}
         />
 
         <Form.Label className="fieldsnames">Password:</Form.Label>
@@ -43,7 +53,7 @@ export default function LoginScreen() {
           placeholder="********"
           size="lg"
           name="password"
-          onChange={(e)=>{setPassword(e.value.target)}}
+          onChange={(e)=>{setPassword(e.target.value)}}
         />
 
         <p id="notloginbuttons">
@@ -58,9 +68,7 @@ export default function LoginScreen() {
         <p id="loginpagebuttons">
           <button
             type="submit"
-            onClick={() => {
-              navigate("/");
-            }}
+            onClick={(e) => {verifyUserLogin(e)}}
             className="app_container loginpagebuttons"
           >
             log in
@@ -68,7 +76,10 @@ export default function LoginScreen() {
           <button
             type="button"
             className="app_container loginpagebuttons"
-            onClick={(e)=>verifyUserLogin(e)}
+            onClick={(e)=>{
+                navigate("/recruiter/signup")
+
+            }}
           >
             Cancel
           </button>
