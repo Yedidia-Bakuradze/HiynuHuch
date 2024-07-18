@@ -35,19 +35,21 @@ const getApplicationByCreator = asyncHandler(async (req, res) => {
 
 
 const createApplication = asyncHandler(async (req, res) => {
+  console.log(req.body);
+  console.log("Got inside");
   try {
-    const { title, description, tags, skills } = req.body;
-    req.body.creator = req.admin._id;
-    // Check if all fields are filled
-    // Check if the creator exists
-    if (!title || !description || !tags || !skills) {
+    const { title, creator,skills,requirements,typeOfPosition, description, niceToHave } = req.body;
+    // req.body.creator = req.admin._id;
+    // console.log(`Still there ${req.body.creator}`);
+
+    if (!title|| !creator || !skills||!requirements||!typeOfPosition||!description||!niceToHave ) {
       return res.status(400).json({ message: "Please fill all the fields" });
-    } else if (!adminModel.findById(req.admin._id)) {
+    } else if (!adminModel.findById(creator)) {
       return res.status(400).json({ message: "Creator hasn't found" });
     } else {
+      console.log("Almost finished");
       const createApplication = await applicationModel.create(req.body);
-      res.json(createApplication);
-      res.status(201).send(createApplication);
+      res.status(201).json(createApplication);
     }
   } catch (err) {
     res.status(500).json({ message: err.message });

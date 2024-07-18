@@ -1,13 +1,13 @@
-import {useNavigate } from "react-router-dom";
+import {useNavigate,useParams } from "react-router-dom";
 import { forwardRef, useState} from "react";
 import { Form } from "react-bootstrap";
 import "../Style/edit.css";
 import "../Style/login.css";
-import { ListOfPositions } from "../Data/ListOfPositions";
 import axios from "axios";
 
 export default function NewPosition() {
   const navigate = useNavigate();
+  const {id} = useParams();
   const [formData, setFormData] = useState({
     title: "",
     skills: "",
@@ -23,29 +23,33 @@ export default function NewPosition() {
       alert("Please fill all the fields");
       return;
     }
-      
-    try{
-      const {data} = await axios.post("http://localhost:5000/api/", formData);
-      console.log(data);
-    }catch(err){
-      console.log(err)
-    }
-  
-    const arrayOfSkills = formData.skills.split(",");
-    alert(arrayOfSkills);
+
     const newPosition = {
-      id: ListOfPositions.length + 1,
       title: formData.title,
+      creator: id,
       skills: formData.skills.split(","),
       requirements: formData.requirements.split(","),
       typeOfPosition: formData.typeOfPosition,
       description: formData.description,
       niceToHave: formData.niceToHave.split(","),
     };
+
+    alert(newPosition);
+    
+    try{
+      const {data} = await axios.post(`http://localhost:5000/api/app`, newPosition);
+      console.log(data);
+      alert("New position created");
+      //Doest work
+      navigate(`position/${data._id}`);
+    }catch(err){
+      console.log(err)
+      return;
+    }
+  
+
+
     //TODO: send the new position to the server
-    ListOfPositions.push(newPosition);
-    //TODO: Navigate to the position page
-    navigate(`/position/${newPosition.id}`);
   }
 
 

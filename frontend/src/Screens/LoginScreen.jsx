@@ -3,7 +3,6 @@ import { Form,Button } from "react-bootstrap";
 import "../Style/login.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { ListOfAdmins } from "../Data/ListOfAdmins";
 import axios from "axios";
 
 export default function LoginScreen() {
