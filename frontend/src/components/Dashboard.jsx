@@ -5,6 +5,7 @@ import { ListOfEmployees } from  "../Data/ListOfEmployees";
 function Dashboard() {
   return (
     <>
+    <div>
       <Row className="CardRow">
         {ListOfEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
@@ -30,6 +31,7 @@ function Dashboard() {
           </Card>
         ))}
       </Row>
+    </div>
     </>
   );
 }
