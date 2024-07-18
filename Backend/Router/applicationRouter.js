@@ -13,7 +13,10 @@ const { protectAdmin } = require("../Middleware/adminMiddleware");
 
 const router = express.Router();
 
-router.route("/").post(protectAdmin,createApplication).get(getAllApplications).delete(protectAdmin, deleteAllApplicationsByCreator);
+router.route("/")
+.post(protectAdmin,createApplication)
+.get(getAllApplications)
+.delete(protectAdmin, deleteAllApplicationsByCreator);
 router
   .route("/:id")
   .delete(protectAdmin, deleteApplication)

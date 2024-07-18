@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import "../Style/edit.css";
 import "../Style/login.css";
 import { ListOfPositions } from "../Data/ListOfPositions";
+import axios from "axios";
 
 export default function NewPosition() {
   const navigate = useNavigate();
@@ -17,10 +18,17 @@ export default function NewPosition() {
   });
 
 
-  const newPositionHandler = (e) => {
+  const newPositionHandler = async (e) => {
     if(forwardRef.title === "" || formData.skills === "" || formData.requirements === "" || formData.typeOfPosition === "" || formData.description === "" || formData.niceToHave === ""){
       alert("Please fill all the fields");
       return;
+    }
+      
+    try{
+      const {data} = await axios.post("http://localhost:5000/api/", formData);
+      console.log(data);
+    }catch(err){
+      console.log(err)
     }
   
     const arrayOfSkills = formData.skills.split(",");

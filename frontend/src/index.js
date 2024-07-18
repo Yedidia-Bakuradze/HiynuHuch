@@ -13,6 +13,39 @@ import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
 import MoreDetails from "./Components/MoreDetails";
 import EditScreen from "./Screens/EditScreen";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+axios.interceptors.request.use((req) => {
+    if (getToken() && req.url.startsWith('api/admin/')) {
+      req.headers.Authorization = `Bearer ${getToken()}`;
+    }
+    return req;
+  },
+  (err) => {
+    return Promise.reject(err);
+  }
+);
+
+// useEffect(async () => {
+//   if (getToken()) {
+//     try {
+//       const config = {
+//         headers: { Authorization: `Bearer ${getToken()} `},
+//       };
+//       const { data } = await axios.get("api/admin/token", config);
+//       // setUser(data);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   }
+//   getAllCategory();
+// }, []);
+
+const getToken = () => {
+  return localStorage.getItem("token");
+};
+
 
 const router = createBrowserRouter([
   {

@@ -4,32 +4,41 @@ import "../Style/login.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ListOfAdmins } from "../Data/ListOfAdmins";
-
+import axios from "axios";
 
 export default function LoginScreen() {
   const navigate = useNavigate();
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
-
+  const [admin,setAdmin] = useState({});
   //Verifies if the user exists in the database
-  const verifyUserLogin = (e)=>{
+  const verifyUserLogin = async (e)=>{
     //Disable the JS functionality
 
     e.preventDefault()
     alert(emailAddress)
     alert(password)
     //Fetch data from backend and see if user exists
-    const user = ListOfAdmins.find((user)=>user.email === emailAddress && user.password === password);
-    if(user){
-      navigate(`/recruiter/${user.id}`)
-      alert("Found")
-    }else{
-      alert("Not Found")
-    }
-    //If hes not - Error message
     
-    //If he is - navigate to /:id with the id provided by the backend
+    try{
+      //Sends the email and password to the backend
+      const {data} = await axios.post(
+        "http://localhost:5000/api/admin/login",
+        {email:emailAddress, password:password}
+      ); 
 
+      console.log(data);
+
+      //Stores teh token in the local storage so the user wont need to login again
+      localStorage.setItem("token", data.token);
+      
+      navigate(`/recruiter/${data._id}`)
+      alert("Found")
+
+    }catch(err){
+      console.log(err);
+      alert(err);
+    }
 
   }
 
