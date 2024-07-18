@@ -1,16 +1,17 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./Style/Root.css";
 import Root from "./routes/Root";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./Style/Root.css";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
 import NewPosition from "./Screens/NewPosition";
+import ApplyForm from "./Components/ApplyForm";
 
 const router = createBrowserRouter([
   {
@@ -59,20 +60,27 @@ const router = createBrowserRouter([
                   },
                   {
                     path: "edit",
-                    element: <>Edit position</>
-                  }
-                
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    
-    ]
-  }
-])
-
+                    element: <>Edit position</>,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "form",
+        element: <Outlet />,
+        children: [
+          {
+            path: ":id",
+            element: <ApplyForm />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
