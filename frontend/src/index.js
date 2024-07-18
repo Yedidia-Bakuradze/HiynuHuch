@@ -15,6 +15,8 @@ import LobbyScreen from "./Screens/LobbyScreen";
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
 
+import EditScreen from "./Screens/EditScreen";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,18 +54,23 @@ const router = createBrowserRouter([
                 children:[
                   {
                     path: ":positionId",
-                    element: <ListOfAppliedApplications/>,
+                    element: <Outlet/>,
                     children:[
+                      {
+                        path: "",
+                        element: <ListOfAppliedApplications/>,
+                      },
                       {
                         path: "details/:employeeId",
                         element: <>Employee details</>
-                      }
+                      },
+                      {
+                        path: "edit",
+                        element: <EditScreen/>,
+                      },
                     ]
                   },
-                  {
-                    path: "edit",
-                    element: <>Edit position</>,
-                  },
+                  
                 ],
               },
             ],
