@@ -97,6 +97,7 @@ const FilterTable = ({ filters, onReorder }) => {
   };
 
   return (
+    <>
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}
@@ -110,6 +111,7 @@ const FilterTable = ({ filters, onReorder }) => {
         </FilterList>
       </SortableContext>
     </DndContext>
+    </>
   );
 };
 

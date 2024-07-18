@@ -6,6 +6,7 @@ import { Link} from "react-router-dom";
 function Dashboard() {
   return (
     <>
+    <div>
       <Row className="CardRow">
         {ListOfEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
@@ -32,6 +33,7 @@ function Dashboard() {
           </Card>
         ))}
       </Row>
+    </div>
     </>
   );
 }
