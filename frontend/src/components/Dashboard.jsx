@@ -3,12 +3,15 @@ import "../Style/Dashboard.css";
 import { ListOfEmployees } from  "../Data/ListOfEmployees";
 import { Link} from "react-router-dom";
 
-function Dashboard() {
+function Dashboard({positionId}) {
+  const listOfAppliedEmployeesId = ListOfEmployees.map((emp) => emp.positionId);
+  const listOfAppliedEmployees = ListOfEmployees.filter((emp) => emp.positionId === positionId);
+  
   return (
     <>
     <div className="CardDiv">
       <Row className="CardRow">
-        {ListOfEmployees.map((emp) => (
+        {listOfAppliedEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
             <Card.Header>Header</Card.Header>
             <Card.Body >

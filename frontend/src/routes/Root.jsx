@@ -21,6 +21,7 @@ export default function Root() {
         {
          ListOfPositions.map((p) => <NavPosition positionId={p._id.$oid} positionName={p.title}/>)
         }
+
       </ul>
     );
   }else{
@@ -56,9 +57,14 @@ export default function Root() {
             </Form>
           </ul>
         </div>
+        
+        
         <nav>
           {DisplayPositions}
         </nav>
+
+
+
         <div>
           <ul>
             <Link to={`/settings`} className="remove_text_dec">

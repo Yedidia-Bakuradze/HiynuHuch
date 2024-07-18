@@ -8,9 +8,8 @@ import {Outlet} from "react-router-dom";
 import "./Style/Root.css";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
-import TabInJobPage from "./Screens/TabInJobScreen";
+import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
-import PositionDetails from "./Components/PositionDetails";
 import NewPosition from "./Screens/NewPosition";
 
 const router = createBrowserRouter([
@@ -41,17 +40,23 @@ const router = createBrowserRouter([
             element: <Root />,
             children: [
               {
-                path: "",
-                element: <TabInJobPage/>
-              },
-              {
                 path: "new-position",
                 element: <NewPosition/>
               },
               {
-                path: "position/:positionId",
-                element: <PositionDetails/>,
+                path: "position/",
+                element: <Outlet/>,
                 children:[
+                  {
+                    path: ":positionId",
+                    element: <ListOfAppliedApplications/>,
+                    children:[
+                      {
+                        path: "details/:employeeId",
+                        element: <>Employee details</>
+                      }
+                    ]
+                  },
                   {
                     path: "edit",
                     element: <>Edit position</>
