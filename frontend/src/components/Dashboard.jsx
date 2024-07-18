@@ -1,15 +1,12 @@
 import { Card, Row, ProgressBar } from "react-bootstrap";
 import "../Style/Dashboard.css";
-import { ListOfEmployees } from  "../Data/ListOfEmployees";
-import { Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function Dashboard({positionId}) {
-  const listOfAppliedEmployeesId = ListOfEmployees.map((emp) => emp.positionId);
-  const listOfAppliedEmployees = ListOfEmployees.filter((emp) => emp.positionId === positionId);
-  
+
   return (
     <>
-    <div className="CardDiv">
+    {/* <div className="CardDiv">
       <Row className="CardRow">
         {listOfAppliedEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
@@ -19,24 +16,24 @@ function Dashboard({positionId}) {
                 <h9>Name: {emp.name}</h9>
               </Card.Text>
               <Card.Text>
-                <h8>Email: {emp.email}</h8>
+                <h9>Email: {emp.email}</h9>
               </Card.Text>
               <Card.Text>
-                <h8>Grade: {emp.grade}</h8>
+                <h9>Grade: {emp.grade}</h9>
               </Card.Text>
               <Card.Text>
-                <h8>Status</h8>
+                <h9>Status</h9>
               </Card.Text>
               <ProgressBar now={emp.status} label={`${emp.status}%`} />
               <br></br>
-              <Link to={`/Moredetails/${emp._id.$oid}`}  className="Submit-btn  remove_text_dec" variant="primary">
+              <Link to={`/Moredetails/${emp._id.$oid}`}  className="Submit-btn remove_text_dec" variant="primary">
                 More Details
               </Link>
             </Card.Body>
           </Card>
         ))}
       </Row>
-    </div>
+    </div> */}
     </>
   );
 }
