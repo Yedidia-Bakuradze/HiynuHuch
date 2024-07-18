@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ApplyForm() {
   const { formId } = useParams();
-
+  const navigate = useNavigate();
   const [skills, setSkills] = useState([]);
   const [requirements, setRequirements] = useState([]);
   const [name, setName] = useState("");
@@ -25,7 +25,7 @@ function ApplyForm() {
 
   useEffect(() => {
     fetchUserData();
-  }, [formId]);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

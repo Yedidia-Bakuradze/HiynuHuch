@@ -119,7 +119,7 @@ export default function NewPosition() {
           onChange={(e)=>setFormData({...formData, niceToHave: e.target.value})}
         />
 
-        <div className="p-2" id="new-position-btn">
+        <div className="p-2 new-position-btn" id="new-position-btn">
           <button type="button" className="app_container" onClick={() => {navigate("/");}}> Cancel </button>
           <button type="submit" className="app_container"> Submit </button>
         </div>

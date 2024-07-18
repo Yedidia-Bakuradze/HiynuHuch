@@ -21,3 +21,8 @@
 .newForm{
   width: 70%;
 }
+.new-position-btn{
+  display: flex;
+  justify-content: space-between;
+
+}
