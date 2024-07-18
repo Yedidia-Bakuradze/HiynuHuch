@@ -37,7 +37,7 @@ export default function Root() {
       <div id="sidebar">
         <div>
           <ul>
-            <Link to={`/Newposition`} className="remove_text_dec">
+            <Link to={`new-position`} className="remove_text_dec">
               <li className="nav_container" >
                 New
               </li>

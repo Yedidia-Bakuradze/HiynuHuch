@@ -1,5 +1,5 @@
 import { Button, Tab, Tabs } from "react-bootstrap";
-import Dashboard from "../components/Dashboard.jsx";
+import Dashboard from "../Components/Dashboard";
 import { useState } from "react";
 
 
