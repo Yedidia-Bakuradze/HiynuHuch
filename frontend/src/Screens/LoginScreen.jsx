@@ -21,6 +21,7 @@ export default function LoginScreen() {
     //Fetch data from backend and see if user exists
     const user = ListOfUsers.find((user)=>user.email === emailAddress && user.password === password);
     if(user){
+      navigate(`/recruiter/${user.id}`)
       alert("Found")
     }else{
       alert("Not Found")
