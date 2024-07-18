@@ -12,8 +12,6 @@ import NavPosition from "../Components/NavPosition.jsx";
 export default function Root() {
   const navigation = useNavigation();
   let DisplayPositions;
-  
-
 
   if(ListOfPositions.length > 0){
     DisplayPositions = (

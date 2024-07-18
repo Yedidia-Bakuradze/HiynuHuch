@@ -2,17 +2,15 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./Style/Root.css";
 import Root from "./routes/Root";
 import { Outlet } from "react-router-dom";
-import "./Style/Root.css";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
-
+import Moredetails from "./Components/Moredetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,21 +40,21 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "new-position",
-                element: <NewPosition/>
+                element: <NewPosition />,
               },
               {
                 path: "position/",
-                element: <Outlet/>,
-                children:[
+                element: <Outlet />,
+                children: [
                   {
                     path: ":positionId",
-                    element: <ListOfAppliedApplications/>,
-                    children:[
+                    element: <ListOfAppliedApplications />,
+                    children: [
                       {
                         path: "details/:employeeId",
-                        element: <>Employee details</>
-                      }
-                    ]
+                        element: <Moredetails />,
+                      },
+                    ],
                   },
                   {
                     path: "edit",
@@ -75,6 +73,10 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <ApplyForm />,
+          },
+          {
+            path: "bla/:id",
+            element: <Moredetails />,
           },
         ],
       },

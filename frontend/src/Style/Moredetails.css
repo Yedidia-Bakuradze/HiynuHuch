@@ -1,0 +1,66 @@
+.rating {
+  position: relative;
+  display:flex;
+  justify-content: right;
+  margin-top: 0.2rem;
+  margin-right: 0.2rem;
+  height: fit-content;
+  width: 17rem !important;
+  max-width: 17rem !important;
+  max-height: 10rem !important;
+}
+
+.Personborder-form {
+  border-radius: 10px;
+  border: 0.5px solid #000;
+  color: #746a6a;
+  padding: 1rem;
+}
+
+.Personfieldsnames {
+  margin-top: -10px;
+  display: flex;
+  justify-content: left;
+  margin-left: -5px;
+}
+.Personfields {
+  display: flex;
+  justify-content: left;
+  margin-left: -5px;
+  width: 10rem !important;
+  border: 2px solid #000;
+  border-radius: 10px;
+  color: #746a6a;
+}
+.Personfields::placeholder {
+  color: #3992ff;
+}
+.Personfields:focus {
+  color: #3992ff;
+}
+#ratingbuttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+.ratingbuttons {
+  width: 4rem !important;
+  height: 2rem !important;
+  font-size: small !important;
+  box-shadow: 0 0px 1px #3992ff, 0 1px 2px #3992ff !important;
+}
+.comment-row {
+  margin-bottom: 1rem; /* Adds space between rows */
+  width: 12rem !important;
+  max-width: 12rem !important;
+}
+
+.app_container.disabled-button {
+  color: darkgray;
+}
+#comments{
+  margin-left: 0.5rem;
+  max-width: 17rem !important;
+
+}
+
