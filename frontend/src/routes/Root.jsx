@@ -10,19 +10,49 @@ import { ListOfPositions } from "../Data/ListOfPositions.js";
 
 export default function Root() {
   const navigation = useNavigation();
+  let DisplayPositions;
+  
+  if(ListOfPositions.length > 0){
+    DisplayPositions = (
+      <ul>
+        {ListOfPositions.map((position) => (
+          <li
+            key={
+              position._id && position._id.$oid
+                ? position._id.$oid
+                : position.name
+            }
+          >
+            <NavLink
+              id="navLink"
+              to={``}
+              className={({ isActive, isPending }) =>
+                isActive ? "active" : isPending ? "pending" : ""
+              }
+            >
+              {position.title ? <>{position.title}</> : <i>No Name</i>}{" "}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    );
+  }else{
+    DisplayPositions = 
+    (
+      <p>
+        <i>No positions</i>
+      </p>
+    );
+  }
 
   return (
     <>
+    <div id="navbar_container">
       <div id="sidebar">
         <div>
           <ul>
-            <Link to={`/positions`} className="remove_text_dec">
-              <li className="nav_container" id="settings">
-                positions
-              </li>
-            </Link>
             <Link to={`/Newposition`} className="remove_text_dec">
-              <li className="nav_container" id="new_button">
+              <li className="nav_container" >
                 New
               </li>
             </Link>
@@ -40,53 +70,25 @@ export default function Root() {
           </ul>
         </div>
         <nav>
-          {ListOfPositions.length ? (
-            <ul>
-              {ListOfPositions.map((position) => (
-                <li
-                  key={
-                    position._id && position._id.$oid
-                      ? position._id.$oid
-                      : position.name
-                  }
-                >
-                  <NavLink
-                    id="navLink"
-                    to={``}
-                    className={({ isActive, isPending }) =>
-                      isActive ? "active" : isPending ? "pending" : ""
-                    }
-                  >
-                    {position.title ? <>{position.title}</> : <i>No Name</i>}{" "}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>
-              <i>No positions</i>
-            </p>
-          )}
+          {DisplayPositions}
         </nav>
         <div>
           <ul>
             <Link to={`/settings`} className="remove_text_dec">
-              <li className="nav_container" id="settings">
+              <li className="nav_container">
                 Settings
               </li>
             </Link>
             <Link to={`/login`} className="remove_text_dec">
-              <li className="nav_container" id="profile">
+              <li className="nav_container" >
                 Profile
               </li>
             </Link>
           </ul>
         </div>
       </div>
-      <div
-        id="detail"
-        className={navigation.state === "loading" ? "loading" : ""}
-      >
+      </div>
+      <div id="detail" className={navigation.state === "loading" ? "loading" : ""}>
         <Outlet />
       </div>
     </>

@@ -1,24 +1,22 @@
 .rating {
   position: relative;
-  display: flex;
+  display:flex;
   justify-content: right;
   margin-top: 0.5rem;
   margin-right: 0.5rem;
   height: fit-content;
+  width: 2rem right !important;
 }
 
 .Personborder-form {
   border-radius: 10px;
-  border: 2px solid;
-  border-style: dotted;
-  border-color: #3992ff;
-  color: #3992ff;
+  border: 0.5px solid #000;
+  color: #746a6a;
   padding: 1rem;
 }
 
 .Personfieldsnames {
   margin-top: -10px;
-  font-size: 1rem;
   display: flex;
   justify-content: left;
   margin-left: -5px;
@@ -28,11 +26,9 @@
   justify-content: left;
   margin-left: -5px;
   width: 10rem !important;
+  border: 2px solid #000;
   border-radius: 10px;
-  border: 2px solid;
-  border-style: dotted;
-  border-color: #3992ff;
-  color: #3992ff;
+  color: #746a6a;
 }
 .Personfields::placeholder {
   color: #3992ff;

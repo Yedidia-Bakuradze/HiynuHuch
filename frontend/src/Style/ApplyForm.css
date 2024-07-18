@@ -1,11 +1,11 @@
 .FormBorder{
-    border: 10px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
     min-width: 100vw;
     padding: 100px;
     margin: 10px;
+    border: 10px solid #000;
     border-radius: 10px;
     background-color: #746a6a;
     
