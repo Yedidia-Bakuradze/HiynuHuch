@@ -3,7 +3,6 @@ import "../Style/Dashboard.css";
 import {Link} from "react-router-dom";
 
 function Dashboard({positionId}) {
-
   return (
     <>
     {/* <div className="CardDiv">

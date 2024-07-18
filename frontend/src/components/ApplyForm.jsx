@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { jobFormsData } from "../Data/jobFormsData.js";
+import { ListOfPositions } from "../Data/ListOfPositions.js";
 
 function ApplyForm() {
   const { Formid } = useParams();
