@@ -2,9 +2,10 @@ import { Card, Row, ProgressBar } from "react-bootstrap";
 import "../Style/Dashboard.css";
 import { ListOfEmployees } from  "../Data/ListOfEmployees";
 import { Link} from "react-router-dom";
+import ListOfAppliedApplications from "../Data/ListOfEmployeeApplications";
 
 function Dashboard({positionId}) {
-  const listOfAppliedEmployeesId = ListOfEmployees.map((emp) => emp.positionId);
+  const listOfAppliedEmployeesId = ListOfAppliedApplications.map((emp) => emp.positionId);
   const listOfAppliedEmployees = ListOfEmployees.filter((emp) => emp.positionId === positionId);
   
   return (

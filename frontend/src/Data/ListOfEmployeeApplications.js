@@ -1,10 +1,7 @@
-const mongoose = require('mongoose');
-
-// Replace these ObjectIds with actual ids from your database if needed
-const dummyData = [
+export const ListOfAppliedApplications = [
   {
-    UserId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a1"),
-    AppId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a2"),
+    UserId: "60d5f60d8e620b3c8c41d7a1",
+    AppId: "60d5f60d8e620b3c8c41d7a2",
     Status: "Pending",
     AiScore: [85, 90, 78],
     AiReview: "AI reviewed and found the applicant satisfactory.",
@@ -14,8 +11,8 @@ const dummyData = [
     ManualScore: 88,
   },
   {
-    UserId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a3"),
-    AppId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a4"),
+    UserId: "60d5f60d8e620b3c8c41d7a3",
+    AppId: "60d5f60d8e620b3c8c41d7a4",
     Status: "Reviewed",
     AiScore: [75, 80, 82],
     AiReview: "AI reviewed and found the applicant meets requirements.",
@@ -25,8 +22,8 @@ const dummyData = [
     ManualScore: 90,
   },
   {
-    UserId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a5"),
-    AppId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a6"),
+    UserId: "60d5f60d8e620b3c8c41d7a5",
+    AppId: "60d5f60d8e620b3c8c41d7a6",
     Status: "Pending",
     AiScore: [65, 70, 68],
     AiReview: "AI reviewed and found the applicant needs improvement.",
@@ -36,8 +33,8 @@ const dummyData = [
     ManualScore: 70,
   },
   {
-    UserId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a7"),
-    AppId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a8"),
+    UserId: "60d5f60d8e620b3c8c41d7a7",
+    AppId: "60d5f60d8e620b3c8c41d7a8",
     Status: "Reviewed",
     AiScore: [88, 92, 90],
     AiReview: "AI reviewed and found the applicant highly suitable.",
@@ -47,8 +44,8 @@ const dummyData = [
     ManualScore: 95,
   },
   {
-    UserId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7a9"),
-    AppId: mongoose.Types.ObjectId("60d5f60d8e620b3c8c41d7aa"),
+    UserId: "60d5f60d8e620b3c8c41d7a9",
+    AppId: "60d5f60d8e620b3c8c41d7aa",
     Status: "Rejected",
     AiScore: [50, 55, 60],
     AiReview: "AI reviewed and found the applicant unsuitable.",
