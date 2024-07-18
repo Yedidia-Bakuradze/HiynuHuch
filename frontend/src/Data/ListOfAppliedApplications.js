@@ -1,5 +1,6 @@
 export const ListOfAppliedApplications = [
   {
+    _id: 1,
     UserId: "60d5f60d8e620b3c8c41d7a1",
     AppId: "60d5f60d8e620b3c8c41d7a2",
     Status: "Pending",
@@ -11,6 +12,7 @@ export const ListOfAppliedApplications = [
     ManualScore: 88,
   },
   {
+    _id: 2,
     UserId: "60d5f60d8e620b3c8c41d7a3",
     AppId: "60d5f60d8e620b3c8c41d7a4",
     Status: "Reviewed",
@@ -22,6 +24,7 @@ export const ListOfAppliedApplications = [
     ManualScore: 90,
   },
   {
+    _id: 3,
     UserId: "60d5f60d8e620b3c8c41d7a5",
     AppId: "60d5f60d8e620b3c8c41d7a6",
     Status: "Pending",
@@ -33,6 +36,7 @@ export const ListOfAppliedApplications = [
     ManualScore: 70,
   },
   {
+    _id: 4,
     UserId: "60d5f60d8e620b3c8c41d7a7",
     AppId: "60d5f60d8e620b3c8c41d7a8",
     Status: "Reviewed",
@@ -44,6 +48,7 @@ export const ListOfAppliedApplications = [
     ManualScore: 95,
   },
   {
+    _id: 5,
     UserId: "60d5f60d8e620b3c8c41d7a9",
     AppId: "60d5f60d8e620b3c8c41d7aa",
     Status: "Rejected",

@@ -1,16 +1,12 @@
 import { Card, Row, ProgressBar } from "react-bootstrap";
 import "../Style/Dashboard.css";
-import { ListOfEmployees } from  "../Data/ListOfEmployees";
-import { Link} from "react-router-dom";
-import ListOfAppliedApplications from "../Data/ListOfEmployeeApplications";
+import {Link} from "react-router-dom";
 
 function Dashboard({positionId}) {
-  const listOfAppliedEmployeesId = ListOfAppliedApplications.map((emp) => emp.positionId);
-  const listOfAppliedEmployees = ListOfEmployees.filter((emp) => emp.positionId === positionId);
-  
+
   return (
     <>
-    <div className="CardDiv">
+    {/* <div className="CardDiv">
       <Row className="CardRow">
         {listOfAppliedEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
@@ -37,7 +33,7 @@ function Dashboard({positionId}) {
           </Card>
         ))}
       </Row>
-    </div>
+    </div> */}
     </>
   );
 }
