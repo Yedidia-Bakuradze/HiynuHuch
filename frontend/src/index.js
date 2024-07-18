@@ -11,7 +11,7 @@ import SignupScreen from "./Screens/SignupScreen";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
 import PositionDetails from "./Components/PositionDetails";
-
+import NewPosition from "./Screens/NewPosition";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
               },
               {
                 path: "new-position",
-                element: <>Create new position</>
+                element: <NewPosition/>
               },
               {
                 path: "position/:positionId",
