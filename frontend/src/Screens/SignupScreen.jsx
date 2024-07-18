@@ -3,6 +3,7 @@ import { Form, Button, Alert, AlertHeading } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../Style/login.css";
 import { ListOfAdmins } from "../Data/ListOfAdmins";
+import axios from "axios";
 
 export default function SignupScreen() {
   const [name, setName] = useState("");
@@ -13,35 +14,48 @@ export default function SignupScreen() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
-
-    alert(name);
-    alert(emailAddress);
-    alert(password);
-    alert(secondPassword);
-
-    const user = ListOfAdmins.find((user)=>user.email === emailAddress);
-
-    if(user){
-      alert("User already exists");
+    if(password != secondPassword){
+      alert("Passwords do not match");
       return;
     }
+    try{
+      //Sends the email and password to the backend
+      const {data} = await axios.post(
+        "http://localhost:5000/api/admin",
+        {
+          name: name,
+          email: emailAddress,
+          password: password
+        }
+      ); 
 
-    if(password == secondPassword){
-      alert("Passwords match");
-      const newUser = {
-        id: Math.floor(Math.random() * 10000),
-        email: emailAddress,
-        password: password,
-        name: name,
-      };
-      setErrors({});
-      ListOfAdmins.push(newUser);
-      navigate(`/recruiter/${newUser.id}`); // Navigating to a specific user page
-    }else{
-      setErrors({...errors, confirmpassword: "Passwords do not match"});
+      console.log(data);
+
+      //Stores teh token in the local storage so the user wont need to login again
+      navigate(`/recruiter/${data._id}`)
+
+    }catch(err){
+      console.log(err);
+      alert(err);
     }
+
+
+    // if(password == secondPassword){
+    //   alert("Passwords match");
+    //   const newUser = {
+    //     id: Math.floor(Math.random() * 10000),
+    //     email: emailAddress,
+    //     password: password,
+    //     name: name,
+    //   };
+    //   setErrors({});
+    //   ListOfAdmins.push(newUser);
+    //   navigate(`/recruiter/${newUser.id}`); // Navigating to a specific user page
+    // }else{
+    //   setErrors({...errors, confirmpassword: "Passwords do not match"});
+    // }
   }
 
 

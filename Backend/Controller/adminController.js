@@ -12,6 +12,7 @@ const getAllAdmin = asyncHandler(async (req, res) => {
   }
 });
 
+//WORKS
 const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const admin = await adminModel.findOne({ email });
@@ -40,9 +41,11 @@ const getAdminById = asyncHandler(async (req, res) => {
   }
 });
 
+//WORKS
 const createAdmin = asyncHandler(async (req, res) => {
   try {
-    const { name, email, password, createdApplications } = req.body;
+    const { name, email, password} = req.body;
+    console.log(`THE MESSAGE: ${req.body}`);
 
     if (!name || !email || !password) {
       return res.status(400).send("Please fill all the fields");
@@ -53,7 +56,6 @@ const createAdmin = asyncHandler(async (req, res) => {
       } else {
         const admin = await adminModel.create(req.body);
         res.json(admin);
-        res.status(201).send(admin);
       }
     }
   } catch (err) {
