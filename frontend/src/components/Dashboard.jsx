@@ -1,23 +1,36 @@
 import "../Style/Dashboard.css";
-import {ListOfAppliedApplications} from "../Data/ListOfAppliedApplications";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
-
+import { useParams ,Link } from "react-router-dom";
+import { useEffect ,useState} from "react";
+import { Card, Row, ProgressBar } from "react-bootstrap";
 function Dashboard({positionId}) {
   
-  const listOfApplications = ListOfAppliedApplications.filter((a) =>{
-    alert(a.AppId);  
-    alert(positionId);  
-    return a.AppId === positionId
-  });
-  console.log(listOfApplications)
+  const [applications,setApplications] = useState([]);
+  const func = async () => {
+    try {
+      const { data } = await axios.post(`http://localhost:5000/api/empApp/submit`,{AppId: positionId});
+      console.log(data);
+      setApplications(data);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+
+  useEffect(() => {
+    func();
+  },[positionId]);
+
+
+  console.log(applications)
+  if(!applications){
+    return <h1>Loading...</h1>
+  }
   return (
     <>
-    {/* <div className="CardDiv">
+    <div className="CardDiv">
       <Row className="CardRow">
-        {listOfAppliedEmployees.map((emp) => (
-          <Card className="Card" key={emp.id}>
+        {applications.map((emp) => (
+          <Card className="Card" key={emp._id}>
             <Card.Header>Header</Card.Header>
             <Card.Body >
               <Card.Text>
@@ -34,14 +47,14 @@ function Dashboard({positionId}) {
               </Card.Text>
               <ProgressBar now={emp.status} label={`${emp.status}%`} />
               <br></br>
-              <Link to={`/Moredetails/${emp._id.$oid}`}  className="Submit-btn remove_text_dec" variant="primary">
+              <Link to={`details/${emp._id}`}  className="Submit-btn remove_text_dec" variant="primary">
                 More Details
               </Link>
             </Card.Body>
           </Card>
         ))}
       </Row>
-    </div> */}
+    </div>
     </>
   );
 }

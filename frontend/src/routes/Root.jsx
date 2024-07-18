@@ -34,12 +34,11 @@ export default function Root() {
   
   
   
-
   if(listOfPositions.length){
     DisplayPositions = (
       <ul>
         {
-         listOfPositions.map((p) => <NavPosition positionId={p.id} positionName={p.title}/>)
+         listOfPositions.map((p) => <NavPosition positionId={p._id} positionName={p.title}/>)
         }
 
       </ul>

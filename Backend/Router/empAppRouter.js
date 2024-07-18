@@ -12,10 +12,8 @@ const {
 const router = express.Router();
 router.route("/").post(createEmpApp);
 router.route("/").get(getAllApplications);
-router.route("/:user").get(getAllApplicationsOfUser);
 router.route("/submit").post(getAllSubmittedApplications);
-router
-  .route("/:id")
+router.route("/:id")
   .delete(deleteEmpApp)
   .put(updateApplication)
   .get(getApplicationById);

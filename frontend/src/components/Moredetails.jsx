@@ -3,15 +3,33 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { ListOfAdmins } from "../Data/ListOfAdmins";
 import "../Style/MoreDetails.css";
+import { useEffect } from "react";
+import axios from "axios";
+
 
 function MoreDetails() {
-  const { id } = useParams();
-  const emp = ListOfAdmins.find((emp) => id === emp._id.$oid);
+  const [emp,setEmp] = useState(null);
+  const {employeeId} = useParams();
+  const func = async () => {
+    try {
+      alert(employeeId);
+      const { data } = await axios.get(`http://localhost:5000/api/empapp/${employeeId}`);
+      setEmp(data);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+
+  useEffect(() => {
+    func();
+  },[employeeId]);
+
+
   const [comments, setComments] = useState([{ description: "" }]);
-  const {Personality, setPersonality} = useState();
-  const {Location, setLocation} = useState();
-  const {General, setGeneral} = useState();
-  const {Professionalism, setProfessionalism} = useState();
+  const [Personality, setPersonality] = useState();
+  const [Location, setLocation] = useState();
+  const [General, setGeneral] = useState();
+  const [Professionalism, setProfessionalism] = useState();
 
   const navigate = useNavigate();
   const job ={
@@ -70,13 +88,13 @@ function MoreDetails() {
           <div id="Scale">
           <Form.Label 
           >Location: </Form.Label>
-          <Form.Range  value = {Location} onChange={(e)=>setLocation({Location})}/> 
+          <Form.Range  value = {Location} onChange={(e)=>setLocation(e.target.value)}/> 
           <Form.Label>Personality: </Form.Label>
-          <Form.Range  value = {Personality} onChange={(e)=>setPersonality({Personality})}/>  
+          <Form.Range  value = {Personality} onChange={(e)=>setPersonality(e.target.value)}/>  
           <Form.Label>General: </Form.Label>
-          <Form.Range  value = {General} onChange={(e)=>setGeneral({General})}/> 
+          <Form.Range  value = {General} onChange={(e)=>setGeneral(e.target.value)}/> 
           <Form.Label>Professionalism: </Form.Label>
-          <Form.Range  value = {Professionalism} onChange={(e)=>setProfessionalism({Professionalism})}/>  
+          <Form.Range  value = {Professionalism} onChange={(e)=>setProfessionalism(e.target.value)}/>  
           </div>
         </div>
         <div id="comments">
@@ -127,5 +145,4 @@ function MoreDetails() {
     </Row><img src={".../public/logo512.png"}/></>
   );
 }
-
 export default MoreDetails;

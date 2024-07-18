@@ -62,7 +62,7 @@ function ApplyForm() {
   }
 
   return (
-    <div className="FormBorder">
+    <div className="FormBorder border rounded m-4">
       <h1 className="sl">Apply for {job.title}</h1>
       <h1>Description:</h1>
       <h6>{job.description}</h6>

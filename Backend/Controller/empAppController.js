@@ -12,6 +12,7 @@ const createEmpApp = asyncHandler(async (req, res) => {
     skills,
   } = req.body;
 
+
     if(!AppId||!EmpName||!email||!cv||!skills ||!Status)
     {
       console.log("Please fill all the fields")
@@ -51,12 +52,11 @@ const getAllApplications = asyncHandler(async (req, res) => {
 const getApplicationById = asyncHandler(async (req, res) => {
   try {
     const application = await empAppModel.findById(req.params.id);
-
+    console.log(application);
     if (!application) {
       res.status(404).send("Application not found");
     } else {
-      res.json(application);
-      res.status(200).send(application);
+      res.status(200).json(application);
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -82,6 +82,7 @@ const getAllApplicationsOfUser = asyncHandler(async (req, res) => {
 const getAllSubmittedApplications = asyncHandler(async (req, res) => {
   try {
     const { AppId: appId } = req.body;
+    console.log(appId);
     const listOfAppliedApplicants = await empAppModel.find({ AppId: appId });
     if (!listOfAppliedApplicants) {
       res.status(404).send("No applications found");
