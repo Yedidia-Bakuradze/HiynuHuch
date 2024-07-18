@@ -13,26 +13,23 @@ function MoreDetails() {
   const {employeeId} = useParams();
   const func = async () => {
     try {
-      alert(employeeId);
+      //alert(employeeId);
       const { data } = await axios.get(`http://localhost:5000/api/empapp/${employeeId}`);
       setEmp(data);
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
   }
-
   useEffect(() => {
     func();
   },[employeeId]);
-
-
   const [comments, setComments] = useState([{ description: "" }]);
   const [Personality, setPersonality] = useState(0);
   const [Location, setLocation] = useState(0);
   const [General, setGeneral] = useState(0);
   const [Professionalism, setProfessionalism] = useState(0);
-
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const value = +Personality + +Location + +General + +Professionalism;
