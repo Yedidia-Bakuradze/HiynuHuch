@@ -3,7 +3,7 @@ import { Form,Button } from "react-bootstrap";
 import "../Style/login.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { ListOfUsers } from "../Data/ListOfUsers";
+import { ListOfAdmins } from "../Data/ListOfAdmins";
 
 
 export default function LoginScreen() {
@@ -19,7 +19,7 @@ export default function LoginScreen() {
     alert(emailAddress)
     alert(password)
     //Fetch data from backend and see if user exists
-    const user = ListOfUsers.find((user)=>user.email === emailAddress && user.password === password);
+    const user = ListOfAdmins.find((user)=>user.email === emailAddress && user.password === password);
     if(user){
       navigate(`/recruiter/${user.id}`)
       alert("Found")

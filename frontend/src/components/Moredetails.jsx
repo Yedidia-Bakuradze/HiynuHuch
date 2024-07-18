@@ -1,12 +1,12 @@
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { ListOfEmployees } from "../Data/ListOfEmployees.js";
-import "../Style/Moredetails.css";
+import { ListOfAdmins } from "../Data/ListOfAdmins";
+import "../Style/MoreDetails.css";
 
-function Moredetails() {
+function MoreDetails() {
   const { id } = useParams();
-  const emp = ListOfEmployees.find((emp) => id === emp._id.$oid);
+  const emp = ListOfAdmins.find((emp) => id === emp._id.$oid);
   const [comments, setComments] = useState([{ description: "" }]);
   const {Personality, setPersonality} = useState();
   const {Location, setLocation} = useState();
@@ -128,4 +128,4 @@ function Moredetails() {
   );
 }
 
-export default Moredetails;
+export default MoreDetails;

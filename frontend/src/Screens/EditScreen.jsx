@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import ApplyForm from "../Components/ApplyForm";
 
 
 export default function EditScreen() {
@@ -7,7 +8,7 @@ export default function EditScreen() {
 
   return (
     <>
-    positionId: {positionId}
+    <ApplyForm positionId={positionId}/>
     </>
   );
 }

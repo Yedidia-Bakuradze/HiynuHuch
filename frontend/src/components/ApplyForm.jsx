@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { jobFormsData } from "../Data/jobFormsData.js";
+import { ListOfPositions } from "../Data/ListOfPositions.js";
 
 function ApplyForm() {
   const { Formid } = useParams();
@@ -51,7 +51,7 @@ function ApplyForm() {
   };
 
   return (
-    <div className="apply-form-container border rounded p-4">
+    <div className="FormBorder">
       <h1 className="sl">Apply for {job.title}</h1>
       <h1>Description:</h1>
       <h6>{job.description}</h6>

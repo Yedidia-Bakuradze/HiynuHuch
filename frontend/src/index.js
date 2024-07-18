@@ -8,9 +8,11 @@ import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
+// import PositionDetails from "./Components/PositionDetails";
+
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
-import Moredetails from "./Components/Moredetails";
+import MoreDetails from "./Components/MoreDetails";
 import EditScreen from "./Screens/EditScreen";
 
 const router = createBrowserRouter([
@@ -82,7 +84,7 @@ const router = createBrowserRouter([
           },
           {
             path: "bla/:id",
-            element: <Moredetails />,
+            element: <MoreDetails />,
           },
         ],
       },

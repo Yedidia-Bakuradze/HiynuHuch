@@ -12,12 +12,15 @@ import NavPosition from "../Components/NavPosition.jsx";
 export default function Root() {
   const navigation = useNavigation();
   let DisplayPositions;
+  const {id} = useParams();
+  const listOfCreatedPositions = ListOfPositions.filter((p) => p.recruiterId ===id );
+  
 
-  if(ListOfPositions.length > 0){
+  if(ListOfPositions.length){
     DisplayPositions = (
       <ul>
         {
-         ListOfPositions.map((p) => <NavPosition positionId={p._id.$oid} positionName={p.title}/>)
+         listOfCreatedPositions.map((p) => <NavPosition positionId={p.id} positionName={p.title}/>)
         }
 
       </ul>
