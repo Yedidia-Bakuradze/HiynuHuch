@@ -1,13 +1,24 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 const LobbyScreen = () => {
-  return (
+	const navigate = useNavigate()
+  
+	const loginHandler = ()=>{
+		navigate('login')
+	}
+
+	const signupHandler = ()=>{
+		navigate('login')
+	}
+	
+	return (
 	<div>
-	<Button>
+	<Button onClick={loginHandler}>
 		Login
 	</Button>
-	<Button>
+	<Button onClick={signupHandler}>
 		Signup
 	</Button>
 	</div>

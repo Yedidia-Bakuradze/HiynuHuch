@@ -10,9 +10,9 @@ import {Outlet} from "react-router-dom";
 import MainScreen from "./Screens/MainScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
-import RecruiterLayout from "./Screens/RecruiterLayout";
 import { Tab } from "react-bootstrap";
 import TabInJobPage from "./Screens/TabInJobScreen";
+import LobbyScreen from "./Screens/LobbyScreen";
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
@@ -75,13 +75,17 @@ import TabInJobPage from "./Screens/TabInJobScreen";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <><Outlet/></>,
+    element: <Outlet/>,
     errorElement: <ErrorPage />,
     children:[
       {
         path: "recruiter",
-        element: <><Outlet/></>,
+        element: <Outlet/>,
         children:[
+          {
+            path: "",
+            element: <LobbyScreen/> 
+          },
           {
             path: "login",
             element: <LoginScreen />,

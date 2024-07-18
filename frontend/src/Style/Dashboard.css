@@ -40,7 +40,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+<<<<<<< HEAD
     margin: 20px;
 }
 
 
+=======
+
+    margin: 20px;
+}
+>>>>>>> 54df0f909e1686ced6779d7e24fa76419e80c986
