@@ -6,11 +6,11 @@ const {
   deleteEmpApp,
   updateApplication,
   getAllSubmittedApplications,
-  createEmApp,
+  createEmpApp,
 } = require("../Controller/empAppController");
 
 const router = express.Router();
-router.route("/").post(createEmApp);
+router.route("/").post(createEmpApp);
 router.route("/").get(getAllApplications);
 router.route("/:user").get(getAllApplicationsOfUser);
 router.route("/submit").post(getAllSubmittedApplications);

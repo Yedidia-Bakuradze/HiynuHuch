@@ -1,40 +1,38 @@
 const empAppModel = require("../Model/empAppModel");
 const asyncHandler = require("express-async-handler");
 
-const createEmApp = asyncHandler(async (req, res) => {
+//WORKS
+const createEmpApp = asyncHandler(async (req, res) => {
   const {
-    name,
+    Status,
+    EmpName,
     email,
-    skills,
     AppId,
     cv,
-    Status,
-    AiScore,
-    AiReview,
-    EmpName,
-    AppTitle,
-    ManualReport,
-    ManualScore,
+    skills,
   } = req.body;
 
-  if(!AppId||!UserId||!EmpName||!AppTitle||!name||!email||!cv||!skills)
+    if(!AppId||!EmpName||!email||!cv||!skills ||!Status)
     {
-            return res.status(400).json({ message: "Please fill all the fields" });
+      console.log("Please fill all the fields")
+      return res.status(400).json({ message: "Please fill all the fields" });
     }
+    console.log("Im here")
     try {
       const empApp = await empAppModel.create(req.body);
+      console.log(req.body);
       if(!empApp){
-                    return res
-                      .status(500)
-                      .json({ message: "Failed to create" });
-
+        return res.status(500).json({ message: "Failed to create" });
       }
       else{
-        res.json(empApp);
-        res.status(201).send(empApp);
+        console.log("SOMTHING IS GOOD")
+        console.log(empApp);
+        res.status(201).json(empApp);
       }
     } catch (err) {
-          res.status(500).json({ message: err.message });
+      console.log("CATCH");
+      console.log(err);
+        res.status(500).json({ message: err.message });
     }
 });
 const getAllApplications = asyncHandler(async (req, res) => {
@@ -158,5 +156,5 @@ module.exports = {
   deleteEmpApp,
   updateApplication,
   getAllSubmittedApplications,
-  createEmApp,
+  createEmpApp,
 };

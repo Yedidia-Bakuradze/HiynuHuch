@@ -1,44 +1,50 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { ListOfPositions } from "../Data/ListOfPositions.js";
+import axios from "axios";
+import { useEffect } from "react";
+
 
 function ApplyForm() {
-  const { Formid } = useParams();
-  const job ={
-    id: 1,
-    title: "Full Stack Developer",
-    description:
-      "We are looking for a skilled Full Stack Developer to join our dynamic team.",
-    requirements: [
-      "Bachelor's degree in Computer Science or related field",
-      "3+ years of experience in software development",
-      "Proficient in JavaScript, HTML, CSS",
-      "Experience with React and Node.js",
-      "Strong problem-solving skills",
-    ],
-    skills: ["JavaScript", "React", "Node.js", "HTML", "CSS", "Git"],
-    workType: "hybrid", // Possible values: 'remote', 'hybrid', 'onsite'
-    level: "Mid-level", // Possible values: 'Entry-level', 'Mid-level', 'Senior-level'
-    niceToHave: [
-      "Experience with Docker",
-      "Knowledge of CI/CD pipelines",
-      "Familiarity with cloud platforms (AWS, Azure, GCP)",
-    ],
-  }
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [skills, setSkills] = useState([]);
-  const [requirements, setRequirements] = useState([]);
+  const { formId } = useParams();
+  
+  const [skills,setSkills] =  useState([]);
+  const [requirements,setRequirements] =  useState([]);
+  const [name,setName] =  useState([]);
+  const [email,setEmail] =  useState([]);
+  const [job,setJob] = useState(null);
+ 
+  //Fetching the job data form the backend
+  const fetchUserData = async () => {
+    try {
+      const { data } = await axios.get(`http://localhost:5000/api/app/${formId}`);
+      setJob(data);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      name,
-      email,
-      skills,
-      requirements,
-    });
+
+    if(!skills || !requirements || !name || !email){
+      alert("Please fill in all the fields");
+      return;
+    }
+    const applicationData = {
+      Status: "Padding",
+      AppId: formId,
+      EmpName: name,
+      email:email,
+      cv: "URL",
+      skills: skills,
+    }
+    const {data} = await axios.post(`http://localhost:5000/api/empApp`, applicationData)
+    console.log(data);
   };
 
   const handleCheckboxChange = (e, setter, stateArray) => {
@@ -49,6 +55,11 @@ function ApplyForm() {
       setter(stateArray.filter(item => item !== value));
     }
   };
+
+  //Slow loading time - show loading message
+  if(!job){
+    return <h1>Loading...</h1>
+  }
 
   return (
     <div className="FormBorder">
@@ -66,7 +77,16 @@ function ApplyForm() {
                   <Form.Check 
                     type="checkbox" 
                     value={skill} 
-                    onChange={(e) => handleCheckboxChange(e, setSkills, skills)}
+                    onChange={(e) =>{
+                      const value = e.target.value;
+                      if (e.target.checked) {
+
+                        const a = [...skills];
+                        setSkills([...a, value]);
+                      } else {
+                        setSkills(skills.filter(item => item !== value));
+                      }
+                    }}
                   />
                 </li>
               </Col>
@@ -76,7 +96,7 @@ function ApplyForm() {
         <Form.Group className="mb-3">
           <Form.Label><h3>Requirements:</h3></Form.Label>
           <Row className="skillrow">
-            {job.requirements.map((requirement, index) => (
+            {job.tags.map((requirement, index) => (
               <Col key={`requirement-${index}`}>
                 <li>
                   <h6>{requirement}</h6>
@@ -121,3 +141,34 @@ function ApplyForm() {
 }
 
 export default ApplyForm;
+
+
+
+
+
+
+
+
+
+
+ // const job ={
+  //   id: 1,
+  //   title: "Full Stack Developer",
+  //   description:
+  //     "We are looking for a skilled Full Stack Developer to join our dynamic team.",
+  //   requirements: [
+  //     "Bachelor's degree in Computer Science or related field",
+  //     "3+ years of experience in software development",
+  //     "Proficient in JavaScript, HTML, CSS",
+  //     "Experience with React and Node.js",
+  //     "Strong problem-solving skills",
+  //   ],
+  //   skills: ["JavaScript", "React", "Node.js", "HTML", "CSS", "Git"],
+  //   workType: "hybrid", // Possible values: 'remote', 'hybrid', 'onsite'
+  //   level: "Mid-level", // Possible values: 'Entry-level', 'Mid-level', 'Senior-level'
+  //   niceToHave: [
+  //     "Experience with Docker",
+  //     "Knowledge of CI/CD pipelines",
+  //     "Familiarity with cloud platforms (AWS, Azure, GCP)",
+  //   ],
+  // }

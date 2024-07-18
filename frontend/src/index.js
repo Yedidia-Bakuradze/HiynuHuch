@@ -111,7 +111,7 @@ const router = createBrowserRouter([
         element: <Outlet />,
         children: [
           {
-            path: ":id",
+            path: ":formId",
             element: <ApplyForm />,
           },
         ],

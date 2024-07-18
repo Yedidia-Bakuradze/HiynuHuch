@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 const empAppSchema = new mongoose.Schema(
   {
-    UserId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
     AppId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Application",
@@ -15,7 +10,6 @@ const empAppSchema = new mongoose.Schema(
     Status: {
       type: String,
       default: "Pending",
-      required: true,
     },
     //A score for each field
     AiScore: [
@@ -27,10 +21,6 @@ const empAppSchema = new mongoose.Schema(
       type: String,
     },
     EmpName: {
-      type: String,
-      required: true,
-    },
-    AppTitle: {
       type: String,
       required: true,
     },

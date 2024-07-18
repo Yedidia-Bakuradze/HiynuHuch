@@ -15,8 +15,7 @@ const getAllApplications = asyncHandler(async (req, res) => {
 const getApplicationById = asyncHandler(async (req, res) => {
   try {
     const application = await applicationModel.findById(req.params.id);
-    res.json(application);
-    res.status(200).send(application);
+    res.status(200).json(application);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
