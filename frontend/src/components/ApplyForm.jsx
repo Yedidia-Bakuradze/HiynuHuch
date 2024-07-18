@@ -84,14 +84,14 @@ function ApplyForm() {
   }
 
   return (
-    <div className="FormBorder border rounded m-4 p-4">
+    <div className="FormBorder m-1 p-1">
+      <Form onSubmit={handleSubmit} className="border rounded p-4">
       <h1 className="sl">Apply for {job.title}</h1>
       <h1>Description:</h1>
       <h6>{job.description}</h6>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 ">
           <Form.Label><h3>Skills:</h3></Form.Label>
-          <Row className="skillrow">
+          <Row className="skillrow p-3">
             {job.skills.map((skill, index) => (
               <Col key={`skill-${index}`}>
                 <li>
@@ -108,7 +108,7 @@ function ApplyForm() {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label><h3>Requirements:</h3></Form.Label>
-          <Row className="skillrow">
+          <Row className="skillrow p-3">
             {job.tags.map((requirement, index) => (
               <Col key={`requirement-${index}`}>
                 <li>
