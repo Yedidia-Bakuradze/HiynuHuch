@@ -1,11 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import Dashboard from "./Components/Dashboard";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./Style/Root.css";
 import Root from "./routes/Root";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import MainScreen from "./Screens/MainScreen";
 import LoginScreen from "./Screens/LoginScreen";
@@ -13,6 +12,7 @@ import SignupScreen from "./Screens/SignupScreen";
 import { Tab } from "react-bootstrap";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
+import ApplyForm from "./components/ApplyForm";
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
@@ -35,8 +35,6 @@ import LobbyScreen from "./Screens/LobbyScreen";
 //         element: <LobbyScreen />,
 //       },
 
-
-      
 //       {
 //         path: "Newposition",
 //         element: <EditScreen />,
@@ -60,7 +58,6 @@ import LobbyScreen from "./Screens/LobbyScreen";
 //     ],
 //   },
 
-  
 //   {
 //     path: "login",
 //     element: <LoginScreen />,
@@ -71,20 +68,19 @@ import LobbyScreen from "./Screens/LobbyScreen";
 //   },
 // ]);
 
-
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet/>,
+    element: <Outlet />,
     errorElement: <ErrorPage />,
-    children:[
+    children: [
       {
         path: "recruiter",
-        element: <Outlet/>,
-        children:[
+        element: <Outlet />,
+        children: [
           {
             path: "",
-            element: <LobbyScreen/> 
+            element: <LobbyScreen />,
           },
           {
             path: "login",
@@ -96,21 +92,29 @@ const router = createBrowserRouter([
           },
           {
             path: ":id",
-            element: <Root/>,
-            children:[
+            element: <Root />,
+            children: [
               {
                 path: "",
-                element: <TabInJobPage/>
-              }
-            ]
-          }
-        ]
-      }
-    
-    ]
-  }
-])
-
+                element: <TabInJobPage />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: "form",
+        element: <Outlet />,
+        children: [
+          {
+            path: ":id",
+            element: <ApplyForm />,
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

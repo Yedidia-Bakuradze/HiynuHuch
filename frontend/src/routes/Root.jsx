@@ -4,6 +4,7 @@ import {
   Link,
   NavLink,
   useNavigation,
+  useParams,
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { ListOfPositions } from "../Data/ListOfPositions.js";
@@ -25,7 +26,7 @@ export default function Root() {
           >
             <NavLink
               id="navLink"
-              to={``}
+              to={`/recruiter/${position._id.$oid}`}
               className={({ isActive, isPending }) =>
                 isActive ? "active" : isPending ? "pending" : ""
               }

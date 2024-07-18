@@ -209,3 +209,10 @@ form[action$="destroy"] button {
 .remove_text_dec {
   text-decoration: none;
 }
+#applyform{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  padding-left: 10px;
+  justify-content: space-between;
+}

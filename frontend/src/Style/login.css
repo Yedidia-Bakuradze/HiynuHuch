@@ -20,16 +20,12 @@
 }
 
 .fields {
-  border: 10px solid #000;
+  border: 1px solid #000;
   border-radius: 10px;
-  background-color: #746a6a;
   color: #746a6a;
 }
-.fields::placeholder {
-  color: #3992ff;
-}
 .fields:focus {
-  color: #3992ff;
+  color: blue;
 }
 #loginpagebuttons {
   display: flex;

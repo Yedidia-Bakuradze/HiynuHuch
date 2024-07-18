@@ -15,6 +15,7 @@ export const ListOfPositions = [
     updatedAt: {
       $date: "2024-06-21T14:38:59.071Z",
     },
+    companyId: "f28hf32 6675908364b6a7b1c8e1d478",
     __v: 0,
   },
   {
@@ -33,6 +34,7 @@ export const ListOfPositions = [
     updatedAt: {
       $date: "2024-06-21T14:38:59.071Z",
     },
+    companyId: "66758e335159b851c69d627c fweufh9734hf3",
     __v: 0,
   },
   {
@@ -51,6 +53,7 @@ export const ListOfPositions = [
     updatedAt: {
       $date: "2024-06-21T14:38:59.071Z",
     },
+    companyId: "6675908364b6a7b1c8e1d478 dsadasdas432423",
     __v: 0,
   },
   {
@@ -69,6 +72,7 @@ export const ListOfPositions = [
     updatedAt: {
       $date: "2024-06-21T14:38:59.071Z",
     },
+    companyId: "66758e335159b851c69d627c f28hf32",
     __v: 0,
   },
 ];

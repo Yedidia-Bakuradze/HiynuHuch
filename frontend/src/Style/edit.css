@@ -11,3 +11,13 @@
   margin-right: 10%;
   height: fit-content;
 }
+#Newbuttons{
+  display: flex;
+  justify-content: space-between;
+}
+.Newbuttons{
+  width: 7rem !important;
+}
+.newForm{
+  width: 70%;
+}
