@@ -1,3 +1,30 @@
+<<<<<<< HEAD:frontend/src/Screens/TabInJobScreen.jsx
+import { Button, Header } from "react";
+import Dashboard from "../components/Dashboard";
+import { Link } from "react-router-dom";
+import "../Style/ApplyForm.css";
+
+
+
+function TabInJobPage() {
+
+
+  return (
+    <>
+
+      <div className="Header-dashboard" >
+        <Link to={'/'} className="Submit-btn"> 
+           filter
+        </Link>
+      </div>
+      <Dashboard />
+      
+    </>
+  );
+}
+
+export default TabInJobPage;
+=======
 import { Button, Tab, Tabs } from "react-bootstrap";
 import Dashboard from "../Components/Dashboard";
 import { useState } from "react";
@@ -33,3 +60,4 @@ function ListOfAppliedApplications() {
 }
 
 export default ListOfAppliedApplications;
+>>>>>>> ff1504bf82c929d3cc4d836367d40df3c33cab6e:frontend/src/Screens/ListOfAppliedApplications.jsx

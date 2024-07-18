@@ -11,3 +11,7 @@
     
 }
 
+.Header-dashboard{
+display: flex;
+grid-template-columns:  0.1fr;
+}

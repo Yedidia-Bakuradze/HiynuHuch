@@ -1,18 +1,14 @@
 .center-div {
   display: flex;
   justify-content: center;
+  border: 1px solid #000;
+  border-radius: 10px;
   margin-left: 40%;
   margin-top: 10%;
   height: fit-content;
+  padding: 15px;
 }
-.border-form {
-  border-radius: 10px;
-  border: 2px solid;
-  border-style: dotted;
-  border-color: #3992ff;
-  color: #3992ff;
-  padding: 1rem;
-}
+
 
 .fieldsnames {
   margin-top: 1rem;
@@ -25,7 +21,7 @@
   color: #746a6a;
 }
 .fields:focus {
-  color: blue;
+  color: black;
 }
 #loginpagebuttons {
   display: flex;
@@ -34,7 +30,7 @@
 }
 .loginpagebuttons {
   width: 10rem !important;
-  box-shadow: 0 0px 1px #3992ff, 0 1px 2px #3992ff !important;
+  box-shadow: 0 0px 1px black, 0 1px 2px black !important;
 }
 #notloginbuttons {
   display: flex;
@@ -51,9 +47,9 @@
   border: none;
   border-radius: 8px;
   padding: 0rem 0.75rem;
-  box-shadow: 0 0px 1px #3992ff, 0 1px 2px #3992ff;
+  box-shadow: 0 0px 1px black, 0 1px 2px black;
   background-color: white;
   font-size: 1rem;
   text-align: left;
-  color: #3992ff;
+  color: black;
 }

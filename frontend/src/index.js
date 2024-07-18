@@ -10,8 +10,13 @@ import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
+<<<<<<< HEAD
+import PositionDetails from "./components/PositionDetails";
+
+=======
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
+>>>>>>> ff1504bf82c929d3cc4d836367d40df3c33cab6e
 
 const router = createBrowserRouter([
   {
