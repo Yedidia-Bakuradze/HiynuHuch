@@ -12,7 +12,7 @@
   height: fit-content;
 }
 #Newbuttons{
-  display: flex;
+  display: flex ;
   justify-content: space-between;
 }
 .Newbuttons{
