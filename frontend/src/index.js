@@ -1,16 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
-<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-=======
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import Dashboard from "./components/Dashboard";
->>>>>>> c1d537eaae88279297a7ac5b8d0ac6f83e23af64
 import "./Style/Root.css";
 import Root from "./routes/Root";
 import { Outlet } from "react-router-dom";
-
 import MainScreen from "./Screens/MainScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
