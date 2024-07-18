@@ -11,7 +11,7 @@ import LobbyScreen from "./Screens/LobbyScreen";
 // import PositionDetails from "./Components/PositionDetails";
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
-import MoreDetails from "./Components/Moredetails";
+import MoreDetails from "./Components/MoreDetails";
 import EditScreen from "./Screens/EditScreen";
 import Settings from "./Screens/SettinsScreen";
 import axios from "axios";

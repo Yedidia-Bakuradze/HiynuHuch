@@ -31,7 +31,7 @@ function Dashboard({positionId}) {
       <Row className="CardRow">
         {applications.map((emp) => (
           <Card className="Card" key={emp._id}>
-            <Card.Header>{Math.floor(Math.random()*100)}</Card.Header>
+            <Card.Header>{emp.ai || "Placeholder"}</Card.Header>
             <Card.Body >
               <Card.Text>
                 <h9>Name: {emp.name}</h9>
@@ -40,12 +40,12 @@ function Dashboard({positionId}) {
                 <h9>Email: {emp.email}</h9>
               </Card.Text>
               <Card.Text>
-                <h9>Grade: {Math.floor(Math.random()*100)}</h9>
+                <h9>Grade: {emp.grade || ""}</h9>
               </Card.Text>
               <Card.Text>
-                <h9>Status: {Math.floor(Math.random()*100) >50? "Panding": "Waiting for a tech interview" }</h9>
+                <h9>Status: </h9>
               </Card.Text>
-              <ProgressBar now={Math.floor(Math.random()*100)} label={Math.floor(Math.random()*100)} />
+              <ProgressBar now={emp.status} label={`${emp.status}%`} />
               <br></br>
               <Link to={`details/${emp._id}`}  className="Submit-btn remove_text_dec" variant="primary">
                 More Details

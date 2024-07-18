@@ -16,7 +16,10 @@
   color: #746a6a;
   padding: 1rem;
 }
-
+.cv{
+  width: fit-content !important;
+  max-width: 50% !important; 
+}
 .Personfieldsnames {
   margin-top: -10px;
   display: flex;
