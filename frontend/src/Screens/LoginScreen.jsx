@@ -1,5 +1,5 @@
 import React from "react";
-import { Form } from "react-bootstrap";
+import { Form,Button } from "react-bootstrap";
 import "../Style/login.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -36,7 +36,7 @@ export default function LoginScreen() {
 
   return (
     <div className="center-div">
-      <Form className="border rounded ">
+      <Form>
         <Form.Label className="fieldsnames">Email:</Form.Label>
         <Form.Control
           className="fields"
@@ -67,14 +67,7 @@ export default function LoginScreen() {
           </Link>
         </p>
         <p id="loginpagebuttons">
-          <button
-            type="submit"
-            onClick={(e) => {verifyUserLogin(e)}}
-            className="app_container loginpagebuttons"
-          >
-            log in
-          </button>
-          <button
+        <Button
             type="button"
             className="app_container loginpagebuttons"
             onClick={(e)=>{
@@ -83,7 +76,15 @@ export default function LoginScreen() {
             }}
           >
             Cancel
-          </button>
+          </Button>
+          <Button
+            type="submit"
+            onClick={(e) => {verifyUserLogin(e)}}
+            className="app_container loginpagebuttons"
+          >
+            login
+          </Button>
+
         </p>
       </Form>
     </div>

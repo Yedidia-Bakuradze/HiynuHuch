@@ -10,7 +10,7 @@ import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
-import PositionDetails from "./Components/PositionDetails";
+import PositionDetails from "./components/PositionDetails";
 
 
 const router = createBrowserRouter([
