@@ -5,26 +5,27 @@ import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import "./Style/Root.css";
 import Root from "./routes/Root";
 import {Outlet} from "react-router-dom";
-import NewPosition from "./Screens/NewPosition";
+import "./Style/Root.css";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
 import PositionDetails from "./Components/PositionDetails";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Outlet/>,
+    element: <Outlet />,
     errorElement: <ErrorPage />,
-    children:[
+    children: [
       {
         path: "recruiter",
-        element: <Outlet/>,
-        children:[
+        element: <Outlet />,
+        children: [
           {
             path: "",
-            element: <LobbyScreen/> 
+            element: <LobbyScreen />,
           },
           {
             path: "login",
@@ -37,8 +38,8 @@ const router = createBrowserRouter([
 
           {
             path: ":id",
-            element: <Root/>,
-            children:[
+            element: <Root />,
+            children: [
               {
                 path: "",
                 element: <TabInJobPage/>
