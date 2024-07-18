@@ -12,7 +12,6 @@ import LobbyScreen from "./Screens/LobbyScreen";
 
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
-import MoreDetails from "./Components/MoreDetails";
 import EditScreen from "./Screens/EditScreen";
 
 const router = createBrowserRouter([
@@ -84,7 +83,7 @@ const router = createBrowserRouter([
           },
           {
             path: "bla/:id",
-            element: <MoreDetails />,
+            
           },
         ],
       },

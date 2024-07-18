@@ -1,17 +1,117 @@
-.FormBorder{
+/* .Form-Border{
     display: flex;
     justify-content: center;
-    align-items: center;
     min-width: 100vw;
-    padding: 100px;
+    padding: 10px;
     margin: 10px;
-    border: 10px solid #000;
+    border: 1px solid #000;
     border-radius: 10px;
-    background-color: #746a6a;
+    width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.Header-dashboard{
-display: flex;
-grid-template-columns:  0.1fr;
+
+.Job-Titels{
+    height: fit-content;
+    padding: 15px;
+    overflow: hidden;
+    width: fit-content;
+    max-width: 300px;
+    border: 1px solid #000;
+    border-radius: 10px;
 }
+
+
+.FormApply{
+    display: flex;
+    flex-direction: column;
+    width: 50% ;
+    padding: 10px;
+    margin: 10px;
+} */
+/* Container for the entire form */
+
+
+/* Container styling */
+.Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+/* Description styling */
+.Description {
+    flex: 1;
+    margin-right: auto auto;
+}
+
+.Form-Border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Job title styling */
+.Job-Titels {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: auto auto;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Description title styling */
+.Description-Titel {
+    font-size: 1.25rem;
+    margin: auto auto;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Form styling */
+.FormApply {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Skill and requirement list styling */
+.skillrow {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skillrow li {
+    margin-bottom: 10px;
+}
+
+/* Button styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
