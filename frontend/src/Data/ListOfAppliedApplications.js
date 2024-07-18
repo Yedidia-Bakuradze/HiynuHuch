@@ -2,7 +2,7 @@
 export const ListOfAppliedApplications = [
   {
     _id:"1",
-    AppId: "60d5f60d8e620b3c8c41d7a2",
+    AppId: "1",
     Status: "Pending",
     AiScore: [85, 90, 78],
     AiReview: "AI reviewed and found the applicant satisfactory.",
@@ -15,7 +15,7 @@ export const ListOfAppliedApplications = [
   },
   {
     _id:"2",
-    AppId: "60d5f60d8e620b3c8c41d7a2",
+    AppId: "2",
     Status: "Reviewed",
     AiScore: [75, 80, 82],
     AiReview: "AI reviewed and found the applicant meets requirements.",

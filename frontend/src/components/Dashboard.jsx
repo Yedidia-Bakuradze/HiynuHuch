@@ -1,8 +1,13 @@
-import { Card, Row, ProgressBar } from "react-bootstrap";
 import "../Style/Dashboard.css";
-import {Link} from "react-router-dom";
+import {ListOfAppliedApplications} from "../Data/ListOfAppliedApplications";
 
 function Dashboard({positionId}) {
+  const listOfApplications = ListOfAppliedApplications.filter((a) =>{
+    alert(a.AppId);  
+    alert(positionId);  
+    return a.AppId === positionId
+  });
+  console.log(listOfApplications)
   return (
     <>
     {/* <div className="CardDiv">
