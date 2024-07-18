@@ -11,7 +11,6 @@ function ListOfAppliedApplications() {
   const navigator = useNavigate();
   const editCurrentPosition = ()=>{
     navigator('edit')
-
   };
   
   return (

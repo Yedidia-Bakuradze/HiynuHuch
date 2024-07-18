@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Alert, AlertHeading } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../Style/login.css";
-import { ListOfUsers } from "../Data/ListOfUsers";
+import { ListOfAdmins } from "../Data/ListOfAdmins";
 
 export default function SignupScreen() {
   const [name, setName] = useState("");
@@ -21,7 +21,7 @@ export default function SignupScreen() {
     alert(password);
     alert(secondPassword);
 
-    const user = ListOfUsers.find((user)=>user.email === emailAddress);
+    const user = ListOfAdmins.find((user)=>user.email === emailAddress);
 
     if(user){
       alert("User already exists");
@@ -37,7 +37,7 @@ export default function SignupScreen() {
         name: name,
       };
       setErrors({});
-      ListOfUsers.push(newUser);
+      ListOfAdmins.push(newUser);
       navigate(`/recruiter/${newUser.id}`); // Navigating to a specific user page
     }else{
       setErrors({...errors, confirmpassword: "Passwords do not match"});

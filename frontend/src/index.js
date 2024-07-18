@@ -2,17 +2,17 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./Style/Root.css";
 import Root from "./routes/Root";
 import { Outlet } from "react-router-dom";
-import "./Style/Root.css";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
+// import PositionDetails from "./Components/PositionDetails";
+
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
-
+import MoreDetails from "./Components/MoreDetails";
 import EditScreen from "./Screens/EditScreen";
 
 const router = createBrowserRouter([
@@ -44,31 +44,30 @@ const router = createBrowserRouter([
             children: [
               {
                 path: "new-position",
-                element: <NewPosition/>
+                element: <NewPosition />,
               },
               {
                 path: "position/",
-                element: <Outlet/>,
-                children:[
+                element: <Outlet />,
+                children: [
                   {
                     path: ":positionId",
-                    element: <Outlet/>,
-                    children:[
+                    element: <Outlet />,
+                    children: [
                       {
                         path: "",
-                        element: <ListOfAppliedApplications/>,
+                        element: <ListOfAppliedApplications />,
                       },
                       {
                         path: "details/:employeeId",
-                        element: <>Employee details</>
+                        element: <>Employee details</>,
                       },
                       {
                         path: "edit",
-                        element: <EditScreen/>,
+                        element: <EditScreen />,
                       },
-                    ]
+                    ],
                   },
-                  
                 ],
               },
             ],
@@ -82,6 +81,10 @@ const router = createBrowserRouter([
           {
             path: ":id",
             element: <ApplyForm />,
+          },
+          {
+            path: "bla/:id",
+            element: <MoreDetails />,
           },
         ],
       },
