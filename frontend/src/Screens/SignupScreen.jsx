@@ -34,7 +34,7 @@ export default function SignupScreen() {
       console.log(data);
 
       //Stores teh token in the local storage so the user wont need to login again
-      navigate(`/recruiter/${data._id}`)
+      navigate(`/recruiter/${data._id}/settings`)
 
     }catch(err){
       console.log(err);

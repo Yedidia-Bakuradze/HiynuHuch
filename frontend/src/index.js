@@ -11,13 +11,15 @@ import LobbyScreen from "./Screens/LobbyScreen";
 // import PositionDetails from "./Components/PositionDetails";
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
-import MoreDetails from "./Components/MoreDetails";
+import MoreDetails from "./Components/MoreDetails.jsx";
 import EditScreen from "./Screens/EditScreen";
+import Settings from "./Screens/SettinsScreen";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-axios.interceptors.request.use((req) => {
-    if (getToken() && req.url.startsWith('api/admin/')) {
+axios.interceptors.request.use(
+  (req) => {
+    if (getToken() && req.url.startsWith("api/admin/")) {
       req.headers.Authorization = `Bearer ${getToken()}`;
     }
     return req;
@@ -45,7 +47,6 @@ axios.interceptors.request.use((req) => {
 const getToken = () => {
   return localStorage.getItem("token");
 };
-
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
               {
                 path: "new-position",
                 element: <NewPosition />,
+              },
+              {
+                path: "settings",
+                element: <Settings />,
               },
               {
                 path: "position/",

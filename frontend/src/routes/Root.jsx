@@ -28,7 +28,6 @@ export default function Root() {
         console.error('Error fetching user data:', error);
       }
     };
-
     fetchUserData();
   }, [id]);
   
@@ -86,7 +85,7 @@ export default function Root() {
 
         <div>
           <ul>
-            <Link to={`/settings`} className="remove_text_dec">
+            <Link to={`/recruiter/:id/settings`} className="remove_text_dec">
               <li className="nav_container">
                 Settings
               </li>

@@ -1,9 +1,9 @@
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState ,useEffect} from "react";
+import "../Style/MoreDetails.css";
 import axios from "axios";
 import logo from "../Data/CV.png";
-import "../Style/MoreDetails.css";
 
 function MoreDetails() {
   const [emp, setEmp] = useState(null);
