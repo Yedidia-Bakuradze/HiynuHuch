@@ -12,6 +12,12 @@ const applicationSchema = new mongoose.Schema(
         default: [],
       },
     ],
+    skills: [
+      {
+        type: String,
+        default: [],
+      },
+    ],
     description: {
       type: String,
       require: true,

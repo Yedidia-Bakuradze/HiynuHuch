@@ -36,11 +36,11 @@ const getApplicationByCreator = asyncHandler(async (req, res) => {
 
 const createApplication = asyncHandler(async (req, res) => {
   try {
-    const { title, description, tags } = req.body;
+    const { title, description, tags, skills } = req.body;
     req.body.creator = req.admin._id;
     // Check if all fields are filled
     // Check if the creator exists
-    if (!title || !description || !tags) {
+    if (!title || !description || !tags || !skills) {
       return res.status(400).json({ message: "Please fill all the fields" });
     } else if (!adminModel.findById(req.admin._id)) {
       return res.status(400).json({ message: "Creator hasn't found" });
@@ -56,9 +56,9 @@ const createApplication = asyncHandler(async (req, res) => {
 
 const updateApplication = asyncHandler(async (req, res) => {
   try {
-    const { title, description, tags} = req.body;
+    const { title, description, tags, skills} = req.body;
     req.body._id = req.admin._id;
-    if (!title || !description || !tags) {
+    if (!title || !description || !tags ||!skills) {
       return res.status(400).json({ message: "Please fill all the fields" });
     }
     const application = await applicationModel.findById(req.params.id);

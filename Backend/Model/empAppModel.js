@@ -37,11 +37,29 @@ const empAppSchema = new mongoose.Schema(
     ManualReport: {
       type: String,
     },
-
     //A general score of the applicant
     ManualScore: {
       type: Number,
     },
+    name: {
+      type: String,
+      require: true,
+      maxLength: 50,
+    },
+    email: {
+      type: String,
+      require: true,
+      unique: true,
+    },
+    cv: {
+      type: String,
+    },
+    skills: [
+      {
+        type: String,
+        default: [],
+      },
+    ],
   },
   {
     timestamps: true,

@@ -3,19 +3,17 @@ const {
   getAllApplications,
   getAllApplicationsOfUser,
   getApplicationById,
-  deleteAllEmpApp,
+  deleteEmpApp,
   updateApplication,
   getAllSubmittedApplications,
   createEmApp,
 } = require("../Controller/empAppController");
 
 const router = express.Router();
-
 router.route("/").post(createEmApp);
-router.route("/").delete(deleteAllEmpApp);
 router.route("/").get(getAllApplications);
 router.route("/:user").get(getAllApplicationsOfUser);
-router.route("/submit").get(getAllSubmittedApplications);
+router.route("/submit").post(getAllSubmittedApplications);
 router
   .route("/:id")
   .delete(deleteEmpApp)

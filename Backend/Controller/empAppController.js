@@ -3,8 +3,11 @@ const asyncHandler = require("express-async-handler");
 
 const createEmApp = asyncHandler(async (req, res) => {
   const {
+    name,
+    email,
+    skills,
     AppId,
-    UserId,
+    cv,
     Status,
     AiScore,
     AiReview,
@@ -14,7 +17,7 @@ const createEmApp = asyncHandler(async (req, res) => {
     ManualScore,
   } = req.body;
 
-  if(!AppId||!UserId||!EmpName||!AppTitle)
+  if(!AppId||!UserId||!EmpName||!AppTitle||!name||!email||!cv||!skills)
     {
             return res.status(400).json({ message: "Please fill all the fields" });
     }
@@ -47,7 +50,6 @@ const getAllApplications = asyncHandler(async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 const getApplicationById = asyncHandler(async (req, res) => {
   try {
     const application = await empAppModel.findById(req.params.id);
@@ -62,7 +64,6 @@ const getApplicationById = asyncHandler(async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 const getAllApplicationsOfUser = asyncHandler(async (req, res) => {
   try {
     const userId = req.user._id;
@@ -80,11 +81,9 @@ const getAllApplicationsOfUser = asyncHandler(async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 const getAllSubmittedApplications = asyncHandler(async (req, res) => {
   try {
     const { AppId: appId } = req.body;
-
     const listOfAppliedApplicants = await empAppModel.find({ AppId: appId });
     if (!listOfAppliedApplicants) {
       res.status(404).send("No applications found");
@@ -96,8 +95,7 @@ const getAllSubmittedApplications = asyncHandler(async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
-const deleteAllEmpApp = asyncHandler(async (req, res) => {
+const deleteEmpApp = asyncHandler(async (req, res) => {
   try {
     const application = await empAppModel.findByIdAndDelete(req.params.id);
 
@@ -124,6 +122,10 @@ const updateApplication = asyncHandler(async (req, res) => {
       newAppTitle,
       newManualReport,
       newManualScore,
+      newName,
+      newEmail,
+      newSkills,
+      newCv
     } = req.body;
     const application = await empAppModel.findById(req.params.id);
 
@@ -140,6 +142,9 @@ const updateApplication = asyncHandler(async (req, res) => {
     application.AppTitle = newAppTitle;
     application.ManualReport = newManualReport;
     application.ManualScore = newManualScore;
+    application.name = newName;
+    application.email = newEmail;
+    application.skills = newSkills
 
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -150,10 +155,8 @@ module.exports = {
   getAllApplications,
   getAllApplicationsOfUser,
   getApplicationById,
-  deleteAllEmpApp,
+  deleteEmpApp,
   updateApplication,
   getAllSubmittedApplications,
   createEmApp,
 };
-
-// TODO: Create new employee-application relationship
