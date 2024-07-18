@@ -13,64 +13,7 @@ import SignupScreen from "./Screens/SignupScreen";
 import { Tab } from "react-bootstrap";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <><Outlet/></>,
-//     errorElement: <ErrorPage />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <MainScreen />,
-//         children: [
-//           {
-//             path: "Dashboard/:id",
-//             element: <Dashboard />,
-//           },
-//         ],
-//       },
-
-//       {
-//         path: "recruiter",
-//         element: <LobbyScreen />,
-//       },
-
-
-      
-//       {
-//         path: "Newposition",
-//         element: <EditScreen />,
-//       },
-//       {
-//         path: "positions/position/edit",
-//         element: <EditScreen />,
-//       },
-//       {
-//         path: "positions/position/destroy",
-//         errorElement: <div>Oops! There was an error.</div>,
-//       },
-//       {
-//         path: "position/delete",
-//         element: <Destroy />,
-//       },
-//       {
-//         path: "Moredetails/:id",
-//         element: <Moredetails />,
-//       },
-//     ],
-//   },
-
-  
-//   {
-//     path: "login",
-//     element: <LoginScreen />,
-//   },
-//   {
-//     path: "signup",
-//     element: <SignupScreen />,
-//   },
-// ]);
-
+import PositionDetails from "./Components/PositionDetails";
 
 const router = createBrowserRouter([
   {
@@ -101,6 +44,11 @@ const router = createBrowserRouter([
               {
                 path: "",
                 element: <TabInJobPage/>
+              },
+              {
+                path: "position/:positionId",
+                element: <PositionDetails/>
+              
               }
             ]
           }
