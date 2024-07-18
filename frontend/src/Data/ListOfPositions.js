@@ -22,7 +22,7 @@ export const ListOfPositions = [
     _id: {
       $oid: "dsadasdas432423",
     },
-    title: "Full sdfgsdgsdf",
+    title: "Backend Developer",
     tags: [],
     description: "Hello for everyone",
     creator: {
@@ -41,7 +41,7 @@ export const ListOfPositions = [
     _id: {
       $oid: "fweufh9734hf3",
     },
-    title: "sdfdgdgd Stack",
+    title: "Cloud Engineer",
     tags: [],
     description: "everyone",
     creator: {
@@ -60,7 +60,7 @@ export const ListOfPositions = [
     _id: {
       $oid: "f28hf32",
     },
-    title: "Full 23423512",
+    title: "UI/UX Designer",
     tags: [],
     description: "Hello for everyone",
     creator: {

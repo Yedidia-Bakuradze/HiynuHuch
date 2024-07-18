@@ -8,33 +8,19 @@ import {
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { ListOfPositions } from "../Data/ListOfPositions.js";
-
+import NavPosition from "../Components/NavPosition.jsx";
 export default function Root() {
   const navigation = useNavigation();
   let DisplayPositions;
   
+
+
   if(ListOfPositions.length > 0){
     DisplayPositions = (
       <ul>
-        {ListOfPositions.map((position) => (
-          <li
-            key={
-              position._id && position._id.$oid
-                ? position._id.$oid
-                : position.name
-            }
-          >
-            <NavLink
-              id="navLink"
-              to={`/recruiter/${position._id.$oid}`}
-              className={({ isActive, isPending }) =>
-                isActive ? "active" : isPending ? "pending" : ""
-              }
-            >
-              {position.title ? <>{position.title}</> : <i>No Name</i>}{" "}
-            </NavLink>
-          </li>
-        ))}
+        {
+         ListOfPositions.map((p) => <NavPosition positionId={p._id.$oid} positionName={p.title}/>)
+        }
       </ul>
     );
   }else{
@@ -52,7 +38,7 @@ export default function Root() {
       <div id="sidebar">
         <div>
           <ul>
-            <Link to={`/Newposition`} className="remove_text_dec">
+            <Link to={`new-position`} className="remove_text_dec">
               <li className="nav_container" >
                 New
               </li>

@@ -1,72 +1,26 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
+<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import "./Style/Root.css";
 import Root from "./routes/Root";
 import { Outlet } from "react-router-dom";
 import MainScreen from "./Screens/MainScreen";
+=======
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import "./Style/Root.css";
+import Root from "./routes/Root";
+import {Outlet} from "react-router-dom";
+import "./Style/Root.css";
+>>>>>>> bbb352ef66c84d37bf5d2fd96ca3bf2ad36e7dc7
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
-import { Tab } from "react-bootstrap";
 import TabInJobPage from "./Screens/TabInJobScreen";
 import LobbyScreen from "./Screens/LobbyScreen";
-import ApplyForm from "./components/ApplyForm";
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <><Outlet/></>,
-//     errorElement: <ErrorPage />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <MainScreen />,
-//         children: [
-//           {
-//             path: "Dashboard/:id",
-//             element: <Dashboard />,
-//           },
-//         ],
-//       },
+import PositionDetails from "./Components/PositionDetails";
 
-//       {
-//         path: "recruiter",
-//         element: <LobbyScreen />,
-//       },
-
-//       {
-//         path: "Newposition",
-//         element: <EditScreen />,
-//       },
-//       {
-//         path: "positions/position/edit",
-//         element: <EditScreen />,
-//       },
-//       {
-//         path: "positions/position/destroy",
-//         errorElement: <div>Oops! There was an error.</div>,
-//       },
-//       {
-//         path: "position/delete",
-//         element: <Destroy />,
-//       },
-//       {
-//         path: "Moredetails/:id",
-//         element: <Moredetails />,
-//       },
-//     ],
-//   },
-
-//   {
-//     path: "login",
-//     element: <LoginScreen />,
-//   },
-//   {
-//     path: "signup",
-//     element: <SignupScreen />,
-//   },
-// ]);
 
 const router = createBrowserRouter([
   {
@@ -90,31 +44,39 @@ const router = createBrowserRouter([
             path: "signup",
             element: <SignupScreen />,
           },
+
           {
             path: ":id",
             element: <Root />,
             children: [
               {
                 path: "",
-                element: <TabInJobPage />,
+                element: <TabInJobPage/>
               },
-            ],
-          },
-        ],
-      },
-      {
-        path: "form",
-        element: <Outlet />,
-        children: [
-          {
-            path: ":id",
-            element: <ApplyForm />,
-          },
-        ],
-      },
-    ],
-  },
-]);
+              {
+                path: "new-position",
+                element: <>Create new position</>
+              },
+              {
+                path: "position/:positionId",
+                element: <PositionDetails/>,
+                children:[
+                  {
+                    path: "edit",
+                    element: <>Edit position</>
+                  }
+                
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    
+    ]
+  }
+])
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

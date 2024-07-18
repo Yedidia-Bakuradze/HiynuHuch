@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 import "../Style/edit.css";
 import "../Style/login.css";
 
-export default function Newposition() {
+export default function NewPosition() {
   const [position, setPosition] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
