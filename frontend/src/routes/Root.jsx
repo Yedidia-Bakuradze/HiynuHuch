@@ -88,10 +88,7 @@ export default function Root() {
         </div>
       </div>
       </div>
-      <div
-        id="detail"
-        className={navigation.state === "loading" ? "loading" : ""}
-      >
+      <div id="detail" className={navigation.state === "loading" ? "loading" : ""}>
         <Outlet />
       </div>
     </>

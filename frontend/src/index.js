@@ -11,6 +11,8 @@ import MainScreen from "./Screens/MainScreen";
 import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import RecruiterLayout from "./Screens/RecruiterLayout";
+import { Tab } from "react-bootstrap";
+import TabInJobPage from "./Screens/TabInJobScreen";
 // const router = createBrowserRouter([
 //   {
 //     path: "/",
@@ -90,8 +92,12 @@ const router = createBrowserRouter([
           },
           {
             path: ":id",
-            element: <RecruiterLayout/>,
+            element: <Root/>,
             children:[
+              {
+                path: "",
+                element: <TabInJobPage/>
+              }
             ]
           }
         ]
