@@ -22,17 +22,18 @@ const getApplicationById = asyncHandler(async (req, res) => {
   }
 });
 
+//WORKS
 const getApplicationByCreator = asyncHandler(async (req, res) => {
   try {
     const applications = await applicationModel.find({
       creator: req.params.owner,
     });
-    res.json(applications);
-    res.status(200).send(applications);
+    res.status(201).json(applications);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
 
 const createApplication = asyncHandler(async (req, res) => {
   try {

@@ -3,24 +3,43 @@ import {
   Outlet,
   Link,
   NavLink,
-  useNavigation,
+  useNavigate,
   useParams,
 } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 import { ListOfPositions } from "../Data/ListOfPositions.js";
 import NavPosition from "../Components/NavPosition.jsx";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+
+
 export default function Root() {
-  const navigation = useNavigation();
   let DisplayPositions;
   const {id} = useParams();
-  const listOfCreatedPositions = ListOfPositions.filter((p) => p.recruiterId ===id );
+  const [listOfPositions,setListOfPositions ] = useState([]);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:5000/api/app/creator/${id}`);
+        setListOfPositions(data);
+        console.log(listOfPositions)
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [id]);
+  
+  
   
 
-  if(ListOfPositions.length){
+  if(listOfPositions.length){
     DisplayPositions = (
       <ul>
         {
-         listOfCreatedPositions.map((p) => <NavPosition positionId={p.id} positionName={p.title}/>)
+         listOfPositions.map((p) => <NavPosition positionId={p.id} positionName={p.title}/>)
         }
 
       </ul>
@@ -82,7 +101,7 @@ export default function Root() {
         </div>
       </div>
       </div>
-      <div id="detail" className={navigation.state === "loading" ? "loading" : ""}>
+      <div id="detail">
         <Outlet />
       </div>
     </>

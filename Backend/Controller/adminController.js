@@ -6,7 +6,6 @@ const getAllAdmin = asyncHandler(async (req, res) => {
   try {
     const admins = await adminModel.find({});
     res.json(admins);
-    res.status(200).send(admins);
   } catch (err) {
     res.status(500).send(err);
   }

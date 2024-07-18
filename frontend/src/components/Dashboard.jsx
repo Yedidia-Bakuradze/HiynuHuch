@@ -1,7 +1,11 @@
 import "../Style/Dashboard.css";
 import {ListOfAppliedApplications} from "../Data/ListOfAppliedApplications";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
 
 function Dashboard({positionId}) {
+  
   const listOfApplications = ListOfAppliedApplications.filter((a) =>{
     alert(a.AppId);  
     alert(positionId);  
