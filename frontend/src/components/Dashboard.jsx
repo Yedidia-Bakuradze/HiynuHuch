@@ -6,14 +6,14 @@ import { Link} from "react-router-dom";
 function Dashboard() {
   return (
     <>
-    <div>
+    <div className="CardDiv">
       <Row className="CardRow">
         {ListOfEmployees.map((emp) => (
           <Card className="Card" key={emp.id}>
             <Card.Header>Header</Card.Header>
-            <Card.Body>
+            <Card.Body >
               <Card.Text>
-                <h8>Name: {emp.name}</h8>
+                <h9>Name: {emp.name}</h9>
               </Card.Text>
               <Card.Text>
                 <h8>Email: {emp.email}</h8>
@@ -26,7 +26,7 @@ function Dashboard() {
               </Card.Text>
               <ProgressBar now={emp.status} label={`${emp.status}%`} />
               <br></br>
-              <Link to={`/Moredetails/${emp._id.$oid}`}  className="Submit-btn remove_text_dec" variant="primary">
+              <Link to={`/Moredetails/${emp._id.$oid}`}  className="Submit-btn  remove_text_dec" variant="primary">
                 More Details
               </Link>
             </Card.Body>
