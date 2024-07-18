@@ -1,5 +1,5 @@
 import { Button, Tab, Tabs } from "react-bootstrap";
-import Dashboard from "../Components/Dashboard.jsx";
+import Dashboard from "../components/Dashboard.jsx";
 import { useState } from "react";
 
 
@@ -18,7 +18,7 @@ function TabInJobPage() {
   };
   return (
     <>
-      <Button className="filter">
+      <Button className="filter"> 
         filter
       </Button>
       <Dashboard />

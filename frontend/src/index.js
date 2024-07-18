@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import ErrorPage from "./error-page";
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
-import Dashboard from "./Components/Dashboard";
+import Dashboard from "./components/Dashboard";
 import "./Style/Root.css";
 import Root from "./routes/Root";
 import {Outlet} from "react-router-dom";
