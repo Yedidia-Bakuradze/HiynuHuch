@@ -71,7 +71,7 @@ export default function NewPosition() {
         <Form.Control
           className="fields"
           type="text"
-          placeholder="deggre, 2 years experience (all different requirements needs a comma)"
+          placeholder="deegre, 2 years experience (all different requirements needs a comma)"
           name="requirments"
           value={formData.requirements}
           onChange={(e)=>setFormData({...formData, requirements: e.target.value})}
@@ -81,7 +81,7 @@ export default function NewPosition() {
         <Form.Control
           className="fields"
           type="text"
-          placeholder="3 days at work 2 at home etc"
+          placeholder="remote / hybrid / onsite"
           name="times"
           value={formData.times}
           onChange={(e)=>setFormData({...formData, typeOfPosition: e.target.value})}
@@ -90,8 +90,8 @@ export default function NewPosition() {
         <Form.Label className="fieldsnames">Description:</Form.Label>
         <Form.Control
           className="fields"
-          type="text"
-          placeholder="3 days at work 2 at home etc"
+          type="textarea"
+          placeholder="Need an experienced backend developer"
           name="description"
           value={formData.description}
           onChange={(e)=>setFormData({...formData, description: e.target.value})}
@@ -101,7 +101,7 @@ export default function NewPosition() {
         <Form.Control
           className="fields"
           type="text"
-          placeholder="3 days at work 2 at home etc"
+          placeholder="frontend knowlge"
           name="NiceAdditions"
           value={formData.NiceAdditions}
           onChange={(e)=>setFormData({...formData, niceToHave: e.target.value})}
