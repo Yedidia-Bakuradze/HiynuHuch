@@ -1,0 +1,17 @@
+.FormBorder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    padding: 100px;
+    margin: 10px;
+    border: 10px solid #000;
+    border-radius: 10px;
+    background-color: #746a6a;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.Header-dashboard{
+display: flex;
+grid-template-columns:  0.1fr;
+}

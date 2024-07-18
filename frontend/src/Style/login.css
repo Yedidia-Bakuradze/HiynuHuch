@@ -1,0 +1,55 @@
+.center-div {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-left: 40%;
+  margin-top: 10%;
+  height: fit-content;
+  padding: 15px;
+}
+
+
+.fieldsnames {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.fields {
+  border: 1px solid #000;
+  border-radius: 10px;
+  color: #746a6a;
+}
+.fields:focus {
+  color: black;
+}
+#loginpagebuttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+}
+.loginpagebuttons {
+  width: 10rem !important;
+  box-shadow: 0 0px 1px black, 0 1px 2px black !important;
+}
+#notloginbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+.smallbuttons {
+  text-decoration: none !important;
+  width: 9.4rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 0rem 0.75rem;
+  box-shadow: 0 0px 1px black, 0 1px 2px black;
+  background-color: white;
+  font-size: 1rem;
+  text-align: left;
+  color: black;
+}
