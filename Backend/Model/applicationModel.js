@@ -6,7 +6,7 @@ const applicationSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
-    tags: [
+    requirements: [
       {
         type: String,
         default: [],
@@ -26,6 +26,16 @@ const applicationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Admin",
       required: true,
+    },
+    niceToHave: [
+      {
+        type: String,
+        default: [],
+      },
+    ],
+    typeOfPosition: {
+      type: String,
+      require: true
     },
   },
   {

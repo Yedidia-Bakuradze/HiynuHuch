@@ -14,7 +14,7 @@ const { protectAdmin } = require("../Middleware/adminMiddleware");
 const router = express.Router();
 
 router.route("/")
-.post(protectAdmin,createApplication)
+.post(createApplication)
 .get(getAllApplications)
 .delete(protectAdmin, deleteAllApplicationsByCreator);
 router
