@@ -1,7 +1,6 @@
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
-import { ListOfAdmins } from "../Data/ListOfAdmins";
 import "../Style/MoreDetails.css";
 import { useEffect } from "react";
 import axios from "axios";

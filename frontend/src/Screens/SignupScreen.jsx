@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, Button, Alert, AlertHeading } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "../Style/login.css";
-import { ListOfAdmins } from "../Data/ListOfAdmins";
 import axios from "axios";
 
 export default function SignupScreen() {

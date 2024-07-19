@@ -8,14 +8,12 @@ import LoginScreen from "./Screens/LoginScreen";
 import SignupScreen from "./Screens/SignupScreen";
 import ListOfAppliedApplications from "./Screens/ListOfAppliedApplications";
 import LobbyScreen from "./Screens/LobbyScreen";
-// import PositionDetails from "./Components/PositionDetails";
 import NewPosition from "./Screens/NewPosition";
 import ApplyForm from "./Components/ApplyForm";
 import MoreDetails from "./Components/MoreDetails";
 import EditScreen from "./Screens/EditScreen";
 import Settings from "./Screens/SettinsScreen";
 import axios from "axios";
-import { useEffect, useState } from "react";
 
 axios.interceptors.request.use(
   (req) => {
@@ -28,21 +26,6 @@ axios.interceptors.request.use(
     return Promise.reject(err);
   }
 );
-
-// useEffect(async () => {
-//   if (getToken()) {
-//     try {
-//       const config = {
-//         headers: { Authorization: `Bearer ${getToken()} `},
-//       };
-//       const { data } = await axios.get("api/admin/token", config);
-//       // setUser(data);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-//   getAllCategory();
-// }, []);
 
 const getToken = () => {
   return localStorage.getItem("token");

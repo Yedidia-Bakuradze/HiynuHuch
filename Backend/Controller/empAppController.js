@@ -26,12 +26,10 @@ const createEmpApp = asyncHandler(async (req, res) => {
         return res.status(500).json({ message: "Failed to create" });
       }
       else{
-        console.log("SOMTHING IS GOOD")
         console.log(empApp);
         res.status(201).json(empApp);
       }
     } catch (err) {
-      console.log("CATCH");
       console.log(err);
         res.status(500).json({ message: err.message });
     }

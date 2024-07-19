@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { set } from "mongoose";
 
 function ApplyForm() {
   const { formId } = useParams();
@@ -54,12 +55,30 @@ function ApplyForm() {
     formData.append("requirements", requirements);
     formData.append("score", totalScore);
 
+
     try {
-      const { data } = await axios.post(`http://localhost:5000/api/empApp`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
+
+      // Create a new instance of FormData
+      const formattedData = new FormData();
+      // Prepares the file for the API call
+      formattedData.append("file", file);
+      const {data:res} = await axios.post("http://localhost:5000/api/storage/upload", formattedData)
+      console.log(res);
+      setFile(res);
+      formData.append("cv",res); 
+
+      const json = {
+        Status: "Pending",
+        EmpName: name,
+        email: email,
+        AppId: formId,
+        cv: res,
+        skills: skills,
+      };
+
+
+      console.log(json);
+      const { data } = await axios.post(`http://localhost:5000/api/empapp`, json);
       console.log(data);
     } catch (error) {
       console.error("There was an error submitting the application!", error);
@@ -99,7 +118,14 @@ function ApplyForm() {
                   <Form.Check 
                     type="checkbox" 
                     value={skill} 
-                    onChange={(e) => handleCheckboxChange(e, setSkills, skills)}
+                    onChange={(e) =>{
+                      const value = e.target.value;
+                      if (e.target.checked) {
+                        setSkills([...skills, value]);
+                      } else {
+                        setSkills(skills.filter(item => item !== value));
+                      }
+                    }}
                   />
                 </li>
               </Col>
@@ -116,7 +142,14 @@ function ApplyForm() {
                   <Form.Check 
                     type="checkbox" 
                     value={requirement} 
-                    onChange={(e) => handleCheckboxChange(e, setRequirements, requirements)}
+                    onChange={(e) =>{
+                      const value = e.target.value;
+                      if (e.target.checked) {
+                        setRequirements([...requirements, value]);
+                      } else {
+                        setRequirements(requirements.filter(item => item !== value));
+                      }
+                    }}
                   />
                 </li>
               </Col>
@@ -129,7 +162,7 @@ function ApplyForm() {
             type="text" 
             placeholder="Enter your name" 
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) =>setName(e.target.value)}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -143,7 +176,7 @@ function ApplyForm() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicResume">
           <Form.Label><h3>Please upload your CV:</h3></Form.Label>
-          <Form.Control type="file" onChange={handleFileChange} />
+          <Form.Control className="file" type="file" onChange={handleFileChange} />
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
