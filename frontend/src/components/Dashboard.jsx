@@ -44,7 +44,7 @@ function Dashboard({positionId}) {
               <Card.Text>
                 <h9>Status: </h9>
               </Card.Text>
-              <ProgressBar now={emp.status} label={`${emp.status}`} />
+              <ProgressBar now={emp.status} label={`${emp.status}%`}  />
               <br></br>
               <Link to={`details/${emp._id}`}  className="Submit-btn remove_text_dec" variant="primary">
                 More Details

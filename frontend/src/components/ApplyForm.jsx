@@ -37,7 +37,7 @@ function ApplyForm() {
     }
 
     const totalSkills = job.skills.length;
-    const totalRequirements = job.tags.length;
+    const totalRequirements = job.requirements.length;
     const selectedSkills = skills.length;
     const selectedRequirements = requirements.length;
 
