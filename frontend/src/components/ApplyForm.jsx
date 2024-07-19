@@ -109,7 +109,7 @@ function ApplyForm() {
         <Form.Group className="mb-3">
           <Form.Label><h3>Requirements:</h3></Form.Label>
           <Row className="skillrow p-3">
-            {job.tags.map((requirement, index) => (
+            {job.requirements.map((requirement, index) => (
               <Col key={`requirement-${index}`}>
                 <li>
                   <h6>{requirement}</h6>

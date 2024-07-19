@@ -15,7 +15,6 @@ function Dashboard({positionId}) {
       console.error('Error fetching user data:', error);
     }
   }
-
   useEffect(() => {
     func();
   },[positionId]);
@@ -31,7 +30,7 @@ function Dashboard({positionId}) {
       <Row className="CardRow">
         {applications.map((emp) => (
           <Card className="Card" key={emp._id}>
-            <Card.Header>{emp.ai || "Placeholder"}</Card.Header>
+            <Card.Header>{emp.AiReview || "no Ai Review found"}</Card.Header>
             <Card.Body >
               <Card.Text>
                 <h9>Name: {emp.name}</h9>
@@ -40,12 +39,12 @@ function Dashboard({positionId}) {
                 <h9>Email: {emp.email}</h9>
               </Card.Text>
               <Card.Text>
-                <h9>Grade: {emp.grade || ""}</h9>
+                <h9>Grade: {emp.ManualScore || ""}</h9>
               </Card.Text>
               <Card.Text>
                 <h9>Status: </h9>
               </Card.Text>
-              <ProgressBar now={emp.status} label={`${emp.status}%`} />
+              <ProgressBar now={emp.status} label={`${emp.status}`} />
               <br></br>
               <Link to={`details/${emp._id}`}  className="Submit-btn remove_text_dec" variant="primary">
                 More Details
