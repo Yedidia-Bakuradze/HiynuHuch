@@ -13,9 +13,10 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     // Use the original file name
     const start = file.originalname.split(".")[0];
-    const middle = Date.now().toString() * Math.random();
+    const middle = Date.now().toString() + Math.floor(Math.random() * 1000).toString();
     const end = file.originalname.split(".")[1];
-    const filName = start + middle + "." + end;
+    const filName = `${start}_${middle}.${end}`;
+    console.log("name", filName);
     cb(null, filName);
   },
 });
@@ -43,34 +44,36 @@ const uploadFile = asyncHandler((req, res) => {
   try {
     const s3 = configureAWS();
 
-    const fileContent = fs.readFileSync;
-    var params = {
+    const fileContent = fs.readFileSync(req.file.path);
+    const params = {
       Bucket: process.env.AWS_BUCKET_NAME,
-      Key: req.file.filename, // Add this line
+      Key: req.file.filename,
       Body: fileContent,
     };
 
     // Uploading files to the S3 bucket
     s3.upload(params, function (err, data) {
       if (err) {
-        res.status(500).send(`ERROR: ${err}`);
+        console.error("GOT", err);
+        return res.status(500).send(`ERROR: ${err}`);
       }
-
-      console.log(`File uploaded successfully. ${data.Location}`);
+      const url = data.Location;
+      const regex = /[^/]+$/;
+      const filename = url.match(regex)[0];
+      console.log(`File uploaded successfully. ${filename}`);
 
       // Delete the file locally after successful upload
       fs.unlink(req.file.path, (err) => {
         if (err) {
-          return res.status(500).send("Error deleting the file");
+          console.error("Error deleting the file", err);
+          return res.status(500).json("Error deleting the file");
         }
-        res
-          .status(201)
-          .send(
-            `File uploaded and deleted locally successfully at ${data.Location}`
-          );
       });
+
+      res.status(201).json(`${filename}`);
     });
   } catch (err) {
+    console.error("Error uploading file", err);
     res.status(500).send(err);
   }
 });
@@ -78,26 +81,24 @@ const uploadFile = asyncHandler((req, res) => {
 // Accepts a file name in the filename field on the body and deletes the file from the S3 bucket
 const deleteFile = asyncHandler((req, res) => {
   try {
-    // Configure the AWS instance
     const s3 = configureAWS();
 
-    // Configure the parameters
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME,
-      Key: req.body.fileName, // Get the file name from the query string
+      Key: req.body.fileName,
     };
 
-    // Delete the file from the S3 bucket
     s3.deleteObject(params, function (err, data) {
       if (err) {
-        console.log(err, err.stack); // an error occurred
-        throw `Error deleting the file: ${err}`;
+        console.error("Error deleting the file", err);
+        return res.status(500).send(`Error deleting the file: ${err}`);
       } else {
-        console.log(data); // successful response
+        console.log(data);
         res.send("File deleted successfully");
       }
     });
   } catch (err) {
+    console.error("Error in deleteFile", err);
     res.status(500).send(err);
   }
 });
@@ -105,26 +106,24 @@ const deleteFile = asyncHandler((req, res) => {
 // Accepts the file name in the filename field on the request query and downloads the file from the S3 bucket
 const downloadFile = asyncHandler((req, res) => {
   try {
-    // Configure the AWS instance
     const s3 = configureAWS();
 
-    // Configure the parameters
     const params = {
       Bucket: process.env.AWS_BUCKET_NAME,
       Key: req.query.fileName,
     };
 
-    // Download the file from the S3 bucket
     s3.getObject(params, async (err, data) => {
       if (err) {
-        console.log(err, err.stack);
-        throw `Error downloading the file: ${err}`;
+        console.error("Error downloading the file", err);
+        return res.status(500).send(`Error downloading the file: ${err}`);
       } else {
         console.log(data);
-        await res.send(data.Body);
+        res.send(data.Body);
       }
     });
   } catch (err) {
+    console.error("Error in downloadFile", err);
     res.status(500).send(err);
   }
 });
@@ -134,5 +133,5 @@ module.exports = {
   uploadFile,
   deleteFile,
   downloadFile,
-  uploadFile: [upload.single("file"), uploadFile], // Calls the uploadFile function after the file has been uploaded
+  uploadFile: [upload.single("file"), uploadFile],
 };

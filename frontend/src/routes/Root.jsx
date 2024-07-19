@@ -2,12 +2,9 @@ import "../Style/Root.css";
 import {
   Outlet,
   Link,
-  NavLink,
-  useNavigate,
   useParams,
 } from "react-router-dom";
-import { Form, Button } from "react-bootstrap";
-import { ListOfPositions } from "../Data/ListOfPositions.js";
+import { Form} from "react-bootstrap";
 import NavPosition from "../Components/NavPosition.jsx";
 import { useState, useEffect } from "react";
 import axios from "axios";
